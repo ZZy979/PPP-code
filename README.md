@@ -30,3 +30,4 @@ $ ctest
 # 代码目录
 ## 第2章 Hello, World!
 * [Hello world](ch02/hello_world.cpp)
+* [习题1](ch02/exec1.cpp)
