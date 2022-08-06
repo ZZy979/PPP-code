@@ -31,3 +31,8 @@ $ ctest
 ## 第2章 Hello, World!
 * [Hello world](ch02/hello_world.cpp)
 * [习题1](ch02/exec1.cpp)
+
+# 术语
+[术语](terms.txt)
+
+参考：[Bjarne Stroustrup's C++ Glossary](https://www.stroustrup.com/glossary.html)
