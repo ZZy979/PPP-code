@@ -34,3 +34,4 @@ function(add_test_output)
 endfunction()
 
 add_subdirectory(ch02)
+add_subdirectory(ch03)

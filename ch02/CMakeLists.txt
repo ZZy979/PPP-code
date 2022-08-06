@@ -1,5 +1,5 @@
 add_executable(hello_world hello_world.cpp)
-add_executable(exec1 exec1.cpp)
+add_executable(exec2-1 exec2-1.cpp)
 
 set(TESTDATA_DIR ${CMAKE_CURRENT_SOURCE_DIR}/testdata)
 add_test_output(
@@ -8,7 +8,7 @@ add_test_output(
   OUTPUT_FILE ${TESTDATA_DIR}/hello_world_output.txt
 )
 add_test_output(
-  NAME exec1_test
-  COMMAND exec1
-  OUTPUT_FILE ${TESTDATA_DIR}/exec1_output.txt
+  NAME exec2-1_test
+  COMMAND exec2-1
+  OUTPUT_FILE ${TESTDATA_DIR}/exec2-1_output.txt
 )

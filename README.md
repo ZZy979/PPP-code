@@ -30,7 +30,17 @@ $ ctest
 # 代码目录
 ## 第2章 Hello, World!
 * [Hello world](ch02/hello_world.cpp)
-* [习题1](ch02/exec1.cpp)
+* [习题1](ch02/exec2-1.cpp)
+
+## 第3章 对象、类型和值
+### 3.1 输入
+* [读取并打印名字](ch03/read_and_write_first_name.cpp)
+
+### 3.3 输入和类型
+* [读取名字和年龄](ch03/read_name_and_age.cpp)
+* [读取名字和年龄（版本2）](ch03/read_name_and_age_v2.cpp)
+* [读取全名](ch03/read_full_name.cpp)
+* [试一试](ch03/read_name_and_age_v3.cpp)
 
 # 术语
 [术语](terms.txt)
