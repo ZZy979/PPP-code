@@ -1,0 +1,8 @@
+Please enter a floating-point value:
+n == 3.14159
+n+1 == 4.14159
+three times n == 9.42478
+twice n == 6.28319
+n squared == 9.8696
+half of n == 1.5708
+square root of n == 1.77245

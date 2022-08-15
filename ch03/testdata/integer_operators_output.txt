@@ -1,0 +1,10 @@
+Please enter an integer value:
+n == 5
+n+1 == 6
+three times n == 15
+twice n == 10
+n squared == 25
+half of n == 2
+n % 2 == 1
+n / 3 * 3 + n % 3 == 5
+square root of n == 2.23607

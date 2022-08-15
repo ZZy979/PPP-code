@@ -42,6 +42,12 @@ $ ctest
 * [读取全名](ch03/read_full_name.cpp)
 * [试一试](ch03/read_name_and_age_v3.cpp)
 
+### 3.4 运算和运算符
+* [练习运算符](ch03/double_operators.cpp)
+* [试一试](ch03/integer_operators.cpp)
+* [读取全名（版本2）](ch03/read_full_name_v2.cpp)
+* [读取并比较名字](ch03/read_and_compare_names.cpp)
+
 # 术语
 [术语](terms.txt)
 

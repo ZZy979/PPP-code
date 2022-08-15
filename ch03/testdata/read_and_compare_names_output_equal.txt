@@ -1,0 +1,2 @@
+Please enter two names
+that's the same name twice
