@@ -48,6 +48,12 @@ $ ctest
 * [读取全名（版本2）](ch03/read_full_name_v2.cpp)
 * [读取并比较名字](ch03/read_and_compare_names.cpp)
 
+### 3.5 赋值和初始化
+* [检测重复单词](ch03/detect_repeated_words.cpp)
+
+### 3.6 组合赋值运算符
+* [查找重复单词](ch03/find_repeated_words.cpp)
+
 # 术语
 [术语](terms.txt)
 

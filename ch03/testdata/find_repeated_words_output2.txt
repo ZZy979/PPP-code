@@ -1,0 +1,5 @@
+word number 5 repeated: He
+word number 6 repeated: He
+word number 11 repeated: did
+word number 15 repeated: very
+word number 17 repeated: good
