@@ -1,0 +1,13 @@
+How many pennies do you have?
+How many nickels do you have?
+How many dimes do you have?
+How many quarters do you have?
+How many half_dollars do you have?
+How many dollars do you have?
+You have 23 pennies.
+You have 17 nickels.
+You have 14 dimes.
+You have 7 quarters.
+You have 3 half dollars.
+You have 8 dollars.
+Total: $13.73

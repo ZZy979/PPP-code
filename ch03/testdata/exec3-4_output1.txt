@@ -1,0 +1,7 @@
+Please enter two integers
+min = 123
+max = 456
+val1 + val2 = 579
+val1 - val2 = 333
+val1 * val2 = 56088
+val1 / val2 = 3

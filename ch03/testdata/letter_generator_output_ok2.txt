@@ -1,0 +1,12 @@
+Enter the name of the person you want to write to
+Enter the name of another friend
+If the friend is male, enter an 'm', or enter an 'f'
+Please enter the age of the person you want to write to
+Dear Bob,
+  How are you? I am fine. I miss you.
+  Have you seen Alice lately? If you see Alice please ask her to call me.
+  Next year you will be able to vote.
+Yours sincerely,
+
+
+ZZy

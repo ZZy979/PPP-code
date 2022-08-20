@@ -1,0 +1,7 @@
+Please enter two integers
+min = 2.71828
+max = 3.14159
+val1 + val2 = 5.85987
+val1 - val2 = -0.423311
+val1 * val2 = 8.53973
+val1 / val2 = 0.865256

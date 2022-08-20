@@ -1,0 +1,13 @@
+Enter the name of the person you want to write to
+Enter the name of another friend
+If the friend is male, enter an 'm', or enter an 'f'
+Please enter the age of the person you want to write to
+You're kidding!
+Dear Alice,
+  How are you? I am fine. I miss you.
+  Have you seen Bob lately? If you see Bob please ask him to call me.
+  Next year you will be -7.
+Yours sincerely,
+
+
+ZZy

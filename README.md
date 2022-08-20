@@ -30,6 +30,8 @@ $ ctest
 # 代码目录
 ## 第2章 Hello, World!
 * [Hello world](ch02/hello_world.cpp)
+
+## 习题
 * [习题1](ch02/exec2-1.cpp)
 
 ## 第3章 对象、类型和值
@@ -53,6 +55,23 @@ $ ctest
 
 ### 3.6 组合赋值运算符
 * [查找重复单词](ch03/find_repeated_words.cpp)
+
+### 3.9 类型安全
+* [试一试](ch03/unsafe_conversions.cpp)
+
+### 简单练习
+* [信件生成器](ch03/letter_generator.cpp)
+
+### 习题
+* [3-2](ch03/exec3-2.cpp)
+* [3-4](ch03/exec3-4.cpp)
+* [3-5](ch03/exec3-5.cpp)
+* [3-6](ch03/exec3-6.cpp)
+* [3-7](ch03/exec3-7.cpp)
+* [3-8](ch03/exec3-8.cpp)
+* [3-9](ch03/exec3-9.cpp)
+* [3-10](ch03/exec3-10.cpp)
+* [3-11](ch03/exec3-11.cpp)
 
 # 术语
 [术语](terms.txt)

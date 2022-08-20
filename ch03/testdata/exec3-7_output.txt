@@ -1,0 +1,2 @@
+Please enter three strings
+Fitzgerald,Hemingway,Steinbeck
