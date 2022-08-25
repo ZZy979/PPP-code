@@ -1,0 +1,2 @@
+Please enter amount of currency followed by a unit (j, u, p, y or k):
+6000 yen == 43.8872 dollars

@@ -1,0 +1,2 @@
+Please enter a length followed by a unit (c or i):
+2.54 cm == 1 in

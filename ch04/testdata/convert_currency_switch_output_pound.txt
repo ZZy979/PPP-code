@@ -1,0 +1,2 @@
+Please enter amount of currency followed by a unit (j, u, p, y or k):
+233.3 pounds == 275.605 dollars

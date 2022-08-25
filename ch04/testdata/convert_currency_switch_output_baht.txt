@@ -1,0 +1,2 @@
+Please enter amount of currency followed by a unit (j, u, p, y or k):
+Sorry, I don't know a unit called 'b'

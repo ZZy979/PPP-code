@@ -1,0 +1,2 @@
+Please enter a length followed by a unit (c or i):
+Sorry, I don't know a unit called 'f'

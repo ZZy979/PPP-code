@@ -1,0 +1,2 @@
+Please enter amount of currency followed by a unit (j, u, p, y or k):
+23000 yuan == 3358.06 dollars

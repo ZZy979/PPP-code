@@ -73,6 +73,18 @@ $ ctest
 * [3-10](ch03/exec3-10.cpp)
 * [3-11](ch03/exec3-11.cpp)
 
+### 4.4 语句
+#### 4.4.1 选择语句
+##### 4.4.1.1 if语句
+* [厘米-英寸转换](ch04/convert_length_unit.cpp)
+* [试一试](ch04/convert_currency.cpp)
+
+##### 4.4.1.2 switch语句
+* [厘米-英寸转换(switch)](ch04/convert_length_unit_switch.cpp)
+
+##### 4.4.1.3 switch技术细节
+* [试一试](ch04/convert_currency_switch.cpp)
+
 # 术语
 [术语](terms.txt)
 

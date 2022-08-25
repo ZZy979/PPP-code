@@ -1,0 +1,2 @@
+Please enter amount of currency followed by a unit (j, u, p, y or k):
+114514 kroner == 11807.8 dollars

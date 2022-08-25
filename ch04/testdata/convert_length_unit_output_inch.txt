@@ -1,0 +1,2 @@
+Please enter a length followed by a unit (c or i):
+6.5 in == 16.51 cm

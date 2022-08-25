@@ -1,0 +1,2 @@
+Please enter amount of currency followed by a unit (j, u or p):
+42 euros == 41.8535 dollars
