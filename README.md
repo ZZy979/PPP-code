@@ -80,10 +80,19 @@ $ ctest
 * [试一试](ch04/convert_currency.cpp)
 
 ##### 4.4.1.2 switch语句
-* [厘米-英寸转换(switch)](ch04/convert_length_unit_switch.cpp)
+* [厘米-英寸转换(switch)](ch04/convert_length_unit_v2.cpp)
 
 ##### 4.4.1.3 switch技术细节
-* [试一试](ch04/convert_currency_switch.cpp)
+* [试一试](ch04/convert_currency_v2.cpp)
+
+#### 4.4.2 循环语句
+##### 4.4.2.1 while语句
+* [打印平方数表(while)](ch04/print_squares_table.cpp)
+* [试一试](ch04/print_character_table.cpp)
+
+##### 4.4.2.3 for语句
+* [打印平方数表(for)](ch04/print_squares_table_v2.cpp)
+* [试一试](ch04/print_character_table_v2.cpp)
 
 # 术语
 [术语](terms.txt)

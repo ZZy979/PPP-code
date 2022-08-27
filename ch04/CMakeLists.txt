@@ -1,10 +1,14 @@
 add_executable(convert_length_unit convert_length_unit.cpp)
 add_executable(convert_currency convert_currency.cpp)
-add_executable(convert_length_unit_switch convert_length_unit_switch.cpp)
-add_executable(convert_currency_switch convert_currency_switch.cpp)
+add_executable(convert_length_unit_v2 convert_length_unit_v2.cpp)
+add_executable(convert_currency_v2 convert_currency_v2.cpp)
+add_executable(print_squares_table print_squares_table.cpp)
+add_executable(print_character_table print_character_table.cpp)
+add_executable(print_squares_table_v2 print_squares_table_v2.cpp)
+add_executable(print_character_table_v2 print_character_table_v2.cpp)
 
 set(TESTDATA_DIR ${CMAKE_CURRENT_SOURCE_DIR}/testdata)
-foreach(target IN ITEMS convert_length_unit;convert_length_unit_switch)
+foreach(target IN ITEMS convert_length_unit;convert_length_unit_v2)
   foreach(i IN ITEMS cm;inch;feet)
     add_test_output(
       NAME ${target}_test_${i}
@@ -24,9 +28,26 @@ foreach(i IN ITEMS yen;euro;pound;yuan)
 endforeach()
 foreach(i IN ITEMS yen;euro;pound;yuan;kroner;baht)
   add_test_output(
-    NAME convert_currency_switch_test_${i}
-    COMMAND convert_currency_switch
-    OUTPUT_FILE ${TESTDATA_DIR}/convert_currency_switch_output_${i}.txt
+    NAME convert_currency_v2_test_${i}
+    COMMAND convert_currency_v2
+    OUTPUT_FILE ${TESTDATA_DIR}/convert_currency_v2_output_${i}.txt
     INPUT_FILE ${TESTDATA_DIR}/currency_${i}.txt
   )
 endforeach()
+  foreach(target IN ITEMS print_squares_table;print_squares_table_v2)
+  add_test_output(
+    NAME ${target}_test
+    COMMAND ${target}
+    OUTPUT_FILE ${TESTDATA_DIR}/squares_table.txt
+  )
+endforeach()
+add_test_output(
+  NAME print_character_table_test
+  COMMAND print_character_table
+  OUTPUT_FILE ${TESTDATA_DIR}/character_table.txt
+)
+add_test_output(
+  NAME print_character_table_v2_test
+  COMMAND print_character_table_v2
+  OUTPUT_FILE ${TESTDATA_DIR}/character_table_v2.txt
+)
