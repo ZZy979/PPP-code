@@ -6,6 +6,9 @@ add_executable(print_squares_table print_squares_table.cpp)
 add_executable(print_character_table print_character_table.cpp)
 add_executable(print_squares_table_v2 print_squares_table_v2.cpp)
 add_executable(print_character_table_v2 print_character_table_v2.cpp)
+add_executable(mean_median_temperature mean_median_temperature.cpp)
+add_executable(simple_dictionary simple_dictionary.cpp)
+add_executable(bleep_disliked_words bleep_disliked_words.cpp)
 
 set(TESTDATA_DIR ${CMAKE_CURRENT_SOURCE_DIR}/testdata)
 foreach(target IN ITEMS convert_length_unit;convert_length_unit_v2)
@@ -50,4 +53,24 @@ add_test_output(
   NAME print_character_table_v2_test
   COMMAND print_character_table_v2
   OUTPUT_FILE ${TESTDATA_DIR}/character_table_v2.txt
+)
+foreach(i RANGE 1 3)
+  add_test_output(
+    NAME mean_median_temperature_test${i}
+    COMMAND mean_median_temperature
+    OUTPUT_FILE ${TESTDATA_DIR}/mean_median_temperature_output${i}.txt
+    INPUT_FILE ${TESTDATA_DIR}/mean_median_temperature_input${i}.txt
+  )
+endforeach()
+add_test_output(
+  NAME simple_dictionary_test
+  COMMAND simple_dictionary
+  OUTPUT_FILE ${TESTDATA_DIR}/simple_dictionary_output.txt
+  INPUT_FILE ${TESTDATA_DIR}/simple_dictionary_input.txt
+)
+add_test_output(
+  NAME bleep_disliked_words_test
+  COMMAND bleep_disliked_words
+  OUTPUT_FILE ${TESTDATA_DIR}/bleep_disliked_words_output.txt
+  INPUT_FILE ${TESTDATA_DIR}/bleep_disliked_words_input.txt
 )

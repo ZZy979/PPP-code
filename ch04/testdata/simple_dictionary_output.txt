@@ -1,0 +1,5 @@
+Number of words: 5
+a
+man
+panama
+plan

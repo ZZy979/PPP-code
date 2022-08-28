@@ -73,6 +73,7 @@ $ ctest
 * [3-10](ch03/exec3-10.cpp)
 * [3-11](ch03/exec3-11.cpp)
 
+## 第4章 计算
 ### 4.4 语句
 #### 4.4.1 选择语句
 ##### 4.4.1.1 if语句
@@ -93,6 +94,14 @@ $ ctest
 ##### 4.4.2.3 for语句
 * [打印平方数表(for)](ch04/print_squares_table_v2.cpp)
 * [试一试](ch04/print_character_table_v2.cpp)
+
+### 4.6 向量
+#### 4.6.3 一个数值计算的例子
+* [计算温度的平均值和中位数](ch04/mean_median_temperature.cpp)
+
+#### 4.6.4 一个文本处理的例子
+* [简单字典](ch04/simple_dictionary.cpp)
+* [试一试](ch04/bleep_disliked_words.cpp)
 
 # 术语
 [术语](terms.txt)

@@ -1,0 +1,2 @@
+Average temperature: 0.35722
+Median temperature: -1.67265

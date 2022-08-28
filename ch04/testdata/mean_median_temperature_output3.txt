@@ -1,0 +1,2 @@
+Average temperature: 42
+Median temperature: 42
