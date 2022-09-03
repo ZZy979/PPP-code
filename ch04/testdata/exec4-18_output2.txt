@@ -1,0 +1,2 @@
+Please enter the coefficients a,b,c:
+x1=-2, x2=-2

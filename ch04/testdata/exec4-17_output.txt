@@ -1,0 +1,3 @@
+min=Alice
+max=Helen
+mode=Frank

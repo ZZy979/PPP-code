@@ -1,0 +1,8 @@
+Is the number you are thinking of greater than 50? (y/n)
+Is the number you are thinking of greater than 25? (y/n)
+Is the number you are thinking of greater than 38? (y/n)
+Is the number you are thinking of greater than 44? (y/n)
+Is the number you are thinking of greater than 41? (y/n)
+Is the number you are thinking of greater than 43? (y/n)
+Is the number you are thinking of greater than 42? (y/n)
+The number you are thinking is 42

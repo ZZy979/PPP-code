@@ -1,0 +1,2 @@
+Please enter two floating-point numbers and an operator (+ - * /)
+The difference between 24.1 and 36.5 is -12.4

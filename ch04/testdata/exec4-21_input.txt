@@ -1,0 +1,20 @@
+Alice 8
+Bob 10
+Cindy 8
+Dale 9
+Eric 7
+Frank 8
+Grace 9
+Helen 6
+NoName 0
+Alice
+Bob
+Frank
+Joe
+8
+9
+10
+5
+2.5
+!@#
+q

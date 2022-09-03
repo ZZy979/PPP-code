@@ -1,0 +1,2 @@
+Please enter the coefficients a,b,c:
+x1=0.833333-0.799305i, x2=0.833333+0.799305i

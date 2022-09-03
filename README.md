@@ -31,7 +31,7 @@ $ ctest
 ## 第2章 Hello, World!
 * [Hello world](ch02/hello_world.cpp)
 
-## 习题
+### 习题
 * [习题1](ch02/exec2-1.cpp)
 
 ## 第3章 对象、类型和值
@@ -102,6 +102,24 @@ $ ctest
 #### 4.6.4 一个文本处理的例子
 * [简单字典](ch04/simple_dictionary.cpp)
 * [试一试](ch04/bleep_disliked_words.cpp)
+
+### 简单练习
+* [长度统计](ch04/length_statistics.cpp)
+
+### 习题
+* [4-2](ch04/mean_median_temperature.cpp)
+* [4-3](ch04/exec4-3.cpp)
+* [4-4](ch04/exec4-4.cpp)
+* [4-5](ch04/exec4-5.cpp)
+* [4-6](ch04/exec4-6.cpp)
+* [4-9](ch04/exec4-9.cpp)
+* [4-10](ch04/exec4-10.cpp)
+* [4-12](ch04/exec4-12.cpp)
+* [4-14](ch04/exec4-14.cpp)
+* [4-16](ch04/exec4-16.cpp)
+* [4-17](ch04/exec4-17.cpp)
+* [4-18](ch04/exec4-18.cpp)
+* [4-21](ch04/exec4-21.cpp)
 
 # 术语
 [术语](terms.txt)

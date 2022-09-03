@@ -1,0 +1,2 @@
+Please enter two floating-point numbers and an operator (+ - * /)
+error: divided by 0

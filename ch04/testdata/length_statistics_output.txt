@@ -1,0 +1,12 @@
+0.328084 ft the smallest so far the largest so far
+0.208333 ft the smallest so far
+10.9252 ft the largest so far
+5 ft
+invalid unit: km
+invalid unit: 23.6ft
+0.321522 ft
+0.208333 0.321522 0.328084 5 10.9252 
+max=10.9252 ft
+min=0.208333 ft
+sum=16.7831 ft
+count=5

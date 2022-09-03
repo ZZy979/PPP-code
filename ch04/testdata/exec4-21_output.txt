@@ -1,0 +1,13 @@
+Please enter name and score pairs, enter "NoName 0" to stop
+Please enter a query name or score, enter "q" to stop
+8
+10
+8
+name not found
+Alice Cindy Frank 
+Dale Grace 
+Bob 
+score not found
+score not found
+name not found
+name not found

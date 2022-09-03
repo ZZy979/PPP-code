@@ -1,0 +1,2 @@
+Please enter two floating-point numbers and an operator (+ - * /)
+The sum of 35.6 and 24.1 is 59.7

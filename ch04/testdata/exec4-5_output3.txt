@@ -1,0 +1,2 @@
+Please enter two floating-point numbers and an operator (+ - * /)
+The product of -185.27 and 0.49 is -90.7823

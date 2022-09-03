@@ -1,0 +1,4 @@
+sum=42
+min=42
+max=42
+mean=42

@@ -1,0 +1,4 @@
+sum=27
+min=1.2
+max=9
+mean=5.4

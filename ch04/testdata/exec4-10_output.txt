@@ -1,0 +1,13 @@
+Welcome to Rock-paper-scissors!
+Please enter your move (0 - rock, 1 - paper, 2 - scissors) and a random number
+Your move is rock, computer's move is paper. You lose!
+Your move is rock, computer's move is rock. Draw!
+Your move is rock, computer's move is scissors. You win!
+Your move is paper, computer's move is scissors. You lose!
+Your move is paper, computer's move is rock. You win!
+Your move is paper, computer's move is paper. Draw!
+Your move is scissors, computer's move is paper. You win!
+Your move is scissors, computer's move is rock. You lose!
+Your move is scissors, computer's move is scissors. Draw!
+invalid move
+Bye

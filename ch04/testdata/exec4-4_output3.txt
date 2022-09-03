@@ -1,0 +1,10 @@
+Is the number you are thinking of greater than 50? (y/n)
+Is the number you are thinking of greater than 75? (y/n)
+Is the number you are thinking of greater than 88? (y/n)
+Is the number you are thinking of greater than 94? (y/n)
+Is the number you are thinking of greater than 91? (y/n)
+Please enter y/n
+Is the number you are thinking of greater than 91? (y/n)
+Is the number you are thinking of greater than 90? (y/n)
+Is the number you are thinking of greater than 89? (y/n)
+The number you are thinking is 89
