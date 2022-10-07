@@ -126,6 +126,10 @@ $ ctest
 #### 5.6.1 参数错误
 * [计算面积](ch05/area.cpp)
 
+### 5.7 逻辑错误
+* [统计温度(bug)](ch05/temperature_stats_buggy.cpp)
+* [试一试](ch05/temperature_stats_fixed.cpp)
+
 # 术语
 [术语](terms.txt)
 

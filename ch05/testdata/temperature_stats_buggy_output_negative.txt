@@ -1,0 +1,3 @@
+High temperature: 0
+Low temperature: -26.1
+Average temperature: -18.275
