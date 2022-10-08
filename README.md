@@ -130,6 +130,13 @@ $ ctest
 * [统计温度(bug)](ch05/temperature_stats_buggy.cpp)
 * [试一试](ch05/temperature_stats_fixed.cpp)
 
+### 习题
+* [5-2~5-6](ch05/temperature_converters.cpp)
+* [5-7](ch05/solve_equation.cpp)
+* [5-8](ch05/sum_n_integers.cpp)
+* [5-11](ch05/fibonacci_series.cpp)
+* [5-12~5-13](ch05/bulls_and_cows.cpp)
+
 # 术语
 [术语](terms.txt)
 
