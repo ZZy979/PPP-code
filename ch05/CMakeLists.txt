@@ -23,7 +23,7 @@ add_gtest(NAME temperature_converters_test SOURCE temperature_converters_test.cp
 add_gtest(NAME solve_equation_test SOURCE solve_equation_test.cpp LIBRARY solve_equation)
 foreach(i RANGE 1 2)
   add_output_test(
-    NAME sum_n_integers_test_${i}
+    NAME sum_n_integers_test${i}
     COMMAND sum_n_integers
     OUTPUT_FILE ${TESTDATA_DIR}/sum_n_integers_output${i}.txt
     INPUT_FILE ${TESTDATA_DIR}/sum_n_integers_input${i}.txt

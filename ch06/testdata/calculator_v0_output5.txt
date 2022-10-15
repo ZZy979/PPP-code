@@ -1,0 +1,2 @@
+Please enter expression (we can handle +, -, * and /)
+add ; to end expression (e.g., 1+2*3;):error: bad expression
