@@ -138,9 +138,9 @@ $ ctest
 * [5-12~5-13](ch05/bulls_and_cows.cpp)
 
 ## 第6章 编写一个程序
-### 6.3 回到计算器问题
-#### 6.3.1 初次尝试
 * [简单计算器v0](ch06/calculator_v0.cpp)
+* 简单计算器v1
+  * [词法分析器](ch06/calculator/lexer.h)
 
 # 术语
 [术语](terms.txt)

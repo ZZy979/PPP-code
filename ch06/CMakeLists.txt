@@ -1,4 +1,5 @@
 add_executable(calculator_v0 calculator_v0.cpp)
+add_subdirectory(calculator)
 
 set(TESTDATA_DIR ${CMAKE_CURRENT_SOURCE_DIR}/testdata)
 foreach(i RANGE 1 5)
