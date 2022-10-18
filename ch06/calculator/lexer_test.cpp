@@ -2,7 +2,6 @@
 
 #include <sstream>
 #include <vector>
-#include <stdexcept>
 
 #include "lexer.h"
 
@@ -35,7 +34,7 @@ TEST_F(TokenStreamTest, Get) {
 TEST_F(TokenStreamTest, GetBadToken) {
     iss.str("1&2;");
     EXPECT_DOUBLE_EQ(ts.get().value, 1);
-    EXPECT_THROW(ts.get(), std::invalid_argument);
+    EXPECT_THROW(ts.get(), Lexer_error);
 }
 
 TEST_F(TokenStreamTest, PutBack) {
@@ -47,5 +46,12 @@ TEST_F(TokenStreamTest, PutBack) {
 
 TEST_F(TokenStreamTest, PutBackFull) {
     ts.putback({'-'});
-    EXPECT_THROW(ts.putback({number, 42}), std::runtime_error);
+    EXPECT_THROW(ts.putback({number, 42}), Lexer_error);
+}
+
+TEST_F(TokenStreamTest, Ignore) {
+    iss.str("+");
+    ts.putback({number, 45});
+    ts.ignore();
+    EXPECT_EQ(ts.get().kind, '+');
 }

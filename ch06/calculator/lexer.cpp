@@ -1,7 +1,5 @@
 #include "lexer.h"
 
-#include <stdexcept>
-
 const char number = '8';
 
 // make a Token_stream that reads from istream
@@ -34,14 +32,19 @@ Token Token_stream::get() {
             return Token{number, val};
         }
         default:
-            throw std::invalid_argument("Bad token");
+            throw Lexer_error("Bad token");
     }
 }
 
 // put a Token back
 void Token_stream::putback(Token t) {
     if (full)
-        throw std::runtime_error("putback() into a full buffer");
+        throw Lexer_error("putback() into a full buffer");
     buffer = t;     // copy t to buffer
     full = true;    // buffer is now full
+}
+
+// discard Token in buffer
+void Token_stream::ignore() {
+    full = false;
 }

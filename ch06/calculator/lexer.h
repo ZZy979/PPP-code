@@ -1,6 +1,7 @@
 #pragma once
 
 #include <istream>
+#include <stdexcept>
 
 class Token {
 public:
@@ -15,9 +16,14 @@ public:
     explicit Token_stream(std::istream& is);
     Token get();
     void putback(Token t);
+    void ignore();
 
 private:
     std::istream& is;   // input stream to read from
     bool full;          // is there a Token in the buffer?
     Token buffer;       // here is where we keep a Token put back using putback()
+};
+
+class Lexer_error : public std::runtime_error {
+    using std::runtime_error::runtime_error;
 };
