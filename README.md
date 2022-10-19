@@ -141,6 +141,8 @@ $ ctest
 * [简单计算器v0](ch06/calculator_v0.cpp)
 * 简单计算器v1
   * [词法分析器](ch06/calculator/lexer.h)
+  * [语法分析器](ch06/calculator/parser.h)
+  * [主程序](ch06/calculator/main.cpp)
 
 # 术语
 [术语](terms.txt)
