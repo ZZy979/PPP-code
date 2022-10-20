@@ -1,0 +1,23 @@
+G = (V, T, P, Sentence)
+V = {Sentence, Article, Noun, Verb, Conjunction}
+T = {"the", "birds", "fish", "C++", "rules", "fly", "swim", "and", "or", "but"}
+
+产生式规则如下：
+Sentence:
+    Noun Verb
+    Article Noun Verb
+    Sentence Conjunction Sentence
+Article:
+    "the"
+Conjunction:
+    "and"
+    "or"
+    "but"
+Noun:
+    "birds"
+    "fish"
+    "C++"
+Verb:
+    "rules"
+    "fly"
+    "swim"

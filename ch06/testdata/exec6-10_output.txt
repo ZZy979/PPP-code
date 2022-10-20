@@ -1,0 +1,18 @@
+Please enter two integers n, m (0 <= m <= n) and an operator ('p' for permutation, 'c' for combination)
+30240
+252
+205320
+34220
+8.61734e+20
+134596
+362880
+1
+999
+999
+1
+1
+m must be between 0 and n
+m must be between 0 and n
+operator must be 'p' or 'c'
+7.25742e+306
+9.14484e+49

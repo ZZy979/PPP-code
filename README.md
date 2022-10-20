@@ -119,7 +119,7 @@ $ ctest
 * [4-16](ch04/exec4-16.cpp)
 * [4-17](ch04/exec4-17.cpp)
 * [4-18](ch04/exec4-18.cpp)
-* [4-21](ch04/exec4-21.cpp)
+* [4-19~4-21](ch04/exec4-21.cpp)
 
 ## 第5章 错误
 ### 5.6 异常
@@ -143,6 +143,13 @@ $ ctest
   * [词法分析器](ch06/calculator/lexer.h)
   * [语法分析器](ch06/calculator/parser.h)
   * [主程序](ch06/calculator/main.cpp)
+
+### 习题
+* [6-4](ch06/exec6-4.cpp)
+* [6-5](ch06/exec6-5.txt)
+* [6-7](ch06/exec6-7.txt)
+* [6-9](ch06/exec6-9.cpp)
+* [6-10](ch06/exec6-10.cpp)
 
 # 术语
 [术语](terms.txt)

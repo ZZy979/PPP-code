@@ -1,0 +1,9 @@
+Please enter a number between 0 and 9999
+8 is 8 ones
+42 is 4 tens and 2 ones
+123 is 1 hundred and 2 tens and 3 ones
+9801 is 9 thousands and 8 hundreds and 0 ten and 1 one
+number must be between 0 and 9999
+number must be between 0 and 9999
+number must be between 0 and 9999
+invalid number

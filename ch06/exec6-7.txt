@@ -1,0 +1,21 @@
+G = (V, T, P, or_expr)
+V = {or_expr, xor_expr, and_expr, factor, primary}
+T = {int-literal, "!", "~", "&", "^", "|", "(", ")"}
+
+产生式规则如下：
+or_expr:
+    or_expr "|" xor_expr
+    xor_expr
+xor_expr:
+    xor_expr "^" and_expr
+    and_expr
+and_expr:
+    and_expr "&" factor
+    factor
+factor:
+    "!" primary
+    "~" primary
+    primary
+primary
+    int-literal
+    "(" or_expr ")"
