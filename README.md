@@ -139,10 +139,10 @@ $ ctest
 
 ## 第6章 编写一个程序
 * [简单计算器v0](ch06/calculator_v0.cpp)
-* 简单计算器v1
-  * [词法分析器](ch06/calculator/lexer.h)
-  * [语法分析器](ch06/calculator/parser.h)
-  * [主程序](ch06/calculator/main.cpp)
+* [简单计算器v1](ch06/calculator_v1)
+  * [词法分析器](ch06/calculator_v1/lexer.h)
+  * [语法分析器](ch06/calculator_v1/parser.h)
+  * [主程序](ch06/calculator_v1/main.cpp)
 
 ### 习题
 * [6-4](ch06/exec6-4.cpp)
@@ -150,6 +150,8 @@ $ ctest
 * [6-7](ch06/exec6-7.txt)
 * [6-9](ch06/exec6-9.cpp)
 * [6-10](ch06/exec6-10.cpp)
+
+## 第7章 完成一个程序
 
 # 术语
 [术语](terms.txt)

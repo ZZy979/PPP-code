@@ -1,5 +1,5 @@
 add_executable(calculator_v0 calculator_v0.cpp)
-add_subdirectory(calculator)
+add_subdirectory(calculator_v1)
 add_executable(exec6-4 exec6-4.cpp)
 add_executable(exec6-9 exec6-9.cpp)
 add_executable(exec6-10 exec6-10.cpp)
