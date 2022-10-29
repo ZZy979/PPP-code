@@ -22,7 +22,10 @@ TEST_F(ParserV2Test, Expression) {
         {"1+2*3;", 7},
         {"1-2*3+4;", -1},
         {"1-34/50;", 0.32},
-        {"42+(11-4)/8-9*(32.5+24.7);", -471.925}
+        {"42+(11-4)/8-9*(32.5+24.7);", -471.925},
+        {"+2-3;", -1},
+        {"-(6-5)/2;", -0.5},
+        {"--1++2;", 3}
     };
     for (const auto& t : test_cases) {
         iss.str(t.first);
@@ -40,19 +43,19 @@ TEST_F(ParserV2Test, ExpressionLexerError) {
     };
     for (const auto& s : input) {
         iss.str(s);
-        EXPECT_THROW(parser.expression(), Lexer_error);
+        EXPECT_THROW(parser.expression(), Lexer_error) << "input: " << s;
         ts.ignore();
     }
 }
 
 TEST_F(ParserV2Test, ExpressionParserError) {
     std::vector<std::string> input = {
-        ";;;", "(1+3;", "(1+);", "();", "1+;", "+1;", "1++;", "1/0;",
-        "1++2;", "-2;", "q", "1+q"
+        ";;;", "(1+3;", "(1+);", "();", "1+;", "1++;", "1/0;",
+        "q", "1+q"
     };
     for (const auto& s : input) {
         iss.str(s);
-        EXPECT_THROW(parser.expression(), Parser_error);
+        EXPECT_THROW(parser.expression(), Parser_error) << "input: " << s;
         ts.ignore();
     }
 }
@@ -74,7 +77,7 @@ TEST_F(ParserV2Test, TermDevidedByZero) {
     std::vector<std::string> input = {"1/0;", "3/(8-4*2);"};
     for (const auto& s : input) {
         iss.str(s);
-        EXPECT_THROW(parser.term(), Parser_error);
+        EXPECT_THROW(parser.term(), Parser_error) << "input: " << s;
         ts.ignore();
     }
 }
@@ -101,18 +104,22 @@ TEST_F(ParserV2Test, Primary) {
         {"1+2*3;", 1},
         {"((3+4)/2)*5;", 3.5},
         {"12 34;", 12},
-        {"(8);", 8}
+        {"(8);", 8},
+        {"1+;", 1},
+        {"1+q", 1}
     };
     for (const auto& t : test_cases) {
         iss.str(t.first);
         EXPECT_DOUBLE_EQ(parser.primary(), t.second);
+        ts.ignore();
     }
 }
 
 TEST_F(ParserV2Test, PrimaryError) {
-    std::vector<std::string> input = {"+2-3;", "(1+2;"};
+    std::vector<std::string> input = {";;;", "(1+3;", "(1+);", "();", "q"};
     for (const auto& s : input) {
         iss.str(s);
-        EXPECT_THROW(parser.primary(), Parser_error);
+        EXPECT_THROW(parser.primary(), Parser_error) << "input: " << s;
+        ts.ignore();
     }
 }

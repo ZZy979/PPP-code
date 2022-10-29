@@ -9,7 +9,7 @@ public:
     double value;   // for numbers: a value
 };
 
-extern const char number;   // t.kind == number means that t is a number Token
+const char number = '8';    // t.kind == number means that t is a number Token
 
 class Token_stream {
 public:

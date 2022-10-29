@@ -1,7 +1,5 @@
 #include "lexer.h"
 
-const char number = '8';
-
 // make a Token_stream that reads from istream
 Token_stream::Token_stream(std::istream& is)
         :is(is), full(false), buffer{0} {
