@@ -152,6 +152,10 @@ $ ctest
 * [6-10](ch06/exec6-10.cpp)
 
 ## 第7章 完成一个程序
+* [简单计算器v1](ch07/calculator_v2)
+  * [词法分析器](ch07/calculator_v2/lexer.h)
+  * [语法分析器](ch07/calculator_v2/parser.h)
+  * [主程序](ch07/calculator_v2/main.cpp)
 
 # 术语
 [术语](terms.txt)
