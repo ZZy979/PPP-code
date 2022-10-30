@@ -3,6 +3,42 @@
 #include "lexer.h"
 #include "parser.h"
 
+/*
+    Simple calculator
+
+    This program implements a basic expression calculator.
+    Input from cin; output to cout.
+
+    The grammar for input is:
+
+    Statement:
+        Expression
+        Print
+        Quit
+    Print:
+        ";"
+    Quit:
+        "q"
+    Expression:
+        Term
+        Expression "+" Term
+        Expression "-" Term
+    Term:
+        Primary
+        Term "*" Primary
+        Term "/" Primary
+        Term "%" Primary
+    Primary:
+        Number
+        "(" Expression ")"
+        "+" Primary
+        "-" Primary
+    Number:
+        floating-point-literal
+
+    Input comes from cin through the Token_stream called ts.
+*/
+
 using namespace std;
 
 const string prompt = "> ";     // prompt user input
@@ -13,10 +49,6 @@ Parser parser(ts);
 
 void calculate();
 
-/*
- * 简单计算器v2，支持+,-,*,/,()运算
- * 输入";"打印结果，输入"q"退出
- */
 int main() {
     try {
         calculate();
