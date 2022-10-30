@@ -17,8 +17,8 @@ Token Token_stream::get() {
     is >> ch;   // note that >> skips whitespace (space, newline, tab, etc.)
 
     switch (ch) {
-        case ';':   // for "print"
-        case 'q':   // for "quit"
+        case print:
+        case quit:
         case '(': case ')': case '+': case '-': case '*': case '/': case '%':
             return Token{ch};   // let each character represent itself
         case '.':
