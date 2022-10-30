@@ -1,5 +1,7 @@
 #include "parser.h"
 
+#include <cmath>
+
 Parser::Parser(Token_stream& ts) :ts(ts) {
 }
 
@@ -37,6 +39,14 @@ double Parser::term() {
                 if (d == 0)
                     throw Parser_error("divided by zero");
                 left /= d;
+                op = ts.get();
+                break;
+            }
+            case '%': {
+                double d = primary();
+                if (d == 0)
+                    throw Parser_error("divided by zero");
+                left = fmod(left, d);
                 op = ts.get();
                 break;
             }

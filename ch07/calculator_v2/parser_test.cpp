@@ -25,7 +25,8 @@ TEST_F(ParserV2Test, Expression) {
         {"42+(11-4)/8-9*(32.5+24.7);", -471.925},
         {"+2-3;", -1},
         {"-(6-5)/2;", -0.5},
-        {"--1++2;", 3}
+        {"--1++2;", 3},
+        {"6.7%3.3+(2*17-0.7)*3;", 100}
     };
     for (const auto& t : test_cases) {
         iss.str(t.first);
@@ -36,7 +37,7 @@ TEST_F(ParserV2Test, Expression) {
 
 TEST_F(ParserV2Test, ExpressionLexerError) {
     std::vector<std::string> input = {
-        "!+2", "1*2/3%4+5-6;", "'a';", "1@2", "[2.5]",
+        "!+2", "'a';", "1@2", "[2.5]",
         "Mary had a little lamb",
         "srtvrqtiewcbet7rewaewre–wqcntrretewru754389652743nvcqnwq;",
         "!@#$%^&*()~:;"
@@ -64,7 +65,11 @@ TEST_F(ParserV2Test, Term) {
     std::vector<std::pair<std::string, double>> test_cases = {
         {"3.14;", 3.14},
         {"2*3/4;", 1.5},
-        {"(1+2)*(3-4*5)/8;", -6.375}
+        {"(1+2)*(3-4*5)/8;", -6.375},
+        {"5.8%2.3;", 1.2},
+        {"-5.8%2.3;", -1.2},
+        {"5.8%-2.3;", 1.2},
+        {"-5.8%(-2.3);", -1.2}
     };
     for (const auto& t : test_cases) {
         iss.str(t.first);
@@ -74,7 +79,7 @@ TEST_F(ParserV2Test, Term) {
 }
 
 TEST_F(ParserV2Test, TermDevidedByZero) {
-    std::vector<std::string> input = {"1/0;", "3/(8-4*2);"};
+    std::vector<std::string> input = {"1/0;", "2%0;", "3/(8-4*2);"};
     for (const auto& s : input) {
         iss.str(s);
         EXPECT_THROW(parser.term(), Parser_error) << "input: " << s;

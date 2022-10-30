@@ -14,10 +14,10 @@ protected:
 };
 
 TEST_F(TokenStreamV2Test, Get) {
-    iss.str("2; 2+3; 1 +\t2\n* 3; 12.5/(2.3-.4);q");
+    iss.str("2; 2+3*5%4; 1 +\t2\n* 3; 12.5/(2.3-.4);q");
     std::vector<Token> expected = {
         {number, 2}, {';'},
-        {number, 2}, {'+'}, {number, 3}, {';'},
+        {number, 2}, {'+'}, {number, 3}, {'*'}, {number, 5}, {'%'}, {number, 4}, {';'},
         {number, 1}, {'+'}, {number, 2}, {'*'}, {number, 3}, {';'},
         {number, 12.5}, {'/'}, {'('}, {number, 2.3}, {'-'}, {number, 0.4}, {')'}, {';'},
         {'q'}
@@ -32,9 +32,12 @@ TEST_F(TokenStreamV2Test, Get) {
 }
 
 TEST_F(TokenStreamV2Test, GetBadToken) {
-    iss.str("1&2;");
-    EXPECT_DOUBLE_EQ(ts.get().value, 1);
-    EXPECT_THROW(ts.get(), Lexer_error);
+    std::vector<std::string> input = {"!", "@", "&", "abc"};
+    for (const auto& s : input) {
+        iss.str(s);
+        EXPECT_THROW(ts.get(), Lexer_error) << "input: " << s;
+        ts.ignore();
+    }
 }
 
 TEST_F(TokenStreamV2Test, PutBack) {
