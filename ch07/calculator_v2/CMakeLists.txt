@@ -1,8 +1,11 @@
+add_library(variable variable.cpp)
 add_library(lexer_v2 lexer.cpp)
+target_link_libraries(lexer_v2 PUBLIC variable)
 add_library(parser_v2 parser.cpp)
 target_link_libraries(parser_v2 PUBLIC lexer_v2)
 add_executable(calculator_v2 main.cpp)
 target_link_libraries(calculator_v2 lexer_v2 parser_v2)
 
+add_gtest(NAME variable_test SOURCE variable_test.cpp LIBRARY variable)
 add_gtest(NAME lexer_v2_test SOURCE lexer_test.cpp LIBRARY lexer_v2)
 add_gtest(NAME parser_v2_test SOURCE parser_test.cpp LIBRARY parser_v2)
