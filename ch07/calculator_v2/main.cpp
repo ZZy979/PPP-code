@@ -48,28 +48,33 @@ Token_stream ts(cin);
 Parser parser(ts);
 
 void calculate();
+void clean_up_mess();
 
 int main() {
-    try {
-        calculate();
-        return 0;
-    }
-    catch (exception& e) {
-        cerr << e.what() << endl;
-        return 1;
-    }
+    calculate();
+    return 0;
 }
 
 // expression calculation loop
 void calculate() {
     while (cin) {
-        cout << prompt;
-        Token t = ts.get();
-        while (t.kind == print)
-            t = ts.get();
-        if (t.kind == quit)
-            break;
-        ts.putback(t);
-        cout << result << parser.expression() << endl;
+        try {
+            cout << prompt;
+            Token t = ts.get();
+            while (t.kind == print)
+                t = ts.get();
+            if (t.kind == quit)
+                break;
+            ts.putback(t);
+            cout << result << parser.expression() << endl;
+        }
+        catch (exception& e) {
+            cerr << e.what() << endl;
+            clean_up_mess();
+        }
     }
+}
+
+void clean_up_mess() {
+    ts.ignore(print);
 }

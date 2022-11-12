@@ -19,6 +19,7 @@ public:
     Token get();
     void putback(Token t);
     void ignore();
+    void ignore(char c);
 
 private:
     std::istream& is;   // input stream to read from

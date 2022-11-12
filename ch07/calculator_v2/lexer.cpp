@@ -46,3 +46,18 @@ void Token_stream::putback(Token t) {
 void Token_stream::ignore() {
     full = false;
 }
+
+// discard characters up to and including c
+void Token_stream::ignore(char c) {
+    // first look in buffer
+    if (full && c == buffer.kind) {
+        full = false;
+        return;
+    }
+    full = false;
+
+    // now search input
+    char ch;
+    while (is >> ch && ch != c)
+        ;
+}

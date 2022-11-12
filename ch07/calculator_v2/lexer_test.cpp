@@ -58,3 +58,15 @@ TEST_F(TokenStreamV2Test, Ignore) {
     ts.ignore();
     EXPECT_EQ(ts.get().kind, '+');
 }
+
+TEST_F(TokenStreamV2Test, IgnoreCharacter) {
+    iss.str("2*3; 4+5;");
+    ts.ignore(print);
+    EXPECT_EQ(ts.get().value, 4);
+    ts.ignore();
+
+    iss.str("1@z; 2+3;");
+    ts.ignore('2');
+    EXPECT_EQ(ts.get().kind, '+');
+    ts.ignore();
+}
