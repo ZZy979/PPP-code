@@ -11,10 +11,16 @@
 
     The grammar for input is:
 
-    Statement:
-        Expression
+    Calculation:
+        Statement
+        Calculation Statement
         Print
         Quit
+    Statement:
+        Declaration
+        Expression
+    Declaration:
+        "let" Name "=" Expression
     Print:
         ";"
     Quit:
@@ -30,11 +36,14 @@
         Term "%" Primary
     Primary:
         Number
+        Name
         "(" Expression ")"
         "+" Primary
         "-" Primary
     Number:
         floating-point-literal
+    Name:
+        identifier
 
     Input comes from cin through the Token_stream called ts.
 */
@@ -66,7 +75,7 @@ void calculate() {
             if (t.kind == quit)
                 break;
             ts.putback(t);
-            cout << result << parser.expression() << endl;
+            cout << result << parser.statement() << endl;
         }
         catch (exception& e) {
             cerr << e.what() << endl;

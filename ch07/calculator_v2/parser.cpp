@@ -5,6 +5,35 @@
 Parser::Parser(Token_stream& ts) :ts(ts) {
 }
 
+double Parser::statement() {
+    Token t = ts.get();
+    switch (t.kind) {
+        case let:
+            return declaration();
+        default:
+            ts.putback(t);
+            return expression();
+    }
+}
+
+double Parser::declaration() {
+    // assume we have seen "let"
+    // handle: name = expression
+    // declare a variable called "name" with the initial value "expression"
+    Token t = ts.get();
+    if (t.kind != name)
+        throw Parser_error("name expected in declaration");
+    std::string var_name = t.name;
+
+    t = ts.get();
+    if (t.kind != '=')
+        throw Parser_error("'=' missing in declaration of " + var_name);
+
+    double d = expression();
+    var_table.define_name(var_name, d);
+    return d;
+}
+
 double Parser::expression() {
     double left = term();   // read and evaluate a Term
     Token op = ts.get();    // get next Token from Token stream
@@ -68,6 +97,8 @@ double Parser::primary() {
         }
         case number:
             return t.value;
+        case name:
+            return var_table.get_value(t.name);
         case '+':
             return primary();
         case '-':

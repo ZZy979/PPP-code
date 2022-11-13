@@ -16,6 +16,53 @@ protected:
     Parser parser;
 };
 
+TEST_F(ParserV2Test, Statement) {
+    std::vector<std::pair<std::string, double>> test_cases = {
+        {"let a = 9/(5-3);", 4.5},
+        {"let b=(a+2.5)*(8-5);", 21},
+        {"a+b*2;", 46.5}
+    };
+    for (const auto& t : test_cases) {
+        iss.str(t.first);
+        EXPECT_DOUBLE_EQ(parser.statement(), t.second);
+        ts.ignore();
+    }
+}
+
+TEST_F(ParserV2Test, Declaration) {
+    std::vector<std::pair<std::string, double>> test_cases = {
+        {"a = 1;", 1},
+        {"b=(a+3)*2;", 8}
+    };
+    for (const auto& t : test_cases) {
+        iss.str(t.first);
+        EXPECT_DOUBLE_EQ(parser.declaration(), t.second);
+        ts.ignore();
+    }
+}
+
+TEST_F(ParserV2Test, DeclarationParserError) {
+    std::vector<std::string> input = {"let a = 1;", "2 = 2;", "a+1"};
+    for (const auto& s : input) {
+        iss.str(s);
+        EXPECT_THROW(parser.declaration(), Parser_error) << "input: " << s;
+        ts.ignore();
+    }
+}
+
+TEST_F(ParserV2Test, InvalidVariableName) {
+    iss.str("a$ = 1;");
+    EXPECT_THROW(parser.declaration(), Lexer_error);
+}
+
+TEST_F(ParserV2Test, VariableRedefiniton) {
+    iss.str("a = 1;");
+    parser.declaration();
+
+    iss.str("a = 2;");
+    EXPECT_THROW(parser.declaration(), Parser_error);
+}
+
 TEST_F(ParserV2Test, Expression) {
     std::vector<std::pair<std::string, double>> test_cases = {
         {"8;", 8},
@@ -125,4 +172,9 @@ TEST_F(ParserV2Test, PrimaryError) {
         EXPECT_THROW(parser.primary(), Parser_error) << "input: " << s;
         ts.ignore();
     }
+}
+
+TEST_F(ParserV2Test, UndefinedVariable) {
+    iss.str("a");
+    EXPECT_THROW(parser.primary(), Variable_error);
 }
