@@ -1,17 +1,26 @@
 #pragma once
 
 #include <istream>
+#include <string>
 #include <stdexcept>
 
 class Token {
 public:
-    char kind;      // what kind of token
-    double value;   // for numbers: a value
+    char kind;          // what kind of token
+    double value;       // for numbers: a value
+    std::string name;   // for identifiers: variable name
+
+    Token(char kind) :kind(kind) {}
+    Token(char kind, double value) :kind(kind), value(value) {}
+    Token(char kind, const std::string& name) :kind(kind), name(name) {}
 };
 
-const char number = '8';    // t.kind == number means that t is a number Token
-const char quit = 'q';      // t.kind == quit means that t is a quit Token
-const char print = ';';     // t.kind == print means that t is a print Token
+const char number = '8';            // number token
+const char name = 'a';              // name token
+const char let = 'L';               // declaration token
+const std::string declkey = "let";  // declaration keyword
+const char quit = 'q';              // quit token
+const char print = ';';             // print token
 
 class Token_stream {
 public:

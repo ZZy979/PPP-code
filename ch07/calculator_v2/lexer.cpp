@@ -19,17 +19,27 @@ Token Token_stream::get() {
     switch (ch) {
         case print:
         case quit:
-        case '(': case ')': case '+': case '-': case '*': case '/': case '%':
-            return Token{ch};   // let each character represent itself
+        case '(': case ')': case '+': case '-': case '*': case '/': case '%': case '=':
+            return Token(ch);   // let each character represent itself
         case '.':
         case '0': case '1': case '2': case '3': case '4':
         case '5': case '6': case '7': case '8': case '9': {
             is.putback(ch);         // put digit back into the input stream
             double val;
             is >> val;              // read a floating-point number
-            return Token{number, val};
+            return Token(number, val);
         }
         default:
+            if (std::isalpha(ch)) {
+                std::string s;
+                s += ch;
+                while (is.get(ch) && std::isalnum(ch))
+                    s += ch;
+                is.putback(ch);
+                if (s == declkey)
+                    return Token(let);
+                return Token(name, s);
+            }
             throw Lexer_error("Bad token");
     }
 }

@@ -14,13 +14,22 @@ protected:
 };
 
 TEST_F(TokenStreamV2Test, Get) {
-    iss.str("2; 2+3*5%4; 1 +\t2\n* 3; 12.5/(2.3-.4);q");
+    iss.str("2; 2+3*5%4; 1 +\t2\n* 3; 12.5/(2.3-.4);"
+            "let var = 7.2; x+y*2;"
+            "Hello world;"
+            "srtvrqtiewcbet7rewaewre-wqcntrretewru*754389652743nvcqnwq;"
+            "q");
     std::vector<Token> expected = {
-        {number, 2}, {';'},
-        {number, 2}, {'+'}, {number, 3}, {'*'}, {number, 5}, {'%'}, {number, 4}, {';'},
-        {number, 1}, {'+'}, {number, 2}, {'*'}, {number, 3}, {';'},
-        {number, 12.5}, {'/'}, {'('}, {number, 2.3}, {'-'}, {number, 0.4}, {')'}, {';'},
-        {'q'}
+        {number, 2}, {print},
+        {number, 2}, {'+'}, {number, 3}, {'*'}, {number, 5}, {'%'}, {number, 4}, {print},
+        {number, 1}, {'+'}, {number, 2}, {'*'}, {number, 3}, {print},
+        {number, 12.5}, {'/'}, {'('}, {number, 2.3}, {'-'}, {number, 0.4}, {')'}, {print},
+        {let}, {name, "var"}, {'='}, {number, 7.2}, {print},
+        {name, "x"}, {'+'}, {name, "y"}, {'*'}, {number, 2}, {print},
+        {name, "Hello"}, {name, "world"}, {print},
+        {name, "srtvrqtiewcbet7rewaewre"}, {'-'}, {name, "wqcntrretewru"},
+        {'*'}, {number, 754389652743.0}, {name, "nvcqnwq"}, {print},
+        {quit}
     };
 
     for (Token e : expected) {
@@ -28,11 +37,13 @@ TEST_F(TokenStreamV2Test, Get) {
         EXPECT_EQ(t.kind, e.kind);
         if (t.kind == number)
             EXPECT_DOUBLE_EQ(t.value, e.value);
+        else if (t.kind == name)
+            EXPECT_EQ(t.name, e.name);
     }
 }
 
 TEST_F(TokenStreamV2Test, GetBadToken) {
-    std::vector<std::string> input = {"!", "@", "&", "abc"};
+    std::vector<std::string> input = {"!", "@", "&"};
     for (const auto& s : input) {
         iss.str(s);
         EXPECT_THROW(ts.get(), Lexer_error) << "input: " << s;

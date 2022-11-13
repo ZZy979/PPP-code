@@ -38,8 +38,6 @@ TEST_F(ParserV2Test, Expression) {
 TEST_F(ParserV2Test, ExpressionLexerError) {
     std::vector<std::string> input = {
         "!+2", "'a';", "1@2", "[2.5]",
-        "Mary had a little lamb",
-        "srtvrqtiewcbet7rewaewre–wqcntrretewru754389652743nvcqnwq;",
         "!@#$%^&*()~:;"
     };
     for (const auto& s : input) {
