@@ -178,3 +178,15 @@ TEST_F(ParserV2Test, UndefinedVariable) {
     iss.str("a");
     EXPECT_THROW(parser.primary(), Variable_error);
 }
+
+TEST_F(ParserV2Test, PredefinedNames) {
+    std::vector<std::pair<std::string, double>> test_cases = {
+        {"pi;", 3.14159265358},
+        {"e;", 2.718281828},
+    };
+    for (const auto& t : test_cases) {
+        iss.str(t.first);
+        EXPECT_NEAR(parser.primary(), t.second, 1e-6);
+        ts.ignore();
+    }
+}

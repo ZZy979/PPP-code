@@ -3,6 +3,8 @@
 #include <cmath>
 
 Parser::Parser(Token_stream& ts) :ts(ts) {
+    var_table.define_name("pi", 4 * atan(1));
+    var_table.define_name("e", exp(1));
 }
 
 double Parser::statement() {
