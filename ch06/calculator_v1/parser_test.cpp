@@ -7,16 +7,16 @@
 #include "lexer.h"
 #include "parser.h"
 
-class ParserTest : public ::testing::Test {
+class CalculatorV1ParserTest : public ::testing::Test {
 protected:
-    ParserTest() :ts(iss), parser(ts) {}
+    CalculatorV1ParserTest() :ts(iss), parser(ts) {}
 
     std::istringstream iss;
     Token_stream ts;
     Parser parser;
 };
 
-TEST_F(ParserTest, Expression) {
+TEST_F(CalculatorV1ParserTest, Expression) {
     std::vector<std::pair<std::string, double>> test_cases = {
         {"8;", 8},
         {"1+2*3;", 7},
@@ -31,7 +31,7 @@ TEST_F(ParserTest, Expression) {
     }
 }
 
-TEST_F(ParserTest, ExpressionLexerError) {
+TEST_F(CalculatorV1ParserTest, ExpressionLexerError) {
     std::vector<std::string> input = {
         "!+2", "1*2/3%4+5-6;", "'a';", "1@2", "[2.5]",
         "Mary had a little lamb",
@@ -45,7 +45,7 @@ TEST_F(ParserTest, ExpressionLexerError) {
     }
 }
 
-TEST_F(ParserTest, ExpressionParserError) {
+TEST_F(CalculatorV1ParserTest, ExpressionParserError) {
     std::vector<std::string> input = {
         ";;;", "(1+3;", "(1+);", "();", "1+;", "+1;", "1++;", "1/0;",
         "1++2;", "-2;", "q", "1+q"
@@ -57,7 +57,7 @@ TEST_F(ParserTest, ExpressionParserError) {
     }
 }
 
-TEST_F(ParserTest, Term) {
+TEST_F(CalculatorV1ParserTest, Term) {
     std::vector<std::pair<std::string, double>> test_cases = {
         {"3.14;", 3.14},
         {"2*3/4;", 1.5},
@@ -70,7 +70,7 @@ TEST_F(ParserTest, Term) {
     }
 }
 
-TEST_F(ParserTest, TermDevidedByZero) {
+TEST_F(CalculatorV1ParserTest, TermDevidedByZero) {
     std::vector<std::string> input = {"1/0;", "3/(8-4*2);"};
     for (const auto& s : input) {
         iss.str(s);
@@ -79,7 +79,7 @@ TEST_F(ParserTest, TermDevidedByZero) {
     }
 }
 
-TEST_F(ParserTest, TermPutBack) {
+TEST_F(CalculatorV1ParserTest, TermPutBack) {
     std::vector<std::pair<std::string, char>> test_cases = {
         {"2*3/4;", ';'},
         {"1+2*3;", '+'},
@@ -94,7 +94,7 @@ TEST_F(ParserTest, TermPutBack) {
     }
 }
 
-TEST_F(ParserTest, Primary) {
+TEST_F(CalculatorV1ParserTest, Primary) {
     std::vector<std::pair<std::string, double>> test_cases = {
         {"12.345;", 12.345},
         {"(1+2*3);", 7},
@@ -109,7 +109,7 @@ TEST_F(ParserTest, Primary) {
     }
 }
 
-TEST_F(ParserTest, PrimaryError) {
+TEST_F(CalculatorV1ParserTest, PrimaryError) {
     std::vector<std::string> input = {"+2-3;", "(1+2;"};
     for (const auto& s : input) {
         iss.str(s);

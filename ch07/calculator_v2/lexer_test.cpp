@@ -5,15 +5,15 @@
 
 #include "lexer.h"
 
-class TokenStreamV2Test : public ::testing::Test {
+class CalculatorV2LexerTest : public ::testing::Test {
 protected:
-    TokenStreamV2Test() :ts(iss) {}
+    CalculatorV2LexerTest() :ts(iss) {}
 
     std::istringstream iss;
     Token_stream ts;
 };
 
-TEST_F(TokenStreamV2Test, Get) {
+TEST_F(CalculatorV2LexerTest, Get) {
     iss.str("2; 2+3*5%4; 1 +\t2\n* 3; 12.5/(2.3-.4);"
             "let var = 7.2; x+y*2;"
             "Hello world;"
@@ -42,7 +42,7 @@ TEST_F(TokenStreamV2Test, Get) {
     }
 }
 
-TEST_F(TokenStreamV2Test, GetBadToken) {
+TEST_F(CalculatorV2LexerTest, GetBadToken) {
     std::vector<std::string> input = {"!", "@", "&"};
     for (const auto& s : input) {
         iss.str(s);
@@ -51,26 +51,26 @@ TEST_F(TokenStreamV2Test, GetBadToken) {
     }
 }
 
-TEST_F(TokenStreamV2Test, PutBack) {
+TEST_F(CalculatorV2LexerTest, PutBack) {
     iss.str("+");
     ts.putback({number, 45});
     EXPECT_DOUBLE_EQ(ts.get().value, 45);
     EXPECT_EQ(ts.get().kind, '+');
 }
 
-TEST_F(TokenStreamV2Test, PutBackFull) {
+TEST_F(CalculatorV2LexerTest, PutBackFull) {
     ts.putback({'-'});
     EXPECT_THROW(ts.putback({number, 42}), Lexer_error);
 }
 
-TEST_F(TokenStreamV2Test, Ignore) {
+TEST_F(CalculatorV2LexerTest, Ignore) {
     iss.str("+");
     ts.putback({number, 45});
     ts.ignore();
     EXPECT_EQ(ts.get().kind, '+');
 }
 
-TEST_F(TokenStreamV2Test, IgnoreCharacter) {
+TEST_F(CalculatorV2LexerTest, IgnoreCharacter) {
     iss.str("2*3; 4+5;");
     ts.ignore(print);
     EXPECT_EQ(ts.get().value, 4);

@@ -7,16 +7,16 @@
 #include "lexer.h"
 #include "parser.h"
 
-class ParserV2Test : public ::testing::Test {
+class CalculatorV2ParserTest : public ::testing::Test {
 protected:
-    ParserV2Test() :ts(iss), parser(ts) {}
+    CalculatorV2ParserTest() :ts(iss), parser(ts) {}
 
     std::istringstream iss;
     Token_stream ts;
     Parser parser;
 };
 
-TEST_F(ParserV2Test, Statement) {
+TEST_F(CalculatorV2ParserTest, Statement) {
     std::vector<std::pair<std::string, double>> test_cases = {
         {"let a = 9/(5-3);", 4.5},
         {"let b=(a+2.5)*(8-5);", 21},
@@ -29,7 +29,7 @@ TEST_F(ParserV2Test, Statement) {
     }
 }
 
-TEST_F(ParserV2Test, Declaration) {
+TEST_F(CalculatorV2ParserTest, Declaration) {
     std::vector<std::pair<std::string, double>> test_cases = {
         {"a = 1;", 1},
         {"b=(a+3)*2;", 8}
@@ -41,7 +41,7 @@ TEST_F(ParserV2Test, Declaration) {
     }
 }
 
-TEST_F(ParserV2Test, DeclarationParserError) {
+TEST_F(CalculatorV2ParserTest, DeclarationParserError) {
     std::vector<std::string> input = {"let a = 1;", "2 = 2;", "a+1"};
     for (const auto& s : input) {
         iss.str(s);
@@ -50,12 +50,12 @@ TEST_F(ParserV2Test, DeclarationParserError) {
     }
 }
 
-TEST_F(ParserV2Test, InvalidVariableName) {
+TEST_F(CalculatorV2ParserTest, InvalidVariableName) {
     iss.str("a$ = 1;");
     EXPECT_THROW(parser.declaration(), Lexer_error);
 }
 
-TEST_F(ParserV2Test, VariableRedefiniton) {
+TEST_F(CalculatorV2ParserTest, VariableRedefiniton) {
     iss.str("a = 1;");
     parser.declaration();
 
@@ -63,7 +63,7 @@ TEST_F(ParserV2Test, VariableRedefiniton) {
     EXPECT_THROW(parser.declaration(), Parser_error);
 }
 
-TEST_F(ParserV2Test, Expression) {
+TEST_F(CalculatorV2ParserTest, Expression) {
     std::vector<std::pair<std::string, double>> test_cases = {
         {"8;", 8},
         {"1+2*3;", 7},
@@ -82,7 +82,7 @@ TEST_F(ParserV2Test, Expression) {
     }
 }
 
-TEST_F(ParserV2Test, ExpressionLexerError) {
+TEST_F(CalculatorV2ParserTest, ExpressionLexerError) {
     std::vector<std::string> input = {
         "!+2", "'a';", "1@2", "[2.5]",
         "!@#$%^&*()~:;"
@@ -94,7 +94,7 @@ TEST_F(ParserV2Test, ExpressionLexerError) {
     }
 }
 
-TEST_F(ParserV2Test, ExpressionParserError) {
+TEST_F(CalculatorV2ParserTest, ExpressionParserError) {
     std::vector<std::string> input = {
         ";;;", "(1+3;", "(1+);", "();", "1+;", "1++;", "1/0;",
         "q", "1+q"
@@ -106,7 +106,7 @@ TEST_F(ParserV2Test, ExpressionParserError) {
     }
 }
 
-TEST_F(ParserV2Test, Term) {
+TEST_F(CalculatorV2ParserTest, Term) {
     std::vector<std::pair<std::string, double>> test_cases = {
         {"3.14;", 3.14},
         {"2*3/4;", 1.5},
@@ -123,7 +123,7 @@ TEST_F(ParserV2Test, Term) {
     }
 }
 
-TEST_F(ParserV2Test, TermDevidedByZero) {
+TEST_F(CalculatorV2ParserTest, TermDevidedByZero) {
     std::vector<std::string> input = {"1/0;", "2%0;", "3/(8-4*2);"};
     for (const auto& s : input) {
         iss.str(s);
@@ -132,7 +132,7 @@ TEST_F(ParserV2Test, TermDevidedByZero) {
     }
 }
 
-TEST_F(ParserV2Test, TermPutBack) {
+TEST_F(CalculatorV2ParserTest, TermPutBack) {
     std::vector<std::pair<std::string, char>> test_cases = {
         {"2*3/4;", ';'},
         {"1+2*3;", '+'},
@@ -147,7 +147,7 @@ TEST_F(ParserV2Test, TermPutBack) {
     }
 }
 
-TEST_F(ParserV2Test, Primary) {
+TEST_F(CalculatorV2ParserTest, Primary) {
     std::vector<std::pair<std::string, double>> test_cases = {
         {"12.345;", 12.345},
         {"(1+2*3);", 7},
@@ -165,7 +165,7 @@ TEST_F(ParserV2Test, Primary) {
     }
 }
 
-TEST_F(ParserV2Test, PrimaryError) {
+TEST_F(CalculatorV2ParserTest, PrimaryError) {
     std::vector<std::string> input = {";;;", "(1+3;", "(1+);", "();", "q"};
     for (const auto& s : input) {
         iss.str(s);
@@ -174,12 +174,12 @@ TEST_F(ParserV2Test, PrimaryError) {
     }
 }
 
-TEST_F(ParserV2Test, UndefinedVariable) {
+TEST_F(CalculatorV2ParserTest, UndefinedVariable) {
     iss.str("a");
     EXPECT_THROW(parser.primary(), Variable_error);
 }
 
-TEST_F(ParserV2Test, PredefinedNames) {
+TEST_F(CalculatorV2ParserTest, PredefinedNames) {
     std::vector<std::pair<std::string, double>> test_cases = {
         {"pi;", 3.14159265358},
         {"e;", 2.718281828},
