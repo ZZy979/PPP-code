@@ -16,6 +16,7 @@ protected:
 TEST_F(CalculatorV2LexerTest, Get) {
     iss.str("2; 2+3*5%4; 1 +\t2\n* 3; 12.5/(2.3-.4);"
             "let var = 7.2; x+y*2;"
+            "sin(pi/6) * pow(a, 3);"
             "Hello world;"
             "srtvrqtiewcbet7rewaewre-wqcntrretewru*754389652743nvcqnwq;"
             "q");
@@ -26,6 +27,8 @@ TEST_F(CalculatorV2LexerTest, Get) {
         {number, 12.5}, {'/'}, {'('}, {number, 2.3}, {'-'}, {number, 0.4}, {')'}, {print},
         {let}, {name, "var"}, {'='}, {number, 7.2}, {print},
         {name, "x"}, {'+'}, {name, "y"}, {'*'}, {number, 2}, {print},
+        {name, "sin"}, {'('}, {name, "pi"}, {'/'}, {number, 6}, {')'}, {'*'},
+        {name, "pow"}, {'('}, {name, "a"}, {','}, {number, 3}, {')'}, {';'},
         {name, "Hello"}, {name, "world"}, {print},
         {name, "srtvrqtiewcbet7rewaewre"}, {'-'}, {name, "wqcntrretewru"},
         {'*'}, {number, 754389652743.0}, {name, "nvcqnwq"}, {print},

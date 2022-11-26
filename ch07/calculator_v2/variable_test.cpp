@@ -31,4 +31,5 @@ TEST_F(CalculatorV2VariableTest, DefineName) {
     EXPECT_DOUBLE_EQ(var_table.define_name("b", 3), 3);
     EXPECT_DOUBLE_EQ(var_table.get_value("b"), 3);
     EXPECT_THROW(var_table.define_name("a", 2), Variable_error);
+    EXPECT_THROW(var_table.define_name("sin", 1), Variable_error);
 }

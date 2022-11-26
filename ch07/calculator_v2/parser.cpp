@@ -2,6 +2,8 @@
 
 #include <cmath>
 
+#include "function.h"
+
 Parser::Parser(Token_stream& ts) :ts(ts) {
     var_table.define_name("pi", 4 * atan(1));
     var_table.define_name("e", exp(1));
@@ -100,7 +102,7 @@ double Parser::primary() {
         case number:
             return t.value;
         case name:
-            return var_table.get_value(t.name);
+            return is_function_name(t.name) ? function(t.name) : var_table.get_value(t.name);
         case '+':
             return primary();
         case '-':
@@ -108,4 +110,32 @@ double Parser::primary() {
         default:
             throw Parser_error("primary expected");
     }
+}
+
+double Parser::function(const std::string& func_name) {
+    // assume we have seen function name
+    // handle: (expression[, expression])
+    Token t = ts.get();
+    if (t.kind != '(')
+        throw Parser_error("'(' expected");
+
+    bool is_one_argument = is_one_argument_function(func_name);
+    double x = expression(), res;
+    if ((t = ts.get()).kind == ',') {
+        // two-argument function
+        if (is_one_argument)
+            throw Parser_error(func_name + " expects 1 argument, but 2 given");
+        double y = expression();
+        res = calculate_function(func_name, x, y);
+        t = ts.get();
+    } else {
+        // one-argument function
+        if (!is_one_argument)
+            throw Parser_error(func_name + " expects 2 argument, but 1 given");
+        res = calculate_function(func_name, x);
+    }
+
+    if (t.kind != ')')
+        throw Parser_error("')' expected");
+    return res;
 }

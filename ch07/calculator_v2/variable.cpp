@@ -1,5 +1,7 @@
 #include "variable.h"
 
+#include "function.h"
+
 // return the value of the variable named name
 double Symbol_table::get_value(const std::string& name) const {
     if (var_table.find(name) == var_table.end())
@@ -23,6 +25,8 @@ bool Symbol_table::is_declared(const std::string& name) const {
 double Symbol_table::define_name(const std::string& name, double value) {
     if (var_table.find(name) != var_table.end())
         throw Variable_error(name + " declared twice");
+    if (is_function_name(name))
+        throw Variable_error(name + " is a function name");
     var_table[name] = value;
     return value;
 }

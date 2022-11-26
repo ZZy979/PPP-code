@@ -37,11 +37,15 @@
     Primary:
         Number
         Name
+        Function
         "(" Expression ")"
         "+" Primary
         "-" Primary
     Number:
         floating-point-literal
+    Function:
+        Name "(" Expression ")"
+        Name "(" Expression "," Expression ")"
     Name:
         identifier
 

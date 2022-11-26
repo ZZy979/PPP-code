@@ -73,11 +73,12 @@ TEST_F(CalculatorV2ParserTest, Expression) {
         {"+2-3;", -1},
         {"-(6-5)/2;", -0.5},
         {"--1++2;", 3},
-        {"6.7%3.3+(2*17-0.7)*3;", 100}
+        {"6.7%3.3+(2*17-0.7)*3;", 100},
+        {"pow(1+tan(pi/3),2)-2*sqrt(3);", 4}
     };
     for (const auto& t : test_cases) {
         iss.str(t.first);
-        EXPECT_DOUBLE_EQ(parser.expression(), t.second);
+        EXPECT_NEAR(parser.expression(), t.second, 1e-6);
         ts.ignore();
     }
 }
@@ -187,6 +188,46 @@ TEST_F(CalculatorV2ParserTest, PredefinedNames) {
     for (const auto& t : test_cases) {
         iss.str(t.first);
         EXPECT_NEAR(parser.primary(), t.second, 1e-6);
+        ts.ignore();
+    }
+}
+
+TEST_F(CalculatorV2ParserTest, Function) {
+    struct Test_case {
+        std::string func_name;
+        std::string input;
+        double expected;
+    };
+    std::vector<Test_case> test_cases = {
+        {"sin", "(pi/6);", 0.5},
+        {"sqrt", "(6.25);", 2.5},
+        {"pow", "(2, 3);", 8},
+        {"pow", "(sqrt(10), 4)", 100},
+        {"exp", "(log(444))", 444}
+    };
+    for (const auto& t : test_cases) {
+        iss.str(t.input);
+        EXPECT_NEAR(parser.function(t.func_name), t.expected, 1e-6);
+        ts.ignore();
+    }
+}
+
+TEST_F(CalculatorV2ParserTest, FunctionParserError) {
+    std::vector<std::pair<std::string, std::string>> test_cases = {
+        {"sin", ";"},
+        {"sin", "3.5;"},
+        {"sin", "();"},
+        {"sin", "(3.14;"},
+        {"sin", "(2,3);"},
+        {"pow", "(4);"},
+        {"pow", "(2,);"},
+        {"pow", "(3,2;"},
+        {"pow", "(3 2);"},
+        {"pow", "(5,6,7);"}
+    };
+    for (const auto& t : test_cases) {
+        iss.str(t.second);
+        EXPECT_THROW(parser.function(t.first), Parser_error);
         ts.ignore();
     }
 }

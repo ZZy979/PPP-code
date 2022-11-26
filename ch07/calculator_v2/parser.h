@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include <stdexcept>
 
 #include "lexer.h"
@@ -13,6 +14,7 @@ public:
     double expression();
     double term();
     double primary();
+    double function(const std::string& func_name);
 
 private:
     Token_stream& ts;
