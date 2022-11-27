@@ -14,13 +14,20 @@
     Calculation:
         Statement
         Calculation Statement
+        Help
         Print
         Quit
     Statement:
         Declaration
+        Assignment
         Expression
     Declaration:
         "let" Name "=" Expression
+        "const" Name "=" Expression
+    Assignment:
+        Name "=" Expression
+    Help:
+        "h"
     Print:
         ";"
     Quit:
@@ -62,8 +69,10 @@ Parser parser(ts);
 
 void calculate();
 void clean_up_mess();
+void show_help();
 
 int main() {
+    cout << "Simple calculator.\nEnter 'h' to show help.\n";
     calculate();
     return 0;
 }
@@ -76,10 +85,14 @@ void calculate() {
             Token t = ts.get();
             while (t.kind == print)
                 t = ts.get();
-            if (t.kind == quit)
+            if (t.kind == help)
+                show_help();
+            else if (t.kind == quit)
                 break;
-            ts.putback(t);
-            cout << result << parser.statement() << endl;
+            else {
+                ts.putback(t);
+                cout << result << parser.statement() << endl;
+            }
         }
         catch (exception& e) {
             cerr << e.what() << endl;
@@ -90,4 +103,24 @@ void calculate() {
 
 void clean_up_mess() {
     ts.ignore(print);
+}
+
+void show_help() {
+    cout << "Enter expressions of floating-point numbers, terminating with ';'.\n"
+            "Available operators:\n"
+            "    +, -, *, /, %, ()\n"
+            "Available functions:\n"
+            "    sin(x), cos(x), tan(x), exp(x), log(x), sqrt(x), fabs(x), pow(x, y)\n"
+            "Variable declaration:\n"
+            "    let name = expression;\n"
+            "Constant declaration:\n"
+            "    const name = expression;\n"
+            "Assignment:\n"
+            "    name = expression;\n"
+            "Predefined constants:\n"
+            "    pi, e\n"
+            "Show help:\n"
+            "    h\n"
+            "Quit:\n"
+            "    q\n";
 }

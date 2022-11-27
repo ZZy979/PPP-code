@@ -10,7 +10,8 @@ class Parser {
 public:
     explicit Parser(Token_stream& ts);
     double statement();
-    double declaration();
+    double declaration(bool is_const);
+    double assignment(const std::string& var_name);
     double expression();
     double term();
     double primary();

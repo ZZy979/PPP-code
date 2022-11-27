@@ -1,6 +1,7 @@
 #pragma once
 
 #include <istream>
+#include <vector>
 #include <string>
 #include <stdexcept>
 
@@ -17,8 +18,11 @@ public:
 
 const char number = '8';            // number token
 const char name = 'a';              // name token
-const char let = 'L';               // declaration token
-const std::string declkey = "let";  // declaration keyword
+const char let = 'L';               // variable declaration token
+const char constant = 'C';          // constant declaration token
+const std::string var_declkey = "let";      // variable declaration keyword
+const std::string const_declkey = "const";  // constant declaration keyword
+const char help = 'h';              // help token
 const char quit = 'q';              // quit token
 const char print = ';';             // print token
 
@@ -32,8 +36,7 @@ public:
 
 private:
     std::istream& is;   // input stream to read from
-    bool full;          // is there a Token in the buffer?
-    Token buffer;       // here is where we keep a Token put back using putback()
+    std::vector<Token> buffer;  // here is where we keep Tokens put back using putback()
 };
 
 class Lexer_error : public std::runtime_error {

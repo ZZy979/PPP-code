@@ -20,7 +20,9 @@ TEST_F(CalculatorV2ParserTest, Statement) {
     std::vector<std::pair<std::string, double>> test_cases = {
         {"let a = 9/(5-3);", 4.5},
         {"let b=(a+2.5)*(8-5);", 21},
-        {"a+b*2;", 46.5}
+        {"const c=3e8;", 3e8},
+        {"a+b*2;", 46.5},
+        {"a=4;", 4}
     };
     for (const auto& t : test_cases) {
         iss.str(t.first);
@@ -36,7 +38,7 @@ TEST_F(CalculatorV2ParserTest, Declaration) {
     };
     for (const auto& t : test_cases) {
         iss.str(t.first);
-        EXPECT_DOUBLE_EQ(parser.declaration(), t.second);
+        EXPECT_DOUBLE_EQ(parser.declaration(false), t.second);
         ts.ignore();
     }
 }
@@ -45,22 +47,45 @@ TEST_F(CalculatorV2ParserTest, DeclarationParserError) {
     std::vector<std::string> input = {"let a = 1;", "2 = 2;", "a+1"};
     for (const auto& s : input) {
         iss.str(s);
-        EXPECT_THROW(parser.declaration(), Parser_error) << "input: " << s;
+        EXPECT_THROW(parser.declaration(false), Parser_error) << "input: " << s;
         ts.ignore();
     }
 }
 
 TEST_F(CalculatorV2ParserTest, InvalidVariableName) {
     iss.str("a$ = 1;");
-    EXPECT_THROW(parser.declaration(), Lexer_error);
+    EXPECT_THROW(parser.declaration(false), Lexer_error);
 }
 
 TEST_F(CalculatorV2ParserTest, VariableRedefiniton) {
     iss.str("a = 1;");
-    parser.declaration();
+    parser.declaration(false);
+    ts.ignore();
 
     iss.str("a = 2;");
-    EXPECT_THROW(parser.declaration(), Parser_error);
+    EXPECT_THROW(parser.declaration(false), Variable_error);
+    ts.ignore();
+}
+
+TEST_F(CalculatorV2ParserTest, Assignment) {
+    iss.str("let a = 1;");
+    parser.statement();
+    ts.ignore();
+    iss.str("const b = 2;");
+    parser.statement();
+    ts.ignore();
+
+    iss.str("3;");
+    EXPECT_DOUBLE_EQ(parser.assignment("a"), 3);
+    ts.ignore();
+
+    iss.str("a+b;");
+    EXPECT_DOUBLE_EQ(parser.expression(), 5);
+    ts.ignore();
+
+    iss.str("4;");
+    EXPECT_THROW(parser.assignment("b"), Variable_error);
+    ts.ignore();
 }
 
 TEST_F(CalculatorV2ParserTest, Expression) {

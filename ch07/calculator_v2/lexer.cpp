@@ -1,22 +1,24 @@
 #include "lexer.h"
 
+#include <algorithm>
+
 // make a Token_stream that reads from istream
-Token_stream::Token_stream(std::istream& is)
-        :is(is), full(false), buffer{0} {
-}
+Token_stream::Token_stream(std::istream& is) :is(is) {}
 
 // get a Token
 Token Token_stream::get() {
-    if (full) {     // do we already have a Token ready?
+    if (!buffer.empty()) {  // do we already have a Token ready?
         // remove Token from buffer
-        full = false;
-        return buffer;
+        Token t = buffer.back();
+        buffer.pop_back();
+        return t;
     }
 
     char ch;
     is >> ch;   // note that >> skips whitespace (space, newline, tab, etc.)
 
     switch (ch) {
+        case help:
         case print:
         case quit:
         case '(': case ')': case '+': case '-': case '*': case '/': case '%': case '=': case ',':
@@ -36,8 +38,10 @@ Token Token_stream::get() {
                 while (is.get(ch) && std::isalnum(ch))
                     s += ch;
                 is.putback(ch);
-                if (s == declkey)
+                if (s == var_declkey)
                     return Token(let);
+                else if (s == const_declkey)
+                    return Token(constant);
                 return Token(name, s);
             }
             throw Lexer_error("Bad token");
@@ -46,25 +50,22 @@ Token Token_stream::get() {
 
 // put a Token back
 void Token_stream::putback(Token t) {
-    if (full)
-        throw Lexer_error("putback() into a full buffer");
-    buffer = t;     // copy t to buffer
-    full = true;    // buffer is now full
+    buffer.push_back(t);
 }
 
 // discard Token in buffer
 void Token_stream::ignore() {
-    full = false;
+    buffer.clear();
 }
 
 // discard characters up to and including c
 void Token_stream::ignore(char c) {
     // first look in buffer
-    if (full && c == buffer.kind) {
-        full = false;
+    auto it = std::find_if(buffer.begin(), buffer.end(), [c](Token t) { return t.kind == c; });
+    if (it != buffer.end()) {
+        buffer.erase(it, buffer.end());
         return;
     }
-    full = false;
 
     // now search input
     char ch;

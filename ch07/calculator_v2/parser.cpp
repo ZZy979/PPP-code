@@ -5,23 +5,35 @@
 #include "function.h"
 
 Parser::Parser(Token_stream& ts) :ts(ts) {
-    var_table.define_name("pi", 4 * atan(1));
-    var_table.define_name("e", exp(1));
+    var_table.define_name("pi", 4 * atan(1), true);
+    var_table.define_name("e", exp(1), true);
 }
 
 double Parser::statement() {
     Token t = ts.get();
     switch (t.kind) {
         case let:
-            return declaration();
+            return declaration(false);
+        case constant:
+            return declaration(true);
+        case name: {
+            Token t2 = ts.get();
+            if (t2.kind == '=')
+                return assignment(t.name);
+            else {
+                ts.putback(t2);
+                ts.putback(t);
+                return expression();
+            }
+        }
         default:
             ts.putback(t);
             return expression();
     }
 }
 
-double Parser::declaration() {
-    // assume we have seen "let"
+double Parser::declaration(bool is_const) {
+    // assume we have seen "let" or "const"
     // handle: name = expression
     // declare a variable called "name" with the initial value "expression"
     Token t = ts.get();
@@ -34,7 +46,15 @@ double Parser::declaration() {
         throw Parser_error("'=' missing in declaration of " + var_name);
 
     double d = expression();
-    var_table.define_name(var_name, d);
+    var_table.define_name(var_name, d, is_const);
+    return d;
+}
+
+double Parser::assignment(const std::string& var_name) {
+    // assume we have seen "name ="
+    // handle: expression
+    double d = expression();
+    var_table.set_value(var_name, d);
     return d;
 }
 
