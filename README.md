@@ -158,6 +158,23 @@ $ ctest
   * [语法分析器](ch07/calculator_v2/parser.h)
   * [主程序](ch07/calculator_v2/main.cpp)
 
+## 第8章 函数相关的技术细节
+### 简单练习
+* [8-1](ch08/use.cpp)
+* [8-2](ch08/swaps.cpp)
+* [8-3](ch08/drill8-3.cpp)
+
+### 习题
+* [8-2](ch08/print_vector.cpp)
+* [8-3](ch08/fibonacci.cpp)
+* [8-4](ch08/fibonacci_test.cpp)
+* [8-5~8-6](ch08/reverse_vector.cpp)
+* [8-7](ch08/exec8-7.cpp)
+* [8-10](ch08/inner_product.cpp)
+* [8-11~8-12](ch08/describe_vector.cpp)
+* [8-13](ch08/print_until.cpp)
+* [8-14](ch08/describe_vector.cpp)
+
 # 术语
 [术语](terms.txt)
 

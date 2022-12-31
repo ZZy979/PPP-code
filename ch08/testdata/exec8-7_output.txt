@@ -1,0 +1,21 @@
+Please enter the number of people:
+Please enter their names:
+Please enter their ages:
+Before sorting:
+(Cindy,26)
+(Frank,25)
+(Bob,28)
+(Helen,25)
+(Grace,26)
+(Alice,24)
+(Eric,27)
+(Dale,25)
+After sorting:
+(Alice,24)
+(Bob,28)
+(Cindy,26)
+(Dale,25)
+(Eric,27)
+(Frank,25)
+(Grace,26)
+(Helen,25)
