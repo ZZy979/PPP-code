@@ -175,6 +175,10 @@ $ ctest
 * [8-13](ch08/print_until.cpp)
 * [8-14](ch08/describe_vector.cpp)
 
+## 第9章 类相关的技术细节
+### 9.8 Date类
+* [Date类](ch09/Chrono.h)
+
 # 术语
 [术语](terms.txt)
 
