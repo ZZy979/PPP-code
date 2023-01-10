@@ -17,7 +17,9 @@ TEST(DateTest, ConstructFromYearMonthDay) {
         {1999, Month::Jul, 21},
         {2000, Month::Feb, 29},
         {2018, Month::Dec, 31},
-        {2023, Month::Jan, 1}
+        {2023, Month::Jan, 1},
+        {0, Month::Jan, 1},
+        {2147483647, Month::Dec, 31}
     };
     for (const auto& t : valid_test_cases) {
         EXPECT_TRUE(is_valid_date(t.year, t.month, t.day));
@@ -33,7 +35,8 @@ TEST(DateTest, ConstructFromYearMonthDay) {
         {2005, Month(13), 8},
         {24, Month::Dec, 2007},
         {2015, Month::Feb, 29},
-        {2020, Month::Feb, 30}
+        {2020, Month::Feb, 30},
+        {2023, Month::Jan, 0}
     };
     for (const auto& t : invalid_test_cases) {
         EXPECT_FALSE(is_valid_date(t.year, t.month, t.day));
@@ -102,20 +105,18 @@ TEST(DateTest, ConstructFromEpochDay) {
 
 TEST(DateTest, DayOfWeek) {
     struct Test_case {
-        int year;
-        Month month;
-        int day;
+        Date d;
         WeekDay expected;
     } test_cases[] = {
-        {2020, Month::Jun, 26, WeekDay::Friday},
-        {2021, Month::Dec, 21, WeekDay::Tuesday},
-        {2022, Month::Sep, 21, WeekDay::Wednesday},
-        {2023, Month::Jan, 7, WeekDay::Saturday},
-        {1970, Month::Jan, 1, WeekDay::Thursday},
-        {1, Month::Jan, 1, WeekDay::Monday}
+        {{2020, Month::Jun, 26}, WeekDay::Friday},
+        {{2021, Month::Dec, 21}, WeekDay::Tuesday},
+        {{2022, Month::Sep, 21}, WeekDay::Wednesday},
+        {{2023, Month::Jan, 7}, WeekDay::Saturday},
+        {{1970, Month::Jan, 1}, WeekDay::Thursday},
+        {{1, Month::Jan, 1}, WeekDay::Monday}
     };
     for (const auto& t : test_cases) {
-        EXPECT_EQ(Date(t.year, t.month, t.day).day_of_week(), t.expected);
+        EXPECT_EQ(t.d.day_of_week(), t.expected);
     }
 }
 
@@ -126,10 +127,11 @@ TEST(DateTest, AddYear) {
         Date new_date;
     };
     Test_case valid_test_cases[] = {
-        {{2022, Month::Oct, 1}, 1, {2023, Month::Oct, 1}},
+        {{2018, Month::Oct, 1}, 5, {2023, Month::Oct, 1}},
         {{2022, Month::Jan, 18}, -2, {2020, Month::Jan, 18}},
         {{2020, Month::Feb, 29}, 1, {2021, Month::Feb, 28}},
-        {{2023, Month::Jan, 1}, -2023, {0, Month::Jan, 1}}
+        {{2023, Month::Jan, 1}, -2023, {0, Month::Jan, 1}},
+        {{2023, Month::Jan, 9}, 0, {2023, Month::Jan, 9}}
     };
     for (auto t : valid_test_cases) {
         t.old_date.add_year(t.years_to_add);
@@ -155,7 +157,8 @@ TEST(DateTest, AddMonth) {
         {{2020, Month::Aug, 26}, 3, {2020, Month::Nov, 26}},
         {{2020, Month::Mar, 31}, -1, {2020, Month::Feb, 29}},
         {{2022, Month::Nov, 30}, 4, {2023, Month::Mar, 30}},
-        {{2023, Month::Jan, 1}, -24276, {0, Month::Jan, 1}}
+        {{2023, Month::Jan, 1}, -24276, {0, Month::Jan, 1}},
+        {{2023, Month::Jan, 9}, 0, {2023, Month::Jan, 9}}
     };
     for (auto t : valid_test_cases) {
         t.old_date.add_month(t.months_to_add);
@@ -181,7 +184,8 @@ TEST(DateTest, AddDay) {
         {{2022, Month::Dec, 25}, 11, {2023, Month::Jan, 5}},
         {{2021, Month::Feb, 28}, -365, {2020, Month::Feb, 29}},
         {{2020, Month::Feb, 29}, 366, {2021, Month::Mar, 1}},
-        {{1, Month::Jan, 1}, -366, {0, Month::Jan, 1}}
+        {{1, Month::Jan, 1}, -366, {0, Month::Jan, 1}},
+        {{2023, Month::Jan, 9}, 0, {2023, Month::Jan, 9}}
     };
     for (auto t : valid_test_cases) {
         t.old_date.add_day(t.days_to_add);
@@ -272,5 +276,22 @@ TEST(HelperFunctionTest, NextWeekday) {
     };
     for (const auto& t : test_cases) {
         EXPECT_EQ(next_weekday(t.today), t.expected);
+    }
+}
+
+TEST(HelperFunctionTest, WeekOfYear) {
+    struct Test_case {
+        Date d;
+        int expected;
+    } test_cases[] = {
+        {{2018, Month::Apr, 20}, 16},
+        {{2019, Month::Jan, 1}, 1},
+        {{2020, Month::Feb, 29}, 9},
+        {{2021, Month::Dec, 31}, 53},
+        {{2022, Month::Jan, 18}, 4},
+        {{2023, Month::Nov, 5}, 45}
+    };
+    for (const auto& t : test_cases) {
+        EXPECT_EQ(week_of_year(t.d), t.expected);
     }
 }

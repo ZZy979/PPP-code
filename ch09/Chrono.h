@@ -1,4 +1,5 @@
 #pragma once
+
 #include <cstdint>
 #include <iostream>
 
@@ -9,9 +10,10 @@ enum class Month {
 };
 
 enum class WeekDay {
-    Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+    Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
 };
 
+// A date of year-month-day. Valid range is 0000-1-1 to 2147483647-12-31.
 class Date {
 public:
     class Invalid {};                   // to throw as exception
@@ -40,6 +42,9 @@ private:
     int d;
 };
 
+int64_t floor_div(int64_t x, int64_t y);
+int64_t floor_mod(int64_t x, int64_t y);
+
 int days_in_month(int y, Month m);
 int64_t days_in_years(int y);
 bool is_valid_date(int y, Month m, int d);
@@ -54,5 +59,6 @@ std::istream& operator>>(std::istream& is, Date& dd);
 
 Date next_Sunday(Date d);
 Date next_weekday(Date d);
+int week_of_year(const Date& d);
 
 }  // namespace Chrono

@@ -179,6 +179,18 @@ $ ctest
 ### 9.8 Date类
 * [Date类](ch09/Chrono.h)
 
+### 简单练习
+* [测试Date类](ch09/Chrono_test.cpp)
+
+### 习题
+* [9-2~9-3](ch09/name_pairs.h)
+* [9-4](ch09/nesting_example.cpp)
+* [9-5~9-7](ch09/book.h)
+* [9-8](ch09/patron.h)
+* [9-9](ch09/library.h)
+* [9-10~9-11](ch09/Chrono.cpp)
+* [9-13](ch09/relational.h)
+
 # 术语
 [术语](terms.txt)
 

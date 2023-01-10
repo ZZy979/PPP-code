@@ -101,7 +101,7 @@ int Date::day_of_year() const {
 // return day-of-week
 WeekDay Date::day_of_week() const {
     // 1970-1-1 is Thursday
-    return WeekDay((epoch_days() + int(WeekDay::Thursday)) % 7);
+    return WeekDay(floor_mod(epoch_days() + int(WeekDay::Thursday), 7));
 }
 
 // return number of days since epoch 1970-1-1 (start from 0)
@@ -122,8 +122,8 @@ void Date::add_year(int n) {
 void Date::add_month(int n) {
     int64_t num_months = int64_t(y) * 12 + int(m);  // January of year 0000 is month 0
     int64_t new_month = num_months + n;
-    y = floor(new_month / 12.0);    // use floor division to correctly deal with negative new_month
-    m = Month(new_month - y * 12);
+    y = floor_div(new_month, 12);   // use floor division to correctly deal with negative new_month
+    m = Month(floor_mod(new_month, 12));
     d = std::min(d, days_in_month(y, m));
     if (y < 0) throw Invalid();
 }
@@ -134,6 +134,13 @@ void Date::add_day(int n) {
 }
 
 // helper functions:
+int64_t floor_div(int64_t x, int64_t y) {
+    return floor(double(x) / y);
+}
+
+int64_t floor_mod(int64_t x, int64_t y) {
+    return x - floor_div(x, y) * y;
+}
 
 int days_in_month(int y, Month m) {
     return m >= Month::Jan && m <= Month::Dec ? DAYS_IN_MONTH[is_leap_year(y)][int(m)] : 0;
@@ -192,9 +199,7 @@ std::istream& operator>>(std::istream& is, Date& dd) {
 }
 
 Date next_Sunday(Date d) {
-    WeekDay week_day = d.day_of_week();
-    int add = week_day == WeekDay::Sunday ? 7 : int(WeekDay::Sunday) - int(week_day);
-    d.add_day(add);
+    d.add_day(7 - int(d.day_of_week()));
     return d;
 }
 
@@ -203,6 +208,13 @@ Date next_weekday(Date d) {
     int add = week_day == WeekDay::Friday ? 3 : week_day == WeekDay::Saturday ? 2 : 1;
     d.add_day(add);
     return d;
+}
+
+// return week of year, assume that week 1 is the week with January 1 in it
+// and that the first day of a week is a Sunday
+int week_of_year(const Date& d) {
+    WeekDay w = Date(d.year(), Month::Jan, 1).day_of_week();
+    return (d.day_of_year() - 1 + int(w)) / 7 + 1;
 }
 
 }  // namespace Chrono
