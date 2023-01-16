@@ -193,10 +193,20 @@ $ ctest
 
 ## 第10章 输入/输出流
 ### 10.5 读写文件
-* [读取温度数据文件](ch10/temperature_readings.cpp)
+* [读取温度数据文件](ch10/read_temperatures.cpp)
 
 ### 10.6 I/O错误处理
 * [读取整数向量](ch10/fill_vector.cpp)
+
+### 10.7 读取单个值
+* 读取一个指定范围内的整数
+  * [get_int函数](ch10/get_int.cpp)
+  * [主程序](ch10/read_integer_in_range.cpp)
+
+### 10.11 读取结构化的文件
+* 读取结构化的温度数据文件
+  * [温度读数数据结构](ch10/temperature_reading.h)
+  * [主程序](ch10/read_structured_temperatures.cpp)
 
 # 术语
 [术语](terms.txt)

@@ -1,6 +1,14 @@
-add_executable(temperature_readings temperature_readings.cpp)
+add_executable(read_temperatures read_temperatures.cpp)
 add_library(fill_vector fill_vector.cpp)
+add_library(get_int get_int.cpp)
+add_executable(read_integer_in_range read_integer_in_range.cpp)
+target_link_libraries(read_integer_in_range get_int)
+add_library(temperature_reading temperature_reading.cpp)
+add_executable(read_structured_temperatures read_structured_temperatures.cpp)
+target_link_libraries(read_structured_temperatures temperature_reading)
 
 set(TESTDATA_DIR ${CMAKE_CURRENT_SOURCE_DIR}/testdata)
-# 为了使用文件绝对路径，temperature_readings的标准输入文件必须由CMake动态生成，太麻烦了……
+# 为了使用文件绝对路径，read_temperatures的标准输入文件必须由CMake动态生成，太麻烦了……
 add_gtest(NAME fill_vector_test SOURCE fill_vector_test.cpp LIBRARY fill_vector)
+add_gtest(NAME get_int_test SOURCE get_int_test.cpp LIBRARY get_int)
+add_gtest(NAME temperature_reading_test SOURCE temperature_reading_test.cpp LIBRARY temperature_reading)
