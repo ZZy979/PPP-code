@@ -12,18 +12,19 @@ struct Reading {
 };
 
 // read temperature readings (hour,temperature) from data file and print them out
-int main() {
+int main(int argc, char* argv[]) {
+    if (argc < 3) {
+        cout << "Usage: " << argv[0] << " input_file output_file\n";
+        return 0;
+    }
+
     try {
-        cout << "Please enter input file name: ";
-        string iname;
-        cin >> iname;
+        string iname = argv[1];
         ifstream ifs(iname);    // ifs reads from the file named iname
         if (!ifs)
             throw runtime_error("can't open input file " + iname);
 
-        cout << "Please enter output file name: ";
-        string oname;
-        cin >> oname;
+        string oname = argv[2];
         ofstream ofs(oname);    // ofs writes to a file named oname
         if (!ofs)
             throw runtime_error("can't open output file " + oname);
@@ -37,7 +38,7 @@ int main() {
             temps.push_back({hour, temperature});
         }
 
-        for (const Reading& r: temps)
+        for (const Reading& r : temps)
             ofs << '(' << r.hour << ',' << r.temperature << ")\n";
     }
     catch (runtime_error& e) {

@@ -9,34 +9,40 @@
 using namespace std;
 
 // read structured temperature readings from file
-int main() {
-    // open an input file:
-    cout << "Please enter input file name\n";
-    string iname;
-    cin >> iname;
-    ifstream ifs(iname);
-    if (!ifs)
-        throw runtime_error("can't open input file: " + iname);
-    ifs.exceptions(ios_base::badbit);   // throw for bad()
-
-    // open an output file:
-    cout << "Please enter output file name\n";
-    string oname;
-    cin >> oname;
-    ofstream ofs(oname);
-    if (!ofs)
-        throw runtime_error("can't open output file: " + oname);
-
-    // read an arbitrary number of years:
-    vector<Year> ys;
-    while (true) {
-        Year y;     // get a freshly initialized Year each time around
-        if (!(ifs >> y)) break;
-        ys.push_back(y);
+int main(int argc, char* argv[]) {
+    if (argc < 3) {
+        cout << "Usage: " << argv[0] << " input_file output_file\n";
+        return 0;
     }
-    cout << "read " << ys.size() << " years of readings\n";
 
-    for (const Year& y : ys)
-        ofs << y << endl;
+    try {
+        // open an input file:
+        string iname = argv[1];
+        ifstream ifs(iname);
+        if (!ifs)
+            throw runtime_error("can't open input file: " + iname);
+        ifs.exceptions(ios_base::badbit);   // throw for bad()
+
+        // open an output file:
+        string oname = argv[2];
+        ofstream ofs(oname);
+        if (!ofs)
+            throw runtime_error("can't open output file: " + oname);
+
+        // read an arbitrary number of years:
+        vector<Year> ys;
+        while (true) {
+            Year y;     // get a freshly initialized Year each time around
+            if (!(ifs >> y)) break;
+            ys.push_back(y);
+        }
+        cout << "read " << ys.size() << " years of readings\n";
+
+        for (const Year& y: ys)
+            ofs << y << endl;
+    }
+    catch (runtime_error& e) {
+        cerr << e.what() << endl;
+    }
     return 0;
 }
