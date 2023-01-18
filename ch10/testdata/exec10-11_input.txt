@@ -1,0 +1,5 @@
+bears: 17 elephants 9 end
+y % 4 == 0 && y % 100 != 0 || y % 400 == 0
+1000 and +2000	and	-4000
+words beginning with digits is ok: 3.1415926, 25-year-old
+numbers in words are ignored: word-and-2 x3

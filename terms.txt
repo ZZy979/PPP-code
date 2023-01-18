@@ -184,3 +184,28 @@ struct  用于定义结构体的关键字。
 结构体(structure)  成员默认为公有的类，主要用于成员可以取任意值、不能定义任何有意义的不变式的数据结构。
 用户自定义类型(user-defined types)  非内置的类型，包括类和枚举。
 有效状态(valid state)  满足不变式的对象的状态，也称为有效值。
+
+第10章
+bad()  一种流状态，表示输入操作遇到严重错误（例如磁盘读故障），一般不可恢复。
+缓冲区(buffer)  istream和ostream内部用于保存数据并与操作系统通信的数据结构。
+clear()  istream和ostream的成员函数，用于将流状态设置为给定值，默认为goodbit（即设置指定的状态位，清除其他状态位）。
+close()  ifstream和ofstream的成员函数，用于显式关闭文件。
+设备驱动程序(device driver)  包含操作系统处理I/O设备细节的代码。用户程序通过I/O库访问设备驱动程序，使得不同设备源的I/O操作尽可能相似。
+eof()  一种流状态，表示到达文件结尾(EOF)。
+fail()  一种流状态，表示输入操作失败（例如格式错误），一般可恢复。
+文件(file)  包含信息的字节序列，通常存储在计算机内存以外的地方，例如磁盘。
+good()  一种流状态，表示没有错误。
+ifstream  用于读文件的istream。
+输入设备(input device)  输入操作的数据源，例如键盘、文件、网络连接、录音设备等。
+输入运算符(input operator)  >>，可以为用户自定义类型定义输入运算符。
+iostream  (1) C++标准库头文件，提供了输入/输出流的定义；(2) C++标准库提供的既可输入又可输出的流类型。
+istream  C++标准库提供的输入流类型。
+ofstream  用于写文件的ostream。
+open()  ifstream和ofstream的成员函数，用于显式打开文件。
+ostream  C++标准库提供的输出流类型。
+输出设备(output device)  输出操作的数据目的地，例如控制台、文件、网络连接、显示设备等。
+输出运算符(output operator)  <<，可以为用户自定义类型定义输出运算符。
+流状态(stream state)  istream和ostream用于表示错误状态的标志位，分为good()、eof()、fail()和bad()四种状态。
+结构化文件(structured file)  具有特定格式的文本文件，例如JSON、HTML、XML等。
+终结符(terminator)  标识一系列值结尾的字符，用于结束输入循环。例如，用'*'标识一个整数序列的结尾。
+unget()  istream的成员函数，用于将最近读取的一个字符放回输入流。

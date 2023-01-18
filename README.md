@@ -208,6 +208,20 @@ $ ctest
   * [温度读数数据结构](ch10/temperature_reading.h)
   * [主程序](ch10/read_structured_temperatures.cpp)
 
+### 简单练习
+* [读写Point](ch10/read_write_points.cpp)
+
+### 习题
+* [10-1](ch10/exec10-1.cpp)
+* [10-2](ch10/store_temps.cpp)
+* [10-3~10-4](ch10/temp_stats.cpp)
+* [10-5](ch10/temperature_reading.cpp)
+* [10-6](ch10/roman_int.h)
+* [10-8](ch10/exec10-8.cpp)
+* [10-9](ch10/exec10-9.cpp)
+* [10-11](ch10/exec10-11.cpp)
+* [10-12](ch10/exec10-12.cpp)
+
 # 术语
 [术语](terms.txt)
 

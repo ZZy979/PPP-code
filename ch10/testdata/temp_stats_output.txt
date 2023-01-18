@@ -1,0 +1,2 @@
+mean temps: 10.843
+median temps: 9.24656

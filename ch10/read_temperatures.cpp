@@ -40,9 +40,10 @@ int main(int argc, char* argv[]) {
 
         for (const Reading& r : temps)
             ofs << '(' << r.hour << ',' << r.temperature << ")\n";
+        return 0;
     }
     catch (runtime_error& e) {
         cerr << e.what() << endl;
+        return 1;
     }
-    return 0;
 }
