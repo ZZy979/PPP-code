@@ -1,0 +1,3 @@
+1.23457e+06    (defaultfloat)
+1234567.890000 (fixed)
+1.234568e+06   (scientific)

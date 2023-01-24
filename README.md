@@ -222,7 +222,29 @@ $ ctest
 * [10-11](ch10/exec10-11.cpp)
 * [10-12](ch10/exec10-12.cpp)
 
+## 第11章 定制输入/输出
+### 11.2 输出格式化
+#### 11.2.1 整数输出
+* [使用不同进制输出整数](ch11/output_integer_in_different_bases.cpp)
+
+#### 11.2.2 整数输入
+* [使用不同进制输入整数](ch11/input_integer_in_different_bases.cpp)
+
+#### 11.2.4 精度
+* [使用不同格式输出浮点数](ch11/output_float_in_different_formats.cpp)
+* [设置精度](ch11/set_precision.cpp)
+
+#### 11.2.5 域
+* [设置域宽度](ch11/set_field_width.cpp)
+
+### 11.3 文件打开和定位
+#### 11.3.2 二进制文件
+* [读写二进制整数文件](ch11/read_write_binary_file.cpp)
+
+### 11.4 字符串流
+* [字符串转浮点数](ch11/str_to_double.cpp)
+
 # 术语
-[术语](terms.txt)
+[术语](terms.md)
 
 参考：[Bjarne Stroustrup's C++ Glossary](https://www.stroustrup.com/glossary.html)

@@ -1,0 +1,4 @@
+base		birth year	age
+decimal		1997		25
+hexadecimal	7cd			19
+octal		3715		31
