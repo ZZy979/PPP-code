@@ -1,0 +1,12 @@
+           0x43 hexadecimal converts to              67 decimal
+           0123       octal converts to              83 decimal
+             65     decimal converts to              65 decimal
+              0     decimal converts to               0 decimal
+        -0x40c3     decimal converts to               0 decimal
+          -0456     decimal converts to            -456 decimal
+           -456     decimal converts to            -456 decimal
+0xgh is not an integer
+           0789       octal converts to               7 decimal
+           0.25       octal converts to               0 decimal
+abc is not an integer
+#123 is not an integer

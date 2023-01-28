@@ -207,3 +207,23 @@
 * 结构化文件(structured file)：具有特定格式的文本文件，例如JSON、HTML、XML等。
 * 终结符(terminator)：标识一系列值结尾的字符，用于结束输入循环。例如，用'*'标识一个整数序列的结尾。
 * `unget()`：`istream`的成员函数，用于将最近读取的一个字符放回输入流。
+
+# 第11章
+* 二进制(binary)：以2为基底的进制。
+* 字符分类(character classification)：标准库头文件\<cctype\>定义了一组字符分类，例如判断一个字符是否是数字、是否是大写字母等。
+* 十进制(decimal)：以10为基底的进制。
+* `defaultfloat`：默认的浮点数操纵符，选择`fixed`和`scientific`中更精确的表示。
+* 文件定位(file positioning)：在文件中选择一个特定的位置进行读写，通过输入/输出流的`seekg()`和`seekp()`函数实现。
+* `fixed`：使用固定浮点表示的浮点数输出操纵符。
+* 十六进制(hexadecimal)：以16为基底的进制。
+* 不规则性(irregularity)：为了满足用户偏好而打破规则性，通常会增加程序复杂性。
+* 面向行的输入(line-oriented input)：使用`getline()`函数一次读取一整行输入。
+* 操纵符(manipulator)：用于改变输入/输出流的行为的函数。
+* 非标准分隔符(nonstandard separator)：自定义读取字符串时使用的分隔符，而不是使用默认的空白符。
+* `noshowbase`：不显示基底前缀的整数输出操纵符。
+* 八进制(octal)：以8为基底的进制。
+* 输出格式化(output formatting)：通过输出操纵符使得输出满足用户需求。
+* 规则性(regularity)：一致地处理所有对象，能够给出最干净、最简单、最可维护以及通常最高效的代码。
+* `scientific`：使用科学记数法表示的浮点数输出操纵符。
+* `setprecision()`：设置域宽度的操纵符。
+* `showbase`：显示基底前缀的整数输出操纵符。

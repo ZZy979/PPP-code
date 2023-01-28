@@ -16,7 +16,6 @@ add_library(roman_int roman_int.cpp)
 add_executable(exec10-8 exec10-8.cpp)
 add_executable(exec10-9 exec10-9.cpp)
 add_executable(exec10-11 exec10-11.cpp)
-add_executable(exec10-12 exec10-12.cpp)
 
 set(TESTDATA_DIR ${CMAKE_CURRENT_SOURCE_DIR}/testdata)
 add_file_test(
@@ -126,10 +125,3 @@ add_output_test(
   COMMAND exec10-11 ${TESTDATA_DIR}/exec10-11_input.txt
   OUTPUT_FILE ${TESTDATA_DIR}/exec10-11_output2.txt
 )
-foreach(w IN ITEMS to;himself;nosuchword)
-  add_output_test(
-    NAME exec10-12_test_${w}
-    COMMAND exec10-12 ${TESTDATA_DIR}/to_be_or_not_to_be.txt ${w}
-    OUTPUT_FILE ${TESTDATA_DIR}/exec10-12_output_${w}.txt
-  )
-endforeach()

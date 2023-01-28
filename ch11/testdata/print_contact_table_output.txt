@@ -1,0 +1,12 @@
++----------+----------+---------------+--------------------+
+|first_name|last_name |telephone      |email               |
++----------+----------+---------------+--------------------+
+|Alice     |Smith     |12345678       |alice@foxmail.com   |
+|Bob       |Jones     |23456789       |bob@gmail.com       |
+|Cindy     |Williams  |34567890       |cindy@sina.com      |
+|Dale      |Brown     |45678901       |dale@hotmail.com    |
+|Eric      |Taylor    |56789012       |eric@yahoo.com      |
+|Frank     |Wilson    |67890123       |frank@sohu.com      |
+|Grace     |Thomas    |78901234       |grace@qq.com        |
+|Helen     |Johnson   |89012345       |helen@163.com       |
++----------+----------+---------------+--------------------+

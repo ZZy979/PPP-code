@@ -1,0 +1,7 @@
+6. Write a program that replaces punctuation with whitespace. Consider . (dot), ; (semicolon), , (comma), ? (question
+   mark), - (dash), ' (single quote) punctuation characters. Don't modify characters within a pair of double quotes ("). For
+   example, "- don't use the as-if rule." becomes " don t use the as if rule ".
+7. Modify the program from the previous exercise so that it replaces "don't" with "do not", "can't" with "cannot", etc.; leaves
+   hyphens within words intact (so that we get " do not use the as-if rule "); and converts all characters to lower case.
+8. Use the program from the previous exercise to make a dictionary (as an alternative to the approach in §11.7). Run the
+   result on a multi-page text file, look at the result, and see if you can improve the program to make a better dictionary.

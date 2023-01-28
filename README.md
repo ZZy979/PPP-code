@@ -220,7 +220,6 @@ $ ctest
 * [10-8](ch10/exec10-8.cpp)
 * [10-9](ch10/exec10-9.cpp)
 * [10-11](ch10/exec10-11.cpp)
-* [10-12](ch10/exec10-12.cpp)
 
 ## 第11章 定制输入/输出
 ### 11.2 输出格式化
@@ -236,6 +235,7 @@ $ ctest
 
 #### 11.2.5 域
 * [设置域宽度](ch11/set_field_width.cpp)
+* [打印联系方式表格](ch11/print_contact_table.cpp)
 
 ### 11.3 文件打开和定位
 #### 11.3.2 二进制文件
@@ -243,6 +243,32 @@ $ ctest
 
 ### 11.4 字符串流
 * [字符串转浮点数](ch11/str_to_double.cpp)
+
+### 11.7 使用非标准分隔符
+* [Punct_stream类](ch11/punct_stream.h)
+* [自定义分隔符的字典](ch11/custom_separator_dictionary.cpp)
+
+### 简单练习
+* [11-1~11-7](ch11/output_integer_in_different_bases.cpp)
+* [11-8](ch11/input_integer_in_different_bases.cpp)
+* [11-9](ch11/output_float_in_different_formats.cpp)
+* [11-10](ch11/print_contact_table.cpp)
+
+### 习题
+* [11-1](ch11/exec11-1.cpp)
+* [11-2](ch11/exec11-2.cpp)
+* [11-3](ch11/exec11-3.cpp)
+* [11-4](ch11/exec11-4.cpp)
+* [11-5](ch11/exec11-5.cpp)
+* 11-6~11-8
+  * [Punct_stream_v2](ch11/punct_stream_v2.h)
+  * [主程序](ch11/custom_separator_dictionary_v2.cpp)
+* [11-10~11-11](ch11/split.cpp)
+* [11-12](ch11/exec11-12.cpp)
+* [11-13](ch11/exec11-13.cpp)
+* [11-14](ch11/exec11-14.cpp)
+* [11-15](ch11/exec11-15.cpp)
+* [11-16](ch11/exec11-16.cpp)
 
 # 术语
 [术语](terms.md)

@@ -1,0 +1,11 @@
+whitespace: 54
+alphabetic: 165
+decimal digit: 1
+hexadecimal digit: 38
+uppercase letter: 8
+lowercase letter: 157
+alphanumeric: 166
+control character: 10
+punctuation: 33
+printable: 243
+graphical: 199
