@@ -5,7 +5,6 @@
         -0x40c3     decimal converts to               0 decimal
           -0456     decimal converts to            -456 decimal
            -456     decimal converts to            -456 decimal
-0xgh is not an integer
            0789       octal converts to               7 decimal
            0.25       octal converts to               0 decimal
 abc is not an integer
