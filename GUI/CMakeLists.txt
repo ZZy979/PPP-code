@@ -1,4 +1,5 @@
 file(GLOB SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp)
 add_library(GUI ${SOURCES})
+target_link_libraries(GUI fltk fltk_images)
 target_include_directories(GUI PUBLIC ${fltk_SOURCE_DIR} ${fltk_BINARY_DIR})
 target_include_directories(GUI INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})

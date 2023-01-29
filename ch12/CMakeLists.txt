@@ -1,1 +1,2 @@
 add_fltk_executable(hello_fltk hello_fltk.cpp)
+add_gui_executable(draw_triangle draw_triangle.cpp)
