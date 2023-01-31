@@ -40,7 +40,7 @@ struct Color {
         dark_cyan=FL_DARK_CYAN
     };
 
-    enum Transparency { invisible = 0, visible=255 };
+    enum Transparency : char { invisible = 0, visible=-1 };
 
     Color(Color_type cc) :c(Fl_Color(cc)), v(visible) { }
     Color(Color_type cc, Transparency vv) :c(Fl_Color(cc)), v(vv) { }
@@ -127,15 +127,42 @@ public:
         if (d) push_back(d);
     }
 
-    ~Vector_ref() { for (int i=0; i<owned.size(); ++i) delete owned[i]; }
+    ~Vector_ref() { for (unsigned int i=0; i<owned.size(); ++i) delete owned[i]; }
 
     void push_back(T& s) { v.push_back(&s); }
     void push_back(T* p) { v.push_back(p); owned.push_back(p); }
+/*
+    void erase(int i)
+    {
+        if (i<0 || v.size()<=i) return;
+        T* p = v[i];
+        v.erase(v.begin()+i);
+        for (int i=0; i<owned.size(); ++i)
+                if (p==owned[i]) {
+                        delete p;
+                        owned.erase(owned.begin()+i);
+                }
+    }
 
+    void erase(T* p)
+    {
+        for (int i=0; i<v.size(); ++i)
+                if (p==v[i]) v.erase(&v[i]);
+        for (int i=0; i<owned.size(); ++i)
+                if (p==owned[i]) {
+                        delete p;
+                        owned.erase(&owned[i]);
+                }
+    }
+*/
     T& operator[](int i) { return *v[i]; }
     const T& operator[](int i) const { return *v[i]; }
 
     int size() const { return v.size(); }
+
+private:    // prevent copying
+    Vector_ref(const Vector_ref<T>&);
+    Vector_ref& operator=(const Vector_ref<T>&);
 };
 
 //------------------------------------------------------------------------------
@@ -277,14 +304,16 @@ struct Axis : Shape {
 
 //------------------------------------------------------------------------------
 
+
 struct Circle : Shape {
     Circle(Point p, int rr);    // center and radius
 
     void draw_lines() const;
 
-    Point center() const ; 
+    Point center() const;
+
+    void set_radius(int rr) { set_point(0,Point(center().x-rr,center().y-rr)); r=rr;  }
     int radius() const { return r; }
-    void set_radius(int rr) { r=rr; }
 private:
     int r;
 };
@@ -292,21 +321,30 @@ private:
 //------------------------------------------------------------------------------
 
 struct Ellipse : Shape {
-    Ellipse(Point p, int w, int h)    // center, min, and max distance from center
-        : w(w), h(h)
-    { 
-        add(Point(p.x-w,p.y-h));
-    }
+    Ellipse(Point p, int ww, int hh)    // center, min, and max distance from center
+        :w(ww), h(hh) { add(Point(p.x-ww,p.y-hh)); }
 
     void draw_lines() const;
 
     Point center() const { return Point(point(0).x+w,point(0).y+h); }
-    Point focus1() const { return Point(center().x+int(sqrt(double(w*w-h*h))),center().y); }
-    Point focus2() const { return Point(center().x-int(sqrt(double(w*w-h*h))),center().y); }
+    Point focus1() const {
+            if (h<=w)// foci are on the x-axis:
+                    return Point(center().x+int(sqrt(double(w*w-h*h))),center().y);
+            else    // foci are on the y-axis:
+                    return Point(center().x,center().y+int(sqrt(double(h*h-w*w))));
+    }
 
-    void set_major(int ww) { w=ww; }
+    Point focus2() const {
+            if (h<=w)
+                    return Point(center().x-int(sqrt(double(w*w-h*h))),center().y);
+            else
+                    return Point(center().x,center().y-int(sqrt(double(h*h-w*w))));
+    }
+    //Point focus2() const { return Point(center().x-int(sqrt(double(abs(w*w-h*h)))),center().y); }
+    
+    void set_major(int ww) { set_point(0,Point(center().x-ww,center().y-h)); w=ww; }
     int major() const { return w; }
-    void set_minor(int hh) { h=hh; }
+    void set_minor(int hh) { set_point(0,Point(center().x-w,center().y-hh)); h=hh; }
     int minor() const { return h; }
 private:
     int w;

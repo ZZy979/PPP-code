@@ -33,6 +33,14 @@ int In_box::get_int()
 
 //------------------------------------------------------------------------------
 
+string In_box::get_string()
+{
+	Fl_Input& pi = reference_to<Fl_Input>(pw);
+	return string(pi.value());
+}
+
+//------------------------------------------------------------------------------
+
 void In_box::attach(Window& win)
 {
     pw = new Fl_Input(loc.x, loc.y, width, height, label.c_str());
