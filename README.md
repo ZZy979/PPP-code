@@ -274,6 +274,9 @@ $ ctest
 ### 12.3 第一个例子
 * [绘制三角形](ch12/draw_triangle.cpp)
 
+### 12.7 使用形状类
+* [基本形状](ch12/shape_primitives.cpp)
+
 # 术语
 [术语](terms.md)
 
