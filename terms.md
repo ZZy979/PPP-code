@@ -227,3 +227,20 @@
 * `scientific`：使用科学记数法表示的浮点数输出操纵符。
 * `setprecision()`：设置域宽度的操纵符。
 * `showbase`：显示基底前缀的整数输出操纵符。
+
+# 第12章
+* 颜色(color)：一种对光的视觉效应；GUI库中图形的线条颜色。
+* 坐标(coordinates)：程序中通常使用坐标系来建模屏幕，每个像素由x（水平）坐标和y（垂直）坐标确定，屏幕左上角是坐标原点。
+* 显示(display)：GUI系统的输出部分。
+* 填充颜色(fill color)：GUI库中封闭图形内部区域的颜色。
+* FLTK：Fast Light Toolkit，一个开源的C++ GUI库。
+* 图形(graphics)：点、线、矩形、圆等几何形状。
+* GUI：graphical user interface，图形用户界面。
+* GUI库(GUI library)：通过调用操作系统的底层接口来绘制窗口和图形的代码库。
+* HTML：Hyper Text Markup Language，超文本标记语言。
+* 图像(image)：从图片文件加载的内容；图形在窗口上的绘制结果。
+* JPEG：Joint Photographic Experts Group，一种图像文件格式，后缀名为.jpg或.jpeg。
+* 线型(line style)：图形轮廓的类型（实线、虚线、点状线等）和粗细。
+* 软件层(software layer)：软件分层是一种重要的软件设计思想。例如，通过将软件划分为展示层、业务逻辑层和数据库层，从而提高软件的可维护性和可扩展性。
+* 窗口(window)：GUI系统的一个重要构件，由标题栏和画布两部分组成。
+* XML：Extensible Markup Language，可扩展标记语言。

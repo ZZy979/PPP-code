@@ -277,6 +277,19 @@ $ ctest
 ### 12.7 使用形状类
 * [基本形状](ch12/shape_primitives.cpp)
 
+### 简单练习
+* [基本形状](ch12/shape_primitives.cpp)
+
+### 习题
+* [12-1](ch12/exec12-1.cpp)
+* [12-2](ch12/exec12-2.cpp)
+* [12-3](ch12/exec12-3.cpp)
+* [12-4](ch12/exec12-4.cpp)
+* [12-7](ch12/exec12-7.cpp)
+* [12-8](ch12/exec12-8.cpp)
+* [12-11](ch12/exec12-11.cpp)
+* [12-12](ch12/exec12-12.cpp)
+
 # 术语
 [术语](terms.md)
 
