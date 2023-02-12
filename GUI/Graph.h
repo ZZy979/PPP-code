@@ -117,8 +117,6 @@ template<class T> class Vector_ref {
 public:
     Vector_ref() {}
     Vector_ref(T& a) { push_back(a); }
-    Vector_ref(T& a, T& b);
-    Vector_ref(T& a, T& b, T& c);
     Vector_ref(T* a, T* b = 0, T* c = 0, T* d = 0)
     {
         if (a) push_back(a);
@@ -126,6 +124,9 @@ public:
         if (c) push_back(c);
         if (d) push_back(d);
     }
+
+    Vector_ref(const Vector_ref<T>&) = delete;  // prevent copying
+    Vector_ref& operator=(const Vector_ref<T>&) = delete;
 
     ~Vector_ref() { for (unsigned int i=0; i<owned.size(); ++i) delete owned[i]; }
 
@@ -159,10 +160,6 @@ public:
     const T& operator[](int i) const { return *v[i]; }
 
     int size() const { return v.size(); }
-
-private:    // prevent copying
-    Vector_ref(const Vector_ref<T>&);
-    Vector_ref& operator=(const Vector_ref<T>&);
 };
 
 //------------------------------------------------------------------------------
@@ -184,9 +181,14 @@ public:
     Point point(int i) const { return points[i]; } // read only access to points
     int number_of_points() const { return int(points.size()); }
 
+    Shape(const Shape&) = delete;   // prevent copying
+    Shape& operator=(const Shape&) = delete;
+
     virtual ~Shape() { }
 protected:
-    Shape();    
+    Shape();
+    Shape(initializer_list<Point> points);  // add() the Points to this Shape
+
     virtual void draw_lines() const;   // draw the appropriate lines
     void add(Point p);                 // add p to points
     void set_point(int i,Point p);     // points[i]=p;
@@ -195,9 +197,6 @@ private:
     Color lcolor;                      // color for lines and characters
     Line_style ls; 
     Color fcolor;                      // fill color
-
-    Shape(const Shape&);               // prevent copying
-    Shape& operator=(const Shape&);
 };
 
 //------------------------------------------------------------------------------
@@ -229,7 +228,7 @@ struct Rectangle : Shape {
         add(x);
         if (h<=0 || w<=0) error("Bad rectangle: non-positive width or height");
     }
-    void draw_lines() const;
+    void draw_lines() const override;
 
     int height() const { return h; }
     int width() const { return w; }
@@ -241,27 +240,34 @@ private:
 //------------------------------------------------------------------------------
 
 struct Open_polyline : Shape {         // open sequence of lines
+    Open_polyline() :Shape() {}
+    Open_polyline(initializer_list<Point> points) :Shape(points) {}
     void add(Point p) { Shape::add(p); }
-    void draw_lines() const;
+    void draw_lines() const override;
 };
 
 //------------------------------------------------------------------------------
 
 struct Closed_polyline : Open_polyline { // closed sequence of lines
-    void draw_lines() const;
+    using Open_polyline::Open_polyline;
+    void draw_lines() const override;
 };
 
 //------------------------------------------------------------------------------
 
 struct Polygon : Closed_polyline {    // closed sequence of non-intersecting lines
+    using Closed_polyline::Closed_polyline;
     void add(Point p);
-    void draw_lines() const;
+    void draw_lines() const override;
 };
 
 //------------------------------------------------------------------------------
 
 struct Lines : Shape {                 // related lines
-    void draw_lines() const;
+    Lines() = default;
+    Lines(initializer_list<pair<Point, Point>> point_pairs);
+
+    void draw_lines() const override;
     void add(Point p1, Point p2);      // add a line defined by two points
 };
 
@@ -271,7 +277,7 @@ struct Text : Shape {
     // the point is the bottom left of the first letter
     Text(Point x, const string& s) : lab(s), fnt(fl_font()), fnt_sz(fl_size()) { add(x); }
 
-    void draw_lines() const;
+    void draw_lines() const override;
 
     void set_label(const string& s) { lab = s; }
     string label() const { return lab; }
@@ -294,8 +300,8 @@ struct Axis : Shape {
     Axis(Orientation d, Point xy, int length,
         int number_of_notches=0, string label = "");
 
-    void draw_lines() const;
-    void move(int dx, int dy);
+    void draw_lines() const override;
+    void move(int dx, int dy) override;
     void set_color(Color c);
 
     Text label;
@@ -308,7 +314,7 @@ struct Axis : Shape {
 struct Circle : Shape {
     Circle(Point p, int rr);    // center and radius
 
-    void draw_lines() const;
+    void draw_lines() const override;
 
     Point center() const;
 
@@ -324,7 +330,7 @@ struct Ellipse : Shape {
     Ellipse(Point p, int ww, int hh)    // center, min, and max distance from center
         :w(ww), h(hh) { add(Point(p.x-ww,p.y-hh)); }
 
-    void draw_lines() const;
+    void draw_lines() const override;
 
     Point center() const { return Point(point(0).x+w,point(0).y+h); }
     Point focus1() const {
@@ -355,7 +361,8 @@ private:
 
 struct Marked_polyline : Open_polyline {
     Marked_polyline(const string& m) :mark(m) { }
-    void draw_lines() const;
+    Marked_polyline(const string& m, initializer_list<Point> points) :Open_polyline(points), mark(m) {}
+    void draw_lines() const override;
 private:
     string mark;
 };
@@ -364,6 +371,10 @@ private:
 
 struct Marks : Marked_polyline {
     Marks(const string& m) :Marked_polyline(m)
+    {
+        set_color(Color(Color::invisible));
+    }
+    Marks(const string& m, initializer_list<Point> points) :Marked_polyline(m, points)
     {
         set_color(Color(Color::invisible));
     }
@@ -391,7 +402,7 @@ Suffix::Encoding get_encoding(const string& s);
 struct Image : Shape {
     Image(Point xy, string file_name, Suffix::Encoding e = Suffix::none);
     ~Image() { delete p; }
-    void draw_lines() const;
+    void draw_lines() const override;
     void set_mask(Point xy, int ww, int hh) { w=ww; h=hh; cx=xy.x; cy=xy.y; }
 private:
     int w,h;  // define "masking box" within image relative to position (cx,cy)
@@ -404,7 +415,7 @@ private:
 
 struct Bad_image : Fl_Image {
     Bad_image(int h, int w) : Fl_Image(h,w,0) { }
-    void draw(int x,int y, int, int, int, int) { draw_empty(x,y); }
+    void draw(int x, int y, int, int, int, int) override { draw_empty(x,y); }
 };
 
 //------------------------------------------------------------------------------

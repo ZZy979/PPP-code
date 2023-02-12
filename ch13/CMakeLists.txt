@@ -1,0 +1,8 @@
+add_gui_executable(draw_two_lines draw_two_lines.cpp)
+add_gui_executable(draw_two_lines2 draw_two_lines2.cpp)
+add_gui_executable(draw_grid draw_grid.cpp)
+add_gui_executable(draw_open_polyline draw_open_polyline.cpp)
+add_gui_executable(draw_closed_polyline draw_closed_polyline.cpp)
+add_gui_executable(draw_polygon draw_polygon.cpp)
+add_gui_executable(draw_rectangles draw_rectangles.cpp)
+add_gui_executable(draw_color_matrix draw_color_matrix.cpp)

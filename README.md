@@ -290,6 +290,37 @@ $ ctest
 * [12-11](ch12/exec12-11.cpp)
 * [12-12](ch12/exec12-12.cpp)
 
+## 第13章 图形类
+### 13.2 Point和Line
+* [绘制线段](ch13/draw_two_lines.cpp)
+
+### 13.3 Lines
+* [绘制线段2](ch13/draw_two_lines2.cpp)
+* [绘制网格](ch13/draw_grid.cpp)
+
+### 13.4 Color
+* [绘制红色网格](ch13/draw_grid.cpp)
+
+### 13.5 Line_style
+* [绘制红色点线网格](ch13/draw_grid.cpp)
+* [绘制红色加粗虚线网格](ch13/draw_grid.cpp)
+* [绘制有颜色的线段](ch13/draw_two_lines.cpp)
+
+### 13.6 Open_polyline
+* [绘制Open_polyline](ch13/draw_open_polyline.cpp)
+
+### 13.7 Closed_polyline
+* [绘制Closed_polyline](ch13/draw_closed_polyline.cpp)
+
+### 13.8 Polygon
+* [绘制多边形](ch13/draw_polygon.cpp)
+
+### 13.9 Rectangle
+* [绘制矩形](ch13/draw_rectangles.cpp)
+
+### 13.10 管理未命名对象
+* [绘制16×16颜色表](ch13/draw_color_matrix.cpp)
+
 # 术语
 [术语](terms.md)
 

@@ -20,6 +20,11 @@ Shape::Shape() :
     fcolor(Color::invisible) // no fill
 {}
 
+Shape::Shape(initializer_list<Point> points) :Shape() {
+    for (const Point& p : points)
+        add(p);
+}
+
 //------------------------------------------------------------------------------
 
 void Shape::add(Point p)     // protected
@@ -73,6 +78,13 @@ Line::Line(Point p1, Point p2)    // construct a line from two points
 {
     add(p1);    // add p1 to this shape
     add(p2);    // add p2 to this shape
+}
+
+//------------------------------------------------------------------------------
+
+Lines::Lines(initializer_list<pair<Point, Point>> point_pairs) {
+    for (const auto& p : point_pairs)
+        add(p.first, p.second);
 }
 
 //------------------------------------------------------------------------------
@@ -188,11 +200,11 @@ void Closed_polyline::draw_lines() const
 {
     Open_polyline::draw_lines();    // first draw the "open poly line part"
     // then draw closing line:
-    if (color().visibility())
+    if (number_of_points()>2 && color().visibility())
         fl_line(point(number_of_points()-1).x, 
-        point(number_of_points()-1).y,
-        point(0).x,
-        point(0).y);
+            point(number_of_points()-1).y,
+            point(0).x,
+            point(0).y);
 }
 
 //------------------------------------------------------------------------------
