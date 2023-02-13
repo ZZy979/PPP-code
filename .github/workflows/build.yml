@@ -7,15 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  build-unix-makefiles:
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, macos-latest]
-    runs-on: ${{matrix.os}}
-    defaults:
-      run:
-        working-directory: ${{github.workspace}}
+  build-unix-makefiles-ubuntu:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Print CMake Version
@@ -25,15 +18,33 @@ jobs:
       - name: Build
         run: cmake --build cmake-build
       - name: Test
-        working-directory: ${{github.workspace}}/cmake-build
+        working-directory: ${{ github.workspace }}/cmake-build
         run: ctest
 
-  build-visual-studio:
+  build-mingw-makefiles-windows:
     runs-on: windows-latest
     defaults:
       run:
         shell: cmd
-        working-directory: ${{github.workspace}}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Print CMake Version
+        run: cmake --version
+      - name: Configure CMake
+        run: >
+          cmake -G "MinGW Makefiles" -B cmake-build
+          -D OPTION_USE_SYSTEM_LIBJPEG=OFF -D OPTION_USE_SYSTEM_LIBPNG=OFF -D OPTION_USE_SYSTEM_ZLIB=OFF
+      - name: Build
+        run: cmake --build cmake-build
+      - name: Test
+        working-directory: ${{ github.workspace }}/cmake-build
+        run: ctest
+
+  build-visual-studio-windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: cmd
     steps:
       - uses: actions/checkout@v3
       - name: Print CMake Version
@@ -43,5 +54,5 @@ jobs:
       - name: Build
         run: cmake --build cmake-build --config Debug
       - name: Test
-        working-directory: ${{github.workspace}}\cmake-build
+        working-directory: ${{ github.workspace }}/cmake-build
         run: ctest -C Debug
