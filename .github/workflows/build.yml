@@ -7,8 +7,12 @@ on:
     branches: [ main ]
 
 jobs:
-  build-unix-makefiles-ubuntu:
-    runs-on: ubuntu-latest
+  build-unix-makefiles:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
       - name: Print CMake Version
@@ -21,7 +25,7 @@ jobs:
         working-directory: ${{ github.workspace }}/cmake-build
         run: ctest
 
-  build-mingw-makefiles-windows:
+  build-mingw-makefiles:
     runs-on: windows-latest
     defaults:
       run:
@@ -33,6 +37,7 @@ jobs:
       - name: Configure CMake
         run: >
           cmake -G "MinGW Makefiles" -B cmake-build
+          -D CMAKE_EXE_LINKER_FLAGS="-static -static-libgcc -static-libstdc++"
           -D OPTION_USE_SYSTEM_LIBJPEG=OFF -D OPTION_USE_SYSTEM_LIBPNG=OFF -D OPTION_USE_SYSTEM_ZLIB=OFF
       - name: Build
         run: cmake --build cmake-build
@@ -40,7 +45,7 @@ jobs:
         working-directory: ${{ github.workspace }}/cmake-build
         run: ctest
 
-  build-visual-studio-windows:
+  build-visual-studio:
     runs-on: windows-latest
     defaults:
       run:
