@@ -27,9 +27,9 @@ int main(int argc, char* argv[]) {
         int hour = i % 24;
         double celsius = temperature_dist(generator);
         if (unit_dist(generator))
-            ofs << hour << ' ' << celsius << 'c' << endl;
+            ofs << hour << ' ' << celsius << " c" << endl;
         else
-            ofs << hour << ' ' << ctof(celsius) << 'f' << endl;
+            ofs << hour << ' ' << ctof(celsius) << " f" << endl;
     }
     return 0;
 }

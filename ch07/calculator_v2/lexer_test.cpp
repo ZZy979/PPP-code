@@ -19,7 +19,7 @@ TEST_F(CalculatorV2LexerTest, Get) {
             "const a = 1;"
             "sin(pi/6) * pow(a, 3);"
             "Hello world;"
-            "srtvrqtiewcbet7rewaewre-wqcntrretewru*754389652743nvcqnwq;"
+            "srtvrqtiewcbet7rewaewre-wqcntrretewru*754389652743/nvcqnwq;"
             "h"
             "q");
     std::vector<Token> expected = {
@@ -34,7 +34,7 @@ TEST_F(CalculatorV2LexerTest, Get) {
         {name, "pow"}, {'('}, {name, "a"}, {','}, {number, 3}, {')'}, {';'},
         {name, "Hello"}, {name, "world"}, {print},
         {name, "srtvrqtiewcbet7rewaewre"}, {'-'}, {name, "wqcntrretewru"},
-        {'*'}, {number, 754389652743.0}, {name, "nvcqnwq"}, {print},
+        {'*'}, {number, 754389652743.0}, {'/'}, {name, "nvcqnwq"}, {print},
         {help},
         {quit}
     };
