@@ -404,12 +404,12 @@ bool can_open(const string& s)
 
 #define ARRAY_SIZE(a) (sizeof(a)/sizeof((a)[0]))
 
-Suffix::Encoding get_encoding(const string& s)
+Suffix get_encoding(const string& s)
 {
     struct SuffixMap 
     { 
         const char*      extension;
-        Suffix::Encoding suffix;
+        Suffix suffix;
     };
 
     static SuffixMap smap[] = {
@@ -433,7 +433,7 @@ Suffix::Encoding get_encoding(const string& s)
 
 // somewhat over-elaborate constructor
 // because errors related to image files can be such a pain to debug
-Image::Image(Point xy, string s, Suffix::Encoding e)
+Image::Image(Point xy, string s, Suffix e)
     :w(0), h(0), fn(xy,"")
 {
     add(xy);

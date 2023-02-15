@@ -321,6 +321,27 @@ $ ctest
 ### 13.10 管理未命名对象
 * [绘制16×16颜色表](ch13/draw_color_matrix.cpp)
 
+### 13.11 Text
+* [显示文本](ch13/draw_closed_polyline.cpp)
+
+### 13.12 Circle
+* [绘制圆](ch13/draw_circles.cpp)
+
+### 13.13 Ellipse
+* [绘制椭圆](ch13/draw_ellipses.cpp)
+
+### 13.14 Marked_polyline
+* [绘制Marked_polyline](ch13/draw_marked_polyline.cpp)
+
+### 13.15 Marks
+* [绘制Marks](ch13/draw_marks.cpp)
+
+### 13.16 Mark
+* [绘制标记圆心的圆](ch13/draw_circles.cpp)
+
+### 13.17 Image
+* [绘制图像](ch13/draw_images.cpp)
+
 # 术语
 [术语](terms.md)
 

@@ -14,5 +14,11 @@ int main() {
     cpl.add(Point(100, 250));
     win.set_label("Closed polyline 2");
     win.wait_for_button();
+
+    Text t(Point(200, 200), "A closed polyline that isn't a polygon");
+    t.set_color(Color::blue);
+    win.attach(t);
+    win.set_label("Closed polyline with text");
+    win.wait_for_button();
     return 0;
 }

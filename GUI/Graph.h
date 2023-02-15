@@ -360,8 +360,12 @@ private:
 //------------------------------------------------------------------------------
 
 struct Marked_polyline : Open_polyline {
-    Marked_polyline(const string& m) :mark(m) { }
-    Marked_polyline(const string& m, initializer_list<Point> points) :Open_polyline(points), mark(m) {}
+    Marked_polyline(const string& m) :mark(m) { if (m=="") mark = "*"; }
+    Marked_polyline(const string& m, initializer_list<Point> points)
+        :Open_polyline(points), mark(m)
+    {
+        if (m=="") mark = "*";
+    }
     void draw_lines() const override;
 private:
     string mark;
@@ -391,16 +395,14 @@ struct Mark : Marks {
 
 //------------------------------------------------------------------------------
 
-struct Suffix {
-    enum Encoding { none, jpg, gif  };
-};
+enum class Suffix { none, jpg, gif };
 
-Suffix::Encoding get_encoding(const string& s);
+Suffix get_encoding(const string& s);
 
 //------------------------------------------------------------------------------
 
 struct Image : Shape {
-    Image(Point xy, string file_name, Suffix::Encoding e = Suffix::none);
+    Image(Point xy, string file_name, Suffix e = Suffix::none);
     ~Image() { delete p; }
     void draw_lines() const override;
     void set_mask(Point xy, int ww, int hh) { w=ww; h=hh; cx=xy.x; cy=xy.y; }
