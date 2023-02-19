@@ -342,6 +342,21 @@ $ ctest
 ### 13.17 Image
 * [绘制图像](ch13/draw_images.cpp)
 
+### 简单练习
+* [魔塔](ch13/magic_tower.cpp)
+
+### 习题
+* [13-1](ch13/exec13-1.cpp)
+* [13-2](ch13/exec13-2.cpp)
+* [13-3](ch13/exec13-3.cpp)
+* [13-4](ch13/exec13-4.cpp)
+* [13-5](ch13/exec13-5.cpp)
+* [13-6](ch13/exec13-6.cpp)
+* [13-8~13-10](ch13/exec13-9.cpp)
+* [13-11](ch13/exec13-11.cpp)
+* [13-12](ch13/exec13-12.cpp)
+* [13-13](ch13/draw_color_matrix.cpp)
+
 # 术语
 [术语](terms.md)
 

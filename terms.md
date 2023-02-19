@@ -244,3 +244,25 @@
 * 软件层(software layer)：软件分层是一种重要的软件设计思想。例如，通过将软件划分为展示层、业务逻辑层和数据库层，从而提高软件的可维护性和可扩展性。
 * 窗口(window)：GUI系统的一个重要构件，由标题栏和画布两部分组成。
 * XML：Extensible Markup Language，可扩展标记语言。
+
+# 第13章
+* 闭合形状(closed shape)：连接了最后一个点和第一个点的多线段，例如`Closed_polyline`。
+* 颜色(color)：一种对光的视觉效应；GUI库中图形的线条颜色。
+* 椭圆(ellipse)：平面上到两个点的距离之和为定值的点的轨迹。
+* 填充(fill)：GUI库中封闭图形内部区域的颜色。
+* 字体(font)：文字的外在形式特征。
+* 字号(font size)：文字的大小。
+* GIF：Graphics Interchange Format，一种图像文件格式，后缀名为.gif。
+* 图像(image)：从图片文件加载的内容；图形在窗口上的绘制结果。
+* 图像编码(image encoding)：用于存储图像的二进制文件编码方式，常用的有JPEG、GIF、PNG、BMP等。
+* 不可见(invisible)：GUI库中形状的一种属性，不可见的形状不会被绘制。
+* JPEG：Joint Photographic Experts Group，一种图像文件格式，后缀名为.jpg或.jpeg。
+* 线(line)：连接两个点的线段。
+* 线型(line style)：图形轮廓的类型（实线、虚线、点状线等）和粗细。
+* 开放形状(open shape)：未连接最后一个点和第一个点的多线段，例如`Open_polyline`。
+* 点(point)：表示坐标系中的一个位置，用坐标(x, y)表示。
+* 多边形(polygon)：由至少三条互不相交的线段组成的闭合形状。
+* 多线段(polyline)：由依次连接一系列点的线段组成的形状。
+* 未命名对象(unnamed object)：未赋给变量的临时对象，例如：`T{arg1, arg2, ...}`或`new T{arg1, arg2, ...}`。
+* `Vector_ref`：GUI库提供的用于保存和管理未命名对象的向量类型。
+* 可见(visible)：GUI库中形状的一种属性，可见的形状将会被绘制。

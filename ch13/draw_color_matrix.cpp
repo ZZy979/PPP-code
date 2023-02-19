@@ -15,5 +15,11 @@ int main() {
             win.attach(vr[vr.size() - 1]);
         }
     win.wait_for_button();
+
+    // exec 13-13
+    for (int i = 0; i < vr.size(); ++i)
+        vr[i].set_color(Color::invisible);
+    win.set_label("16*16 color matrix without border");
+    win.wait_for_button();
     return 0;
 }
