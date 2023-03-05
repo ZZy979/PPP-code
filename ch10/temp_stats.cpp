@@ -4,7 +4,7 @@
 #include <numeric>
 #include <vector>
 
-#include "../ch05/temperature_converters.h"
+#include "ch05/temperature_converters.h"
 
 using namespace std;
 

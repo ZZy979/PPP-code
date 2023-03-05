@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Graph.h"
-#include "../ch12/exec12_graph.h"
+#include "ch12/exec12_graph.h"
 
 // 第13章习题中的自定义形状类
 

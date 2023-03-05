@@ -7,6 +7,7 @@ include(FetchContent)
 include(testing.cmake)
 include(gui.cmake)
 
+include_directories(${CMAKE_SOURCE_DIR})  # 头文件包含可相对于根目录
 add_subdirectory(GUI)  # 作者提供的GUI库
 file(GLOB CHAPTERS RELATIVE ${CMAKE_SOURCE_DIR} ch*)
 foreach(c IN ITEMS ${CHAPTERS})
