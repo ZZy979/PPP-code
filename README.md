@@ -357,6 +357,21 @@ $ ctest
 * [13-12](ch13/exec13-12.cpp)
 * [13-13](ch13/draw_color_matrix.cpp)
 
+## 第14章 设计图形类
+### 14.3 基类和派生类
+#### 14.3.3 覆盖
+* [覆盖的例子](ch14/overriding_example.cpp)
+
+### 简单练习
+* [drill14](ch14/drill14.cpp)
+
+### 习题
+* [14-1](ch14/exec14-1.cpp)
+* [14-11~14-13](ch14/exec14-11.cpp)
+* [14-15](ch14/iterator.h)
+* [14-16](ch14/controller.h)
+* [14-17](ch14/standard_exception_class_hierarchy.png)
+
 # 术语
 [术语](terms.md)
 

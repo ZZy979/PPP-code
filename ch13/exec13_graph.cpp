@@ -65,13 +65,24 @@ void Rounded_rectangle::set_fill_color(Color color) {
 }
 
 void Rounded_rectangle::draw_lines() const {
-    fill_rect1.draw_lines();
-    fill_rect2.draw_lines();
-    arc_top_right.draw_lines();
-    arc_top_left.draw_lines();
-    arc_bottom_left.draw_lines();
-    arc_bottom_right.draw_lines();
-    lines.draw_lines();
+    fill_rect1.draw();
+    fill_rect2.draw();
+    arc_top_right.draw();
+    arc_top_left.draw();
+    arc_bottom_left.draw();
+    arc_bottom_right.draw();
+    lines.draw();
+}
+
+void Rounded_rectangle::move(int dx, int dy) {
+    Shape::move(dx, dy);
+    lines.move(dx, dy);
+    arc_top_right.move(dx, dy);
+    arc_top_left.move(dx, dy);
+    arc_bottom_left.move(dx, dy);
+    arc_bottom_right.move(dx, dy);
+    fill_rect1.move(dx, dy);
+    fill_rect2.move(dx, dy);
 }
 
 Arrow::Arrow(Point p1, Point p2) :Line(p1, p2) {
@@ -103,7 +114,12 @@ void Arrow::set_color(Color color) {
 
 void Arrow::draw_lines() const {
     Shape::draw_lines();
-    arrowhead.draw_lines();
+    arrowhead.draw();
+}
+
+void Arrow::move(int dx, int dy) {
+    Shape::move(dx, dy);
+    arrowhead.move(dx, dy);
 }
 
 Point n(const Rectangle& r) {
@@ -218,7 +234,12 @@ Point nw(const Ellipse& e) {
 
 void Box::draw_lines() const {
     Rectangle::draw_lines();
-    label.draw_lines();
+    label.draw();
+}
+
+void Box::move(int dx, int dy) {
+    Shape::move(dx, dy);
+    label.move(dx, dy);
 }
 
 }

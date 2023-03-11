@@ -27,6 +27,7 @@ struct Rounded_rectangle : Rectangle {
     void set_style(Line_style style);
     void set_fill_color(Color color);
     void draw_lines() const override;
+    void move(int dx, int dy) override;
 
     int radius() const { return r; }
 
@@ -42,6 +43,7 @@ struct Arrow : Line {
     Arrow(Point p1, Point p2);
     void set_color(Color color);
     void draw_lines() const override;
+    void move(int dx, int dy) override;
 
 private:
     Polygon arrowhead;
@@ -85,6 +87,7 @@ struct Box : Rectangle {
     Box(Point p, int w, int h, const string& text)
             :Rectangle(p, w, h), label(Point(p.x + 5, p.y + 20), text) {}
     void draw_lines() const override;
+    void move(int dx, int dy) override;
 
 private:
     Text label;
