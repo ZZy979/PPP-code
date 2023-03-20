@@ -1,0 +1,3 @@
+add_gui_executable(graphing_functions graphing_functions.cpp)
+add_gui_executable(exp_approximation exp_approximation.cpp)
+add_gui_executable(graphing_japanese_age graphing_japanese_age.cpp)

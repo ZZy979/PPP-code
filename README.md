@@ -372,6 +372,20 @@ $ ctest
 * [14-16](ch14/controller.h)
 * [14-17](ch14/standard_exception_class_hierarchy.png)
 
+## 第15章 绘制函数图和数据图
+### 15.2 绘制简单函数图
+* [绘制简单函数图](ch15/graphing_functions.cpp)
+
+### 15.3 Function
+#### 15.3.2 更多例子
+* [绘制简单函数图](ch15/graphing_functions.cpp)
+
+### 15.5 近似
+* [指数函数近似](ch15/exp_approximation.cpp)
+
+### 15.6 绘制数据图
+* [绘制日本人年龄构成](ch15/graphing_japanese_age.cpp)
+
 # 术语
 [术语](terms.md)
 
