@@ -54,6 +54,8 @@ int main(int argc, char* argv[]) {
     constexpr double xscale = double(xlength) / (end_year - base_year);
     constexpr double yscale = double(ylength) / 100;
 
+    constexpr int font_size = 14;
+
     Scale xs(xoffset, base_year, xscale);
     Scale ys(ymax - yoffset, 0, -yscale);
 
@@ -63,11 +65,11 @@ int main(int argc, char* argv[]) {
             Axis::x, Point(xoffset, ymax - yoffset), xlength, (end_year - base_year) / 10,
             "year  1960      1970      1980      1990      "
             "2000      2010      2020      2030      2040");
-    x_axis.label.set_font_size(14);
+    x_axis.label.set_font_size(font_size);
     x_axis.label.move(-100, 0);
 
     Axis y_axis(Axis::y, Point(xoffset, ymax - yoffset), ylength, 10, "% of population");
-    y_axis.label.set_font_size(14);
+    y_axis.label.set_font_size(font_size);
 
     Line current_year(Point(xs(2008), ys(0)), Point(xs(2008), ys(100)));
     current_year.set_style(Line_style::dash);
@@ -90,17 +92,17 @@ int main(int argc, char* argv[]) {
     Text children_label(Point(20, children.point(0).y), "age 0-14");
     children.set_color(Color::red);
     children_label.set_color(Color::red);
-    children_label.set_font_size(14);
+    children_label.set_font_size(font_size);
 
     Text adults_label(Point(20, adults.point(0).y), "age 15-64");
     adults.set_color(Color::blue);
     adults_label.set_color(Color::blue);
-    adults_label.set_font_size(14);
+    adults_label.set_font_size(font_size);
 
     Text aged_label(Point(20, aged.point(0).y), "age 65+");
     aged.set_color(Color::dark_green);
     aged_label.set_color(Color::dark_green);
-    aged_label.set_font_size(14);
+    aged_label.set_font_size(font_size);
 
     win.attach(x_axis);
     win.attach(y_axis);

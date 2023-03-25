@@ -386,6 +386,18 @@ $ ctest
 ### 15.6 绘制数据图
 * [绘制日本人年龄构成](ch15/graphing_japanese_age.cpp)
 
+### 简单练习
+* [绘制函数图像练习](ch15/function_graphing_drill.cpp)
+* [类定义练习](ch15/person.h)
+
+### 习题
+* [15-1](ch15/factorial.cpp)
+* [15-2](ch15/exec15-2.cpp)
+* [15-4](ch15/exec15-4.cpp)
+* [15-5](ch15/exec15-5.cpp)
+* [15-6~15-9](ch15/exec15-8.cpp)
+* [15-11](ch15/exec15-11.cpp)
+
 # 术语
 [术语](terms.md)
 
