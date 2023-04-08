@@ -398,6 +398,11 @@ $ ctest
 * [15-6~15-9](ch15/exec15-8.cpp)
 * [15-11](ch15/exec15-11.cpp)
 
+## 第16章 图形用户界面
+### 16.5 一个实例
+* [Lines_window](ch16/lines_window.h)
+* [主程序](ch16/draw_lines.cpp)
+
 # 术语
 [术语](terms.md)
 
