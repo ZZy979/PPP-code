@@ -406,6 +406,16 @@ $ ctest
 ### 16.7 添加菜单
 * [Lines_window](ch16/lines_window.h)
 
+### 简单练习
+* [Lines_window](ch16/lines_window.h)
+
+### 习题
+* [16-3](ch16/exec16-3.cpp)
+* [16-4](ch16/exec16-4.cpp)
+* [16-6](ch16/exec16-6.cpp)
+* [16-9](ch16/exec16-9.cpp)
+* [16-10](ch16/exec16-10.cpp)
+
 # 术语
 [术语](terms.md)
 

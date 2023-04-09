@@ -14,16 +14,16 @@ void Arc::draw_lines() const {
     }
 }
 
-Regular_polygon::Regular_polygon(Point center, int radius, int n) :r(radius) {
+Regular_polygon::Regular_polygon(Point center, int radius, int n, int rotate) :r(radius) {
     if (n < 3)
         error("Bad regular polygon: less than 3 points in a Polygon");
     if (radius <= 0)
         error("Bad regular polygon: non-positive radius");
 
-    const double pi = 3.14159265358;
+    const double pi = 4 * atan(1);
     for (int k = 0; k < n; ++k) {
-        double theta = 2 * k * pi / n;
-        Closed_polyline::add(Point(center.x + radius * cos(theta), center.y + radius * sin(theta)));
+        double theta = 2 * k * pi / n + rotate * pi / 180;
+        Closed_polyline::add(Point(center.x + radius * cos(theta), center.y - radius * sin(theta)));
     }
 }
 

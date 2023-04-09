@@ -16,7 +16,7 @@ private:
 
 // 正多边形
 struct Regular_polygon : public Polygon {
-    Regular_polygon(Point center, int radius, int n);
+    Regular_polygon(Point center, int radius, int n, int rotate = 0);
     Point center() const { return Point(point(0).x - r, point(0).y); }
     int radius() const { return r; }
 
