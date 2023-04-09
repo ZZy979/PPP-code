@@ -403,6 +403,9 @@ $ ctest
 * [Lines_window](ch16/lines_window.h)
 * [主程序](ch16/draw_lines.cpp)
 
+### 16.7 添加菜单
+* [Lines_window](ch16/lines_window.h)
+
 # 术语
 [术语](terms.md)
 
