@@ -416,6 +416,18 @@ $ ctest
 * [16-9](ch16/exec16-9.cpp)
 * [16-10](ch16/exec16-10.cpp)
 
+## 第17章 向量和自由空间
+### 17.3 内存、地址和指针
+#### 17.3.1 sizeof运算符
+* [试一试](ch17/sizeof_example.cpp)
+
+### 17.5 析构函数
+#### 17.5.2 析构函数和自由存储
+* [试一试](ch17/destructor_example.cpp)
+
+### 17.6 访问元素
+* [简单向量v1](ch17/simple_vector.h)
+
 # 术语
 [术语](terms.md)
 
