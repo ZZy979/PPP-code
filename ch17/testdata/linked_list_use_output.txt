@@ -1,0 +1,2 @@
+{ Freia, Odin, Thor }
+{ Zeus, Poseidon, Ares, Athena, Hera }

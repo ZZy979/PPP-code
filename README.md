@@ -428,6 +428,13 @@ $ ctest
 ### 17.6 访问元素
 * [简单向量v1](ch17/simple_vector.h)
 
+### 17.9 指针和引用
+#### 17.9.3 示例：链表
+* [双向链表](ch17/doubly_linked_list.h)
+
+#### 17.9.5 链表的使用
+* [链表的使用](ch17/linked_list_use.cpp)
+
 # 术语
 [术语](terms.md)
 
