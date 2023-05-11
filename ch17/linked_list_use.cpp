@@ -7,6 +7,7 @@ using namespace std;
 void print_all(Link* p);
 void destroy(Link* p);
 
+// linked list example: print names of Norse gods and Greek gods
 int main() {
     Link* norse_gods = new Link("Thor");
     norse_gods = insert(norse_gods, new Link("Odin"));

@@ -432,8 +432,14 @@ $ ctest
 #### 17.9.3 示例：链表
 * [双向链表](ch17/doubly_linked_list.h)
 
-#### 17.9.5 链表的使用
-* [链表的使用](ch17/linked_list_use.cpp)
+#### 17.9.5 链表的应用
+* [链表的应用](ch17/linked_list_use.cpp)
+
+### 17.10 this指针
+* [双向链表v2](ch17/doubly_linked_list_v2.h)
+
+#### 17.10.1 链表的应用
+* [链表的应用v2](ch17/linked_list_use_v2.cpp)
 
 # 术语
 [术语](terms.md)

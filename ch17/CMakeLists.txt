@@ -4,6 +4,9 @@ add_executable(destructor_example destructor_example.cpp)
 add_library(doubly_linked_list doubly_linked_list.cpp)
 add_executable(linked_list_use linked_list_use.cpp)
 target_link_libraries(linked_list_use doubly_linked_list)
+add_library(doubly_linked_list_v2 doubly_linked_list_v2.cpp)
+add_executable(linked_list_use_v2 linked_list_use_v2.cpp)
+target_link_libraries(linked_list_use_v2 doubly_linked_list_v2)
 
 set(TESTDATA_DIR ${CMAKE_CURRENT_SOURCE_DIR}/testdata)
 add_gtest(NAME simple_vector_v1_test SOURCE simple_vector_test.cpp LIBRARY simple_vector_v1)
@@ -16,5 +19,11 @@ add_gtest(NAME doubly_linked_list_test SOURCE doubly_linked_list_test.cpp LIBRAR
 add_output_test(
   NAME linked_list_use_test
   COMMAND linked_list_use
+  OUTPUT_FILE ${TESTDATA_DIR}/linked_list_use_output.txt
+)
+add_gtest(NAME doubly_linked_list_v2_test SOURCE doubly_linked_list_v2_test.cpp LIBRARY doubly_linked_list_v2)
+add_output_test(
+  NAME linked_list_use_v2_test
+  COMMAND linked_list_use_v2
   OUTPUT_FILE ${TESTDATA_DIR}/linked_list_use_output.txt
 )
