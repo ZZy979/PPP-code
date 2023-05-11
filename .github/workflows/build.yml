@@ -18,9 +18,9 @@ jobs:
       - name: Print CMake Version
         run: cmake --version
       - name: Configure CMake
-        run: cmake -G "Unix Makefiles" -B cmake-build
+        run: cmake -G "Unix Makefiles" -B cmake-build -D CMAKE_BUILD_TYPE=Release
       - name: Build
-        run: cmake --build cmake-build
+        run: cmake --build cmake-build -j 4
       - name: Test
         working-directory: ${{ github.workspace }}/cmake-build
         run: ctest
@@ -36,11 +36,11 @@ jobs:
         run: cmake --version
       - name: Configure CMake
         run: >
-          cmake -G "MinGW Makefiles" -B cmake-build
+          cmake -G "MinGW Makefiles" -B cmake-build -D CMAKE_BUILD_TYPE=Release
           -D CMAKE_EXE_LINKER_FLAGS="-static -static-libgcc -static-libstdc++"
           -D OPTION_USE_SYSTEM_LIBJPEG=OFF -D OPTION_USE_SYSTEM_LIBPNG=OFF -D OPTION_USE_SYSTEM_ZLIB=OFF
       - name: Build
-        run: cmake --build cmake-build
+        run: cmake --build cmake-build -j 4
       - name: Test
         working-directory: ${{ github.workspace }}/cmake-build
         run: ctest
@@ -57,7 +57,7 @@ jobs:
       - name: Configure CMake
         run: cmake -G "Visual Studio 17 2022" -A x64 -B cmake-build
       - name: Build
-        run: cmake --build cmake-build --config Debug
+        run: cmake --build cmake-build -j 4 --config Release
       - name: Test
         working-directory: ${{ github.workspace }}/cmake-build
-        run: ctest -C Debug
+        run: ctest -C Release
