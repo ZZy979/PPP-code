@@ -1,13 +1,15 @@
+#include <climits>
+#include <cstdint>
 #include <iostream>
 
 using namespace std;
 
 // print the first so many values of the Fibonacci series
 int main() {
-    int a = 1, b = 1;
-    while (a > 0) {
+    uint64_t a = 1, b = 1;
+    while (a <= INT_MAX) {
         cout << a << endl;
-        int c = a + b;
+        uint64_t c = a + b;
         a = b;
         b = c;
     }
