@@ -1,6 +1,6 @@
 #include "doubly_linked_list_v2.h"
 
-//insert n before this object; return n
+// insert n before this object; return n
 Link* Link::insert(Link* n) {
     if (n == nullptr) return this;  // nothing to insert
     n->succ = this;                 // this object comes after n

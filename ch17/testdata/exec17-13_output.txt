@@ -1,0 +1,15 @@
+Norse gods:
+(Freyja,Norse,Chariot pulled by cats,Sword)
+(Odin,Norse,Eight-legged flying horse called Sleipnir,Spear called Gungnir)
+(Thor,Norse,Goats Tanngrisnir and Tanngnjóstr,Hammer called Mjölnir)
+
+Greek gods:
+(Hera,Greek,Peacock or Cuckoo,Scepter)
+(Poseidon,Greek,Horse,Trident)
+(Zeus,Greek,Eagle,Thunderbolt)
+
+Egyptian gods:
+(Anubis,Egyptian,Jackal,Scepter)
+(Horus,Egyptian,Falcon,Spear)
+(Isis,Egyptian,Cow,Scepter)
+(Ra,Egyptian,Sun disk with cobra,Staff)

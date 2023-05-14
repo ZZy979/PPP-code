@@ -441,6 +441,17 @@ $ ctest
 #### 17.10.1 链表的应用
 * [链表的应用v2](ch17/linked_list_use_v2.cpp)
 
+### 简单练习
+* [drill17](ch17/drill17.cpp)
+
+### 习题
+* [17-2](ch17/exec17-2.cpp)
+* [17-3~17-5](ch17/string_algorithm_exec17.cpp)
+* [17-7~17-8](ch17/exec17-7.cpp)
+* [17-9](ch17/exec17-9.cpp)
+* [17-11](ch17/linked_list_use_v2.cpp)
+* [17-13](ch17/exec17-13.cpp)
+
 # 术语
 [术语](terms.md)
 
