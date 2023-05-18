@@ -14,6 +14,11 @@ public:
         std::copy(lst.begin(), lst.end(), elem);    // initialize (using std::copy())
     }
 
+    // copy constructor: define copy
+    vector(const vector& v) :sz(v.sz), elem(new double[sz]) {
+        std::copy(v.elem, v.elem + sz, elem);
+    }
+
     // destructor: free memory
     ~vector() { delete[] elem; }
 

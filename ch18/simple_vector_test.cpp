@@ -23,6 +23,16 @@ TEST_F(SimpleVectorV1Test, Constructor) {
     vector v2 = {1, 2, 3};
     for (int i = 0; i < v2.size(); ++i)
         EXPECT_DOUBLE_EQ(v2.get(i), i + 1);
+
+    // copy constructor
+    vector v3 = v2;
+    EXPECT_EQ(v3.size(), v2.size());
+    for (int i = 0; i < v3.size(); ++i)
+        EXPECT_DOUBLE_EQ(v3.get(i), v2.get(i));
+    v2.set(1, 99);
+    v3.set(0, 88);
+    EXPECT_DOUBLE_EQ(v2.get(0), 1);
+    EXPECT_DOUBLE_EQ(v3.get(1), 2);
 }
 
 TEST_F(SimpleVectorV1Test, Size) {

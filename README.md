@@ -453,6 +453,7 @@ $ ctest
 * [17-13](ch17/exec17-13.cpp)
 
 ## 第18章 向量和数组
+* [简单向量v2](ch18/simple_vector.h)
 
 # 术语
 [术语](terms.md)
