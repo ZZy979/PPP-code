@@ -19,10 +19,13 @@ public:
         std::copy(v.elem, v.elem + sz, elem);
     }
 
+    vector(vector&& v);
+
     // destructor: free memory
     ~vector() { delete[] elem; }
 
     vector& operator=(const vector& v);
+    vector& operator=(vector&& v);
 
     int size() const { return sz; }  // the current size
 

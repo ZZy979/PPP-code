@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <utility>
 
 #include "simple_vector.h"
 
@@ -13,38 +14,58 @@ protected:
 };
 
 TEST_F(SimpleVectorV2Test, Constructor) {
-    // default constructor
     vector v(3);
     EXPECT_EQ(v.size(), 3);
     for (int i = 0; i < v.size(); ++i)
         EXPECT_DOUBLE_EQ(v.get(i), 0);
+}
 
-    // initializer-list constructor
+TEST_F(SimpleVectorV2Test, InitializerListConstructor) {
     vector v2 = {1, 2, 3};
     for (int i = 0; i < v2.size(); ++i)
         EXPECT_DOUBLE_EQ(v2.get(i), i + 1);
+}
 
-    // copy constructor
-    vector v3 = v2;
-    EXPECT_EQ(v3.size(), v2.size());
-    for (int i = 0; i < v3.size(); ++i)
-        EXPECT_DOUBLE_EQ(v3.get(i), v2.get(i));
-    v2.set(1, 99);
-    v3.set(0, 88);
-    EXPECT_DOUBLE_EQ(v2.get(0), 1);
-    EXPECT_DOUBLE_EQ(v3.get(1), 2);
+TEST_F(SimpleVectorV2Test, CopyConstructor) {
+    vector v2 = v_;
+    EXPECT_EQ(v2.size(), v_.size());
+    for (int i = 0; i < v2.size(); ++i)
+        EXPECT_DOUBLE_EQ(v2.get(i), v_.get(i));
+    v_.set(1, 99);
+    v2.set(0, 88);
+    EXPECT_DOUBLE_EQ(v_.get(0), 0);
+    EXPECT_DOUBLE_EQ(v2.get(1), 1.1);
+}
+
+TEST_F(SimpleVectorV2Test, MoveConstructor) {
+    int size = v_.size();
+    vector v2 = std::move(v_);
+    EXPECT_EQ(v2.size(), size);
+    for (int i = 0; i < v2.size(); ++i)
+        EXPECT_DOUBLE_EQ(v2.get(i), 1.1 * i);
+    EXPECT_EQ(v_.size(), 0);
 }
 
 TEST_F(SimpleVectorV2Test, CopyAssignment) {
-    vector v = {1, 2, 3}, v2 = {4, 5, 6, 7};
-    v2 = v;
-    EXPECT_EQ(v2.size(), v.size());
+    vector v2 = {1, 2, 3};
+    v2 = v_;
+    EXPECT_EQ(v2.size(), v_.size());
     for (int i = 0; i < v2.size(); ++i)
-        EXPECT_DOUBLE_EQ(v2.get(i), v.get(i));
-    v.set(1, 99);
+        EXPECT_DOUBLE_EQ(v2.get(i), v_.get(i));
+    v_.set(1, 99);
     v2.set(0, 88);
-    EXPECT_DOUBLE_EQ(v.get(0), 1);
-    EXPECT_DOUBLE_EQ(v2.get(1), 2);
+    EXPECT_DOUBLE_EQ(v_.get(0), 0);
+    EXPECT_DOUBLE_EQ(v2.get(1), 1.1);
+}
+
+TEST_F(SimpleVectorV2Test, MoveAssignment) {
+    vector v2 = {1, 2, 3};
+    int size = v_.size();
+    v2 = std::move(v_);
+    EXPECT_EQ(v2.size(), size);
+    for (int i = 0; i < v2.size(); ++i)
+        EXPECT_DOUBLE_EQ(v2.get(i), 1.1 * i);
+    EXPECT_EQ(v_.size(), 0);
 }
 
 TEST_F(SimpleVectorV2Test, Size) {
