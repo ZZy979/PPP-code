@@ -22,6 +22,8 @@ public:
     // destructor: free memory
     ~vector() { delete[] elem; }
 
+    vector& operator=(const vector& v);
+
     int size() const { return sz; }  // the current size
 
     double get(int n) { return elem[n]; }       // access: read
