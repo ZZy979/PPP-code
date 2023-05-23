@@ -7,7 +7,7 @@
 class vector {
 public:
     // constructor: allocate s elements, let elem point to them, store s in sz
-    vector(int s) :sz(s), elem(new double[s]{0}) {}
+    explicit vector(int s) :sz(s), elem(new double[s]{0}) {}
 
     // initializer-list constructor
     vector(std::initializer_list<double> lst) :sz(lst.size()), elem(new double[sz]) {
