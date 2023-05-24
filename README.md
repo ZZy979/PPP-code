@@ -455,6 +455,10 @@ $ ctest
 ## 第18章 向量和数组
 * [简单向量v2](ch18/simple_vector.h)
 
+### 18.4 基本操作
+#### 18.4.2 调试构造函数和析构函数
+* [试一试](ch18/debug_ctor_dtor.cpp)
+
 # 术语
 [术语](terms.md)
 
