@@ -29,8 +29,8 @@ public:
 
     int size() const { return sz; }  // the current size
 
-    double get(int n) { return elem[n]; }       // access: read
-    void set(int n, double v) { elem[n] = v; }  // access: write
+    double& operator[](int i) { return elem[i]; }       // for non-const vectors
+    double operator[](int i) const { return elem[i]; }  // for const vectors
 
 private:
     int sz;        // the size
