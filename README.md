@@ -459,6 +459,17 @@ $ ctest
 #### 18.4.2 调试构造函数和析构函数
 * [试一试](ch18/debug_ctor_dtor.cpp)
 
+### 18.7 实例：回文
+* [is_palindrome函数](ch18/palindrome.cpp)
+
+### 简单练习
+* [drill18](ch18/drill18.cpp)
+
+### 习题
+* [18-1~18-7](ch18/string_algorithm_exec18.cpp)
+* [18-8](ch18/palindrome.cpp)
+* [18-9](ch17/exec17-9.cpp)
+
 # 术语
 [术语](terms.md)
 

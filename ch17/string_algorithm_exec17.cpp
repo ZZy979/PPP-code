@@ -10,20 +10,21 @@ void to_lower(char* s) {
 // copy C-style string s into memory allocated on the free store
 char* strdup_(const char* s) {
     int length = 0;
-    for (const char* p = s; *p++; ++length);
+    while (s[length++]);
 
     char* t = new char[length + 1];
-    for (char* p = t; *p++ = *s++;);
+    for (int i = 0; i < length; ++i)
+        t[i] = s[i];
     return t;
 }
 
 // finds the first occurrence of C-style string x in s
 const char* findx(const char* s, const char* x) {
-    for (const char* p = s; *p; ++p) {
-        const char* q, *r;
-        for (q = p, r = x; *r && *q == *r; ++q, ++r);
-        if (r > x && !*r)
-            return p;
+    for (int i = 0; s[i]; ++i) {
+        int j, k;
+        for (j = i, k = 0; x[k] && s[j] == x[k]; ++j, ++k);
+        if (k > 0 && !x[k])
+            return s + i;
     }
     return nullptr;
 }
