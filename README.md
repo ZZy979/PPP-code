@@ -470,6 +470,9 @@ $ ctest
 * [18-8](ch18/palindrome.cpp)
 * [18-9](ch17/exec17-9.cpp)
 
+## 第19章 向量、模板和异常
+* [简单向量v3](ch19/simple_vector.h)
+
 # 术语
 [术语](terms.md)
 
