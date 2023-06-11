@@ -5,19 +5,17 @@
 
 class SimpleVectorV3Test : public ::testing::Test {
 protected:
-    SimpleVectorV3Test() :v_{0.0, 1.1, 2.2, 3.3, 4.4} {}
-
-    vector v_;
+    vector<double> v_ = {0.0, 1.1, 2.2, 3.3, 4.4};
 };
 
 TEST_F(SimpleVectorV3Test, DefaultConstructor) {
-    vector v;
+    vector<double> v;
     EXPECT_EQ(v.size(), 0);
     EXPECT_EQ(v.capacity(), 0);
 }
 
 TEST_F(SimpleVectorV3Test, Constructor) {
-    vector v(3);
+    vector<double> v(3);
     EXPECT_EQ(v.size(), 3);
     EXPECT_EQ(v.capacity(), 3);
     for (int i = 0; i < v.size(); ++i)
@@ -25,7 +23,7 @@ TEST_F(SimpleVectorV3Test, Constructor) {
 }
 
 TEST_F(SimpleVectorV3Test, InitializerListConstructor) {
-    vector v = {1, 2, 3};
+    vector<double> v = {1, 2, 3};
     EXPECT_EQ(v.size(), 3);
     EXPECT_EQ(v.capacity(), 3);
     for (int i = 0; i < v.size(); ++i)
@@ -33,7 +31,7 @@ TEST_F(SimpleVectorV3Test, InitializerListConstructor) {
 }
 
 TEST_F(SimpleVectorV3Test, CopyConstructor) {
-    vector v2 = v_;
+    vector<double> v2 = v_;
     EXPECT_EQ(v2.size(), v_.size());
     EXPECT_EQ(v2.capacity(), v_.capacity());
     for (int i = 0; i < v2.size(); ++i)
@@ -51,7 +49,7 @@ TEST_F(SimpleVectorV3Test, CopyAssignment) {
     for (int i = 0; i < v_.size(); ++i)
         EXPECT_DOUBLE_EQ(v_[i], 1.1 * i);
 
-    vector v2 = {1, 2, 3};
+    vector<double> v2 = {1, 2, 3};
     v_.reserve(8);
     v2 = v_;
     EXPECT_EQ(v2.size(), v_.size());
@@ -66,7 +64,7 @@ TEST_F(SimpleVectorV3Test, CopyAssignment) {
 
 TEST_F(SimpleVectorV3Test, MoveConstructor) {
     int size = v_.size(), capacity = v_.capacity();
-    vector v2 = std::move(v_);
+    vector<double> v2 = std::move(v_);
     EXPECT_EQ(v2.size(), size);
     EXPECT_EQ(v2.capacity(), capacity);
     for (int i = 0; i < v2.size(); ++i)
@@ -76,7 +74,7 @@ TEST_F(SimpleVectorV3Test, MoveConstructor) {
 }
 
 TEST_F(SimpleVectorV3Test, MoveAssignment) {
-    vector v2 = {1, 2, 3};
+    vector<double> v2 = {1, 2, 3};
     int size = v_.size(), capacity = v_.capacity();
     v2 = std::move(v_);
     EXPECT_EQ(v2.size(), size);
@@ -117,7 +115,7 @@ TEST_F(SimpleVectorV3Test, Resize) {
     v_.reserve(8);
 
     // new_size > capacity()
-    vector v1 = v_;
+    vector<double> v1 = v_;
     v1.resize(10);
     EXPECT_EQ(v1.capacity(), 10);
     EXPECT_EQ(v1.size(), 10);
@@ -125,7 +123,7 @@ TEST_F(SimpleVectorV3Test, Resize) {
         EXPECT_DOUBLE_EQ(v1[i], i < 5 ? 1.1 * i : 0.0);
 
     // size() < new_size <= capacity()
-    vector v2 = v_;
+    vector<double> v2 = v_;
     v2.resize(6);
     EXPECT_EQ(v2.capacity(), 8);
     EXPECT_EQ(v2.size(), 6);
@@ -133,7 +131,7 @@ TEST_F(SimpleVectorV3Test, Resize) {
         EXPECT_DOUBLE_EQ(v2[i], i < 5 ? 1.1 * i : 0.0);
 
     // new_size == size()
-    vector v3 = v_;
+    vector<double> v3 = v_;
     v3.resize(5);
     EXPECT_EQ(v3.capacity(), 8);
     EXPECT_EQ(v3.size(), 5);
@@ -141,7 +139,7 @@ TEST_F(SimpleVectorV3Test, Resize) {
         EXPECT_DOUBLE_EQ(v3[i], 1.1 * i);
 
     // new_size < size()
-    vector v4 = v_;
+    vector<double> v4 = v_;
     v4.resize(2);
     EXPECT_EQ(v4.capacity(), 8);
     EXPECT_EQ(v4.size(), 2);
@@ -151,7 +149,7 @@ TEST_F(SimpleVectorV3Test, Resize) {
 
 TEST_F(SimpleVectorV3Test, PushBack) {
     // empty vector
-    vector v0;
+    vector<double> v0;
     v0.push_back(42);
     EXPECT_EQ(v0.capacity(), 8);
     EXPECT_EQ(v0.size(), 1);
