@@ -1,7 +1,7 @@
 #pragma once
 
-#include <algorithm>
 #include <initializer_list>
+#include <memory>
 
 /**
  * An almost real vector of Ts
@@ -11,15 +11,13 @@
  * - sz<=space
  * - if sz<space there is space for (space–sz) Ts after elem[sz–1]
  */
-template<class T>
+template<class T, class A = std::allocator<T>>
 class vector {
 public:
     // default constructor
     vector() :sz(0), elem(nullptr), space(0) {}
 
-    // constructor: allocate s elements, let elem point to them, store s in sz
-    explicit vector(int s) :sz(s), elem(new T[s]{T()}), space(s) {}
-
+    explicit vector(int n, const T& val = T());
     vector(std::initializer_list<T> lst);
 
     vector(const vector& v);                // copy constructor
@@ -28,7 +26,7 @@ public:
     vector(vector&& v) noexcept;            // move constructor
     vector& operator=(vector&& v) noexcept; // move assignment
 
-    ~vector() { delete[] elem; }            // destructor: free memory
+    ~vector() { destroy_and_deallocate(); } // destructor
 
     T& operator[](int i) { return elem[i]; }    // access: return reference
     const T& operator[](int i) const { return elem[i]; }
@@ -37,58 +35,73 @@ public:
     int capacity() const { return space; }  // the current capacity
 
     void reserve(int new_space);
-    void resize(int new_size);
-    void push_back(const T& v);
+    void resize(int new_size, const T& val = T());
+    void push_back(const T& val);
 
 private:
+    void construct(T* first, T* last, const T* from);
+    void fill(T* first, T* last, const T& val);
+    void destroy(T* first, T* last);
+    void destroy_and_deallocate();
+
     int sz;     // the size
     T* elem;    // pointer to the elements
     int space;  // number of elements plus number of free slots
+    A alloc;    // use allocate to handle memory for elements
 };
 
+// constructor: allocate n elements, let elem point to them, store n in sz
+template<class T, class A>
+vector<T, A>::vector(int n, const T& val)
+        :sz(n), elem(alloc.allocate(n)), space(n) {
+    fill(elem, elem + n, val);
+}
+
 // initializer-list constructor
-template<class T>
-vector<T>::vector(std::initializer_list<T> lst)
-        :sz(lst.size()), elem(new T[sz]), space(lst.size()) {
-    std::copy(lst.begin(), lst.end(), elem);    // initialize (using std::copy())
+template<class T, class A>
+vector<T, A>::vector(std::initializer_list<T> lst)
+        :sz(lst.size()), elem(alloc.allocate(lst.size())), space(lst.size()) {
+    construct(elem, elem + lst.size(), lst.begin());
 }
 
 // copy constructor: define copy
-template<class T>
-vector<T>::vector(const vector& v) :sz(v.sz), elem(new T[v.space]), space(v.space) {
-    std::copy(v.elem, v.elem + sz, elem);
+template<class T, class A>
+vector<T, A>::vector(const vector& v)
+        :sz(v.sz), elem(alloc.allocate(v.space)), space(v.space) {
+    construct(elem, elem + v.sz, v.elem);
 }
 
 // copy assignment: make this vector a copy of v
-template<class T>
-vector<T>& vector<T>::operator=(const vector& v) {
+template<class T, class A>
+vector<T, A>& vector<T, A>::operator=(const vector& v) {
     if (this == &v) return *this;   // self-assignment, no work needed
 
     if (v.sz <= space) {    // enough space, no need for new allocation
-        std::copy(v.elem, v.elem + v.sz, elem);     // copy elements
+        destroy(elem, elem + sz);
+        construct(elem, elem + v.sz, v.elem);     // copy elements
         sz = v.sz;
         return *this;
     }
 
-    T* p = new T[v.sz];                     // allocate new space
-    std::copy(v.elem, v.elem + v.sz, p);    // copy elements
-    delete[] elem;      // deallocate old space
+    T* p = alloc.allocate(v.sz);        // allocate new space
+    construct(p, p + v.sz, v.elem);     // copy elements
+    destroy_and_deallocate();           // deallocate old space
     elem = p;           // set new elements
     space = sz = v.sz;  // set new size
     return *this;       // return a self-reference
 }
 
 // move constructor
-template<class T>
-vector<T>::vector(vector&& v) noexcept :sz(v.sz), elem(v.elem), space(v.space) {
+template<class T, class A>
+vector<T, A>::vector(vector&& v) noexcept :sz(v.sz), elem(v.elem), space(v.space) {
     v.space = v.sz = 0;     // make v the empty vector
     v.elem = nullptr;
 }
 
 // move assignment: move v to this vector
-template<class T>
-vector<T>& vector<T>::operator=(vector&& v) noexcept {
-    delete[] elem;      // deallocate old space
+template<class T, class A>
+vector<T, A>& vector<T, A>::operator=(vector&& v) noexcept {
+    destroy_and_deallocate();   // deallocate old space
     elem = v.elem;      // copy v's elem and sz
     sz = v.sz;
     space = v.space;
@@ -98,32 +111,57 @@ vector<T>& vector<T>::operator=(vector&& v) noexcept {
 }
 
 // increase the capacity
-template<class T>
-void vector<T>::reserve(int new_space) {
+template<class T, class A>
+void vector<T, A>::reserve(int new_space) {
     if (new_space <= space) return;     // never decrease allocation
-    T* p = new T[new_space];            // allocate new space
-    std::copy(elem, elem + sz, p);      // copy old elements
-    delete[] elem;                      // deallocate old space
+    T* p = alloc.allocate(new_space);   // allocate new space
+    construct(p, p + sz, elem);         // copy
+    destroy_and_deallocate();           // deallocate old space
     elem = p;
     space = new_space;
 }
 
 // make the vector have new_size elements
-// initialize each new element with default value
-template<class T>
-void vector<T>::resize(int new_size) {
+// initialize each new element with val
+template<class T, class A>
+void vector<T, A>::resize(int new_size, const T& val) {
     reserve(new_size);
-    for (int i = sz; i < new_size; ++i) elem[i] = T();  // initialize new elements
+    fill(elem + sz, elem + new_size, val);  // construct
+    destroy(elem + new_size, elem + sz);    // destroy
     sz = new_size;
 }
 
-// increase vector size by one; initialize the new element with v
-template<class T>
-void vector<T>::push_back(const T& v) {
+// increase vector size by one; initialize the new element with val
+template<class T, class A>
+void vector<T, A>::push_back(const T& val) {
     if (space == 0)
         reserve(8);             // start with space for 8 elements
     else if (sz == space)
         reserve(2 * space);     // get more space
-    elem[sz] = v;   // add v at end
-    ++sz;           // increase the size (sz is the number of elements)
+    alloc.construct(&elem[sz], val);    // add val at end
+    ++sz;                       // increase the size (sz is the number of elements)
+}
+
+// copy construct elements in [first, last) from [from, from+(last-first))
+template<class T, class A>
+void vector<T, A>::construct(T* first, T* last, const T* from) {
+    for (; first < last; ++first, ++from) alloc.construct(first, *from);
+}
+
+// copy construct elements in [first, last) from val
+template<class T, class A>
+void vector<T, A>::fill(T* first, T* last, const T& val) {
+    for (; first < last; ++first) alloc.construct(first, val);
+}
+
+// destroy elements in [first, last)
+template<class T, class A>
+void vector<T, A>::destroy(T* first, T* last) {
+    for (; first < last; ++first) alloc.destroy(first);
+}
+
+template<class T, class A>
+void vector<T, A>::destroy_and_deallocate() {
+    destroy(elem, elem + sz);
+    alloc.deallocate(elem, space);
 }
