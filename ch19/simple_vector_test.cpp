@@ -158,8 +158,13 @@ TEST_F(SimpleVectorV3Test, Destructor) {
 
 TEST_F(SimpleVectorV3Test, ElementAccess) {
     EXPECT_DOUBLE_EQ(v_[3], 3.3);
+    EXPECT_DOUBLE_EQ(v_.at(3), 3.3);
     v_[3] = 333.3;
     EXPECT_DOUBLE_EQ(v_[3], 333.3);
+    EXPECT_DOUBLE_EQ(v_.at(3), 333.3);
+
+    EXPECT_THROW(v_.at(999), std::out_of_range);
+    EXPECT_NO_THROW(v_[999]);
 }
 
 TEST_F(SimpleVectorV3Test, SizeAndCapacity) {

@@ -2,6 +2,7 @@
 
 #include <initializer_list>
 #include <memory>
+#include <stdexcept>
 
 /**
  * An almost real vector of Ts
@@ -27,6 +28,9 @@ public:
     vector& operator=(vector&& v) noexcept; // move assignment
 
     ~vector() { destroy_and_deallocate(); } // destructor
+
+    T& at(int i);                               // checked access
+    const T& at(int i) const;
 
     T& operator[](int i) { return elem[i]; }    // access: return reference
     const T& operator[](int i) const { return elem[i]; }
@@ -108,6 +112,18 @@ vector<T, A>& vector<T, A>::operator=(vector&& v) noexcept {
     v.elem = nullptr;   // make v the empty vector
     v.space = v.sz = 0;
     return *this;       // return a self-reference
+}
+
+template<class T, class A>
+T& vector<T, A>::at(int i) {
+    if (i < 0 || i > sz) throw std::out_of_range("index out of range");
+    return elem[i];
+}
+
+template<class T, class A>
+const T& vector<T, A>::at(int i) const {
+    if (i < 0 || i > sz) throw std::out_of_range("index out of range");
+    return elem[i];
 }
 
 // increase the capacity

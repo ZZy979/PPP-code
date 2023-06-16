@@ -28,11 +28,13 @@ $ ctest
 ```
 
 # 代码目录
+[std_lib_facilities.h](https://www.stroustrup.com/Programming/std_lib_facilities.h)
+
 ## 第2章 Hello, World!
 * [Hello world](ch02/hello_world.cpp)
 
 ### 习题
-* [习题1](ch02/exec2-1.cpp)
+* [2-1](ch02/exec2-1.cpp)
 
 ## 第3章 对象、类型和值
 ### 3.1 输入
