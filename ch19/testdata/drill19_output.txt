@@ -1,0 +1,10 @@
+si == 42
+sc == a
+sd == 3.14
+ss == abc
+svi == 1 2 3 4 5 
+si == 88888
+sc == x
+sd == 123.45
+ss == hello,world!
+svi == 6 7 8 9 10 

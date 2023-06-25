@@ -1,28 +1,13 @@
 #include <gtest/gtest.h>
 #include <utility>
 
+#include "counted_element.h"
 #include "simple_vector.h"
 
 // for testing vector of class without default
 struct No_default {
     No_default(int) {}
 };
-
-// for testing vector of class with resources
-// use count() to assert constructor and destructor are called expected times
-class Element {
-public:
-    Element() { ++count_; }
-    Element(const Element&) { ++count_; }
-    ~Element() { --count_; }
-
-    static int count() { return count_; }
-
-private:
-    static int count_;
-};
-
-int Element::count_ = 0;
 
 class SimpleVectorV3Test : public ::testing::Test {
 protected:
@@ -53,8 +38,8 @@ TEST_F(SimpleVectorV3Test, Constructor) {
     EXPECT_EQ(vn.size(), 10);
 
     // class with resources
-    vector<Element> ve(10);
-    EXPECT_EQ(Element::count(), 10);
+    vector<Counted_element> ve(10);
+    EXPECT_EQ(Counted_element::count(), 10);
 }
 
 TEST_F(SimpleVectorV3Test, InitializerListConstructor) {
@@ -65,8 +50,8 @@ TEST_F(SimpleVectorV3Test, InitializerListConstructor) {
         EXPECT_DOUBLE_EQ(v[i], i + 1);
 
     // class with resources
-    vector<Element> ve = {Element(), Element(), Element()};
-    EXPECT_EQ(Element::count(), 3);
+    vector<Counted_element> ve = {Counted_element(), Counted_element(), Counted_element()};
+    EXPECT_EQ(Counted_element::count(), 3);
 }
 
 TEST_F(SimpleVectorV3Test, CopyConstructor) {
@@ -81,10 +66,10 @@ TEST_F(SimpleVectorV3Test, CopyConstructor) {
     EXPECT_DOUBLE_EQ(v2[1], 1.1);
 
     // class with resources
-    vector<Element> ve(5);
-    EXPECT_EQ(Element::count(), 5);
-    vector<Element> ve2 = ve;
-    EXPECT_EQ(Element::count(), 10);
+    vector<Counted_element> ve(5);
+    EXPECT_EQ(Counted_element::count(), 5);
+    vector<Counted_element> ve2 = ve;
+    EXPECT_EQ(Counted_element::count(), 10);
 }
 
 TEST_F(SimpleVectorV3Test, CopyAssignment) {
@@ -107,10 +92,10 @@ TEST_F(SimpleVectorV3Test, CopyAssignment) {
     EXPECT_DOUBLE_EQ(v2[1], 1.1);
 
     // class with resources
-    vector<Element> ve(5), ve2(8);
-    EXPECT_EQ(Element::count(), 13);
+    vector<Counted_element> ve(5), ve2(8);
+    EXPECT_EQ(Counted_element::count(), 13);
     ve2 = ve;
-    EXPECT_EQ(Element::count(), 10);
+    EXPECT_EQ(Counted_element::count(), 10);
 }
 
 TEST_F(SimpleVectorV3Test, MoveConstructor) {
@@ -124,10 +109,10 @@ TEST_F(SimpleVectorV3Test, MoveConstructor) {
     EXPECT_EQ(v_.capacity(), 0);
 
     // class with resources
-    vector<Element> ve(5);
-    EXPECT_EQ(Element::count(), 5);
-    vector<Element> ve2 = std::move(ve);
-    EXPECT_EQ(Element::count(), 5);
+    vector<Counted_element> ve(5);
+    EXPECT_EQ(Counted_element::count(), 5);
+    vector<Counted_element> ve2 = std::move(ve);
+    EXPECT_EQ(Counted_element::count(), 5);
 }
 
 TEST_F(SimpleVectorV3Test, MoveAssignment) {
@@ -142,18 +127,18 @@ TEST_F(SimpleVectorV3Test, MoveAssignment) {
     EXPECT_EQ(v_.capacity(), 0);
 
     // class with resources
-    vector<Element> ve(5), ve2(8);
-    EXPECT_EQ(Element::count(), 13);
+    vector<Counted_element> ve(5), ve2(8);
+    EXPECT_EQ(Counted_element::count(), 13);
     ve2 = std::move(ve);
-    EXPECT_EQ(Element::count(), 5);
+    EXPECT_EQ(Counted_element::count(), 5);
 }
 
 TEST_F(SimpleVectorV3Test, Destructor) {
     // class with resources
-    vector<Element>* pve = new vector<Element>(8);
-    EXPECT_EQ(Element::count(), 8);
+    auto pve = new vector<Counted_element>(8);
+    EXPECT_EQ(Counted_element::count(), 8);
     delete pve;
-    EXPECT_EQ(Element::count(), 0);
+    EXPECT_EQ(Counted_element::count(), 0);
 }
 
 TEST_F(SimpleVectorV3Test, ElementAccess) {
@@ -186,10 +171,10 @@ TEST_F(SimpleVectorV3Test, Reserve) {
     EXPECT_EQ(v_.capacity(), 8);
 
     // class with resources
-    vector<Element> ve(5);
-    EXPECT_EQ(Element::count(), 5);
+    vector<Counted_element> ve(5);
+    EXPECT_EQ(Counted_element::count(), 5);
     ve.reserve(8);
-    EXPECT_EQ(Element::count(), 5);
+    EXPECT_EQ(Counted_element::count(), 5);
 }
 
 TEST_F(SimpleVectorV3Test, Resize) {
@@ -239,12 +224,12 @@ TEST_F(SimpleVectorV3Test, Resize) {
     EXPECT_EQ(vn.size(), 10);
 
     // class with resources
-    vector<Element> ve;
-    EXPECT_EQ(Element::count(), 0);
+    vector<Counted_element> ve;
+    EXPECT_EQ(Counted_element::count(), 0);
     ve.resize(8);
-    EXPECT_EQ(Element::count(), 8);
+    EXPECT_EQ(Counted_element::count(), 8);
     ve.resize(3);
-    EXPECT_EQ(Element::count(), 3);
+    EXPECT_EQ(Counted_element::count(), 3);
 }
 
 TEST_F(SimpleVectorV3Test, PushBack) {
@@ -268,8 +253,8 @@ TEST_F(SimpleVectorV3Test, PushBack) {
     EXPECT_DOUBLE_EQ(v_[6], 6.6);
 
     // class with resources
-    vector<Element> ve(5);
-    EXPECT_EQ(Element::count(), 5);
-    ve.push_back(Element());
-    EXPECT_EQ(Element::count(), 6);
+    vector<Counted_element> ve(5);
+    EXPECT_EQ(Counted_element::count(), 5);
+    ve.push_back(Counted_element());
+    EXPECT_EQ(Counted_element::count(), 6);
 }

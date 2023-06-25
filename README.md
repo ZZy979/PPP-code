@@ -479,6 +479,23 @@ $ ctest
 #### 19.3.5 整数作为模板参数
 * [简单数组](ch19/simple_array.h)
 
+### 简单练习
+* [drill19](ch19/drill19.cpp)
+
+### 习题
+* [19-1](ch19/vector_add.cpp) （实现`std::valarray`的`operator+`）
+* [19-2](ch19/inner_product.cpp) （实现`std::inner_product()`）
+* 19-3 （实现`std::pair`）
+  * [Pair](ch19/pair.h)
+  * [Symbol_table](ch19/symbol_table.h)
+* 19-4
+  * [双向链表v3](ch19/doubly_linked_list_v3.h)
+  * [链表的应用v3](ch19/exec19-4.cpp)
+* [19-5~19-7](ch19/number.h)
+* [19-8~19-9](ch19/simple_allocator.h) （简化的`std::allocator`）
+* [19-10](ch19/unique_ptr.h) （简化的`std::unique_ptr`）
+* [19-11](ch19/counted_ptr.h) （简化的`std::shared_ptr`）
+
 # 术语
 [术语](terms.md)
 

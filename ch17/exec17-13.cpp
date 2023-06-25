@@ -2,15 +2,9 @@
 #include <regex>
 #include <string>
 
+#include "god.h"
+
 using namespace std;
-
-struct God {
-    string name, mythology, vehicle, weapon;
-};
-
-ostream& operator<<(ostream& os, const God& g) {
-    return os << '(' << g.name << ',' << g.mythology << ',' << g.vehicle << ',' << g.weapon << ')';
-}
 
 // doubly-linked list node
 class Link {
