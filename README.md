@@ -496,6 +496,20 @@ $ ctest
 * [19-10](ch19/unique_ptr.h) （简化的`std::unique_ptr`）
 * [19-11](ch19/counted_ptr.h) （简化的`std::shared_ptr`）
 
+## 第20章
+### 20.1 存储和处理数据
+#### 20.1.1 使用数据
+* [Jack-and-Jill](ch20/jack_and_jill_v1.cpp)
+
+#### 20.1.2 一般化代码
+* [Jack-and-Jill v2](ch20/jack_and_jill_v2.cpp)
+
+### 20.3 序列和迭代器
+* [试一试](ch20/copy.cpp)
+
+#### 20.3.1 回到示例
+* [Jack-and-Jill v3](ch20/jack_and_jill_v3.cpp)
+
 # 术语
 [术语](terms.md)
 
