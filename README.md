@@ -510,6 +510,9 @@ $ ctest
 #### 20.3.1 回到示例
 * [Jack-and-Jill v3](ch20/jack_and_jill_v3.cpp)
 
+### 20.4 链表
+* [双向链表v4](ch20/doubly_linked_list_v4.h)
+
 # 术语
 [术语](terms.md)
 
