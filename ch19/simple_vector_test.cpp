@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <gtest/gtest.h>
 #include <utility>
 
@@ -150,6 +151,17 @@ TEST_F(SimpleVectorV3Test, ElementAccess) {
 
     EXPECT_THROW(v_.at(999), std::out_of_range);
     EXPECT_NO_THROW(v_[999]);
+}
+
+TEST_F(SimpleVectorV3Test, Iterator) {
+    auto it = std::find(v_.begin(), v_.end(), 3.3);
+    EXPECT_NE(it, v_.end());
+    EXPECT_DOUBLE_EQ(*it, 3.3);
+    EXPECT_EQ(std::find(v_.begin(), v_.end(), 9.9), v_.end());
+
+    double a[5];
+    std::copy(v_.begin(), v_.end(), a);
+    EXPECT_TRUE(std::equal(v_.begin(), v_.end(), a));
 }
 
 TEST_F(SimpleVectorV3Test, SizeAndCapacity) {

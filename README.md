@@ -513,6 +513,9 @@ $ ctest
 ### 20.4 链表
 * [双向链表v4](ch20/doubly_linked_list_v4.h)
 
+### 20.5 再次一般化vector
+* [简单向量v3](ch19/simple_vector.h)
+
 # 术语
 [术语](terms.md)
 

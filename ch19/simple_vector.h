@@ -15,10 +15,15 @@
 template<class T, class A = std::allocator<T>>
 class vector {
 public:
+    using size_type = unsigned long;
+    using value_type = T;
+    using iterator = T*;
+    using const_iterator = const T*;
+
     // default constructor
     vector() :sz(0), elem(nullptr), space(0) {}
 
-    explicit vector(int n, const T& val = T());
+    explicit vector(size_type n, const T& val = T());
     vector(std::initializer_list<T> lst);
 
     vector(const vector& v);                // copy constructor
@@ -29,17 +34,22 @@ public:
 
     ~vector() { destroy_and_deallocate(); } // destructor
 
-    T& at(int i);                               // checked access
-    const T& at(int i) const;
+    T& at(size_type i);                               // checked access
+    const T& at(size_type i) const;
 
-    T& operator[](int i) { return elem[i]; }    // access: return reference
-    const T& operator[](int i) const { return elem[i]; }
+    T& operator[](size_type i) { return elem[i]; }    // access: return reference
+    const T& operator[](size_type i) const { return elem[i]; }
 
-    int size() const { return sz; }         // the current size
-    int capacity() const { return space; }  // the current capacity
+    iterator begin() { return elem; }
+    const_iterator begin() const { return elem; }
+    iterator end() { return elem + sz; }
+    const_iterator end() const { return elem + sz; }
 
-    void reserve(int new_space);
-    void resize(int new_size, const T& val = T());
+    size_type size() const { return sz; }         // the current size
+    size_type capacity() const { return space; }  // the current capacity
+
+    void reserve(size_type new_space);
+    void resize(size_type new_size, const T& val = T());
     void push_back(const T& val);
 
 private:
@@ -48,15 +58,15 @@ private:
     void destroy(T* first, T* last);
     void destroy_and_deallocate();
 
-    int sz;     // the size
-    T* elem;    // pointer to the elements
-    int space;  // number of elements plus number of free slots
-    A alloc;    // use allocate to handle memory for elements
+    size_type sz;       // the size
+    T* elem;            // pointer to the elements
+    size_type space;    // number of elements plus number of free slots
+    A alloc;            // use allocate to handle memory for elements
 };
 
 // constructor: allocate n elements, let elem point to them, store n in sz
 template<class T, class A>
-vector<T, A>::vector(int n, const T& val)
+vector<T, A>::vector(size_type n, const T& val)
         :sz(n), elem(alloc.allocate(n)), space(n) {
     fill(elem, elem + n, val);
 }
@@ -115,20 +125,20 @@ vector<T, A>& vector<T, A>::operator=(vector&& v) noexcept {
 }
 
 template<class T, class A>
-T& vector<T, A>::at(int i) {
-    if (i < 0 || i > sz) throw std::out_of_range("index out of range");
+T& vector<T, A>::at(size_type i) {
+    if (i > sz) throw std::out_of_range("index out of range");
     return elem[i];
 }
 
 template<class T, class A>
-const T& vector<T, A>::at(int i) const {
-    if (i < 0 || i > sz) throw std::out_of_range("index out of range");
+const T& vector<T, A>::at(size_type i) const {
+    if (i > sz) throw std::out_of_range("index out of range");
     return elem[i];
 }
 
 // increase the capacity
 template<class T, class A>
-void vector<T, A>::reserve(int new_space) {
+void vector<T, A>::reserve(size_type new_space) {
     if (new_space <= space) return;     // never decrease allocation
     T* p = alloc.allocate(new_space);   // allocate new space
     construct(p, p + sz, elem);         // copy
@@ -140,7 +150,7 @@ void vector<T, A>::reserve(int new_space) {
 // make the vector have new_size elements
 // initialize each new element with val
 template<class T, class A>
-void vector<T, A>::resize(int new_size, const T& val) {
+void vector<T, A>::resize(size_type new_size, const T& val) {
     reserve(new_size);
     fill(elem + sz, elem + new_size, val);  // construct
     destroy(elem + new_size, elem + sz);    // destroy
