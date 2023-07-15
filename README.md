@@ -516,6 +516,9 @@ $ ctest
 ### 20.5 再次一般化vector
 * [简单向量v3](ch19/simple_vector.h)
 
+### 20.6 示例：简单文本编辑器
+* [简单文本编辑器](ch20/simple_text_editor.h)
+
 # 术语
 [术语](terms.md)
 
