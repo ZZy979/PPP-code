@@ -522,6 +522,9 @@ $ ctest
 ### 20.8 使我们的vector适配STL
 * [简单向量v3](ch19/simple_vector.h)
 
+### 20.9 使内置数组适配STL
+* [简单数组](ch19/simple_array.h)
+
 # 术语
 [术语](terms.md)
 

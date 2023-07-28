@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <gtest/gtest.h>
 
 #include "simple_array.h"
@@ -49,8 +50,14 @@ TEST_F(SimpleArrayTest, CopyAssignment) {
 
 TEST_F(SimpleArrayTest, ElementAccess) {
     EXPECT_DOUBLE_EQ(a_[3], 3.3);
+    EXPECT_DOUBLE_EQ(a_.at(3), 3.3);
+
     a_[3] = 333.3;
     EXPECT_DOUBLE_EQ(a_[3], 333.3);
+    EXPECT_DOUBLE_EQ(a_.at(3), 333.3);
+
+    EXPECT_THROW(a_.at(999), std::out_of_range);
+    EXPECT_NO_THROW(a_[999]);
 
     double* p = a_.data();
     EXPECT_EQ(p + 2, &a_[2]);
@@ -61,4 +68,15 @@ TEST_F(SimpleArrayTest, ElementAccess) {
 
 TEST_F(SimpleArrayTest, Size) {
     EXPECT_EQ(a_.size(), 5);
+}
+
+TEST_F(SimpleArrayTest, Iterator) {
+    auto it = std::find(a_.begin(), a_.end(), 3.3);
+    EXPECT_NE(it, a_.end());
+    EXPECT_DOUBLE_EQ(*it, 3.3);
+    EXPECT_EQ(std::find(a_.begin(), a_.end(), 9.9), a_.end());
+
+    double a[5];
+    std::copy(a_.begin(), a_.end(), a);
+    EXPECT_TRUE(std::equal(a_.begin(), a_.end(), a));
 }
