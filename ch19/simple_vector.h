@@ -40,6 +40,11 @@ public:
     T& operator[](size_type i) { return elem[i]; }    // access: return reference
     const T& operator[](size_type i) const { return elem[i]; }
 
+    T& front() { return elem[0]; }
+    const T& front() const { return elem[0]; }
+    T& back() { return elem[sz - 1]; }
+    const T& back() const { return elem[sz - 1]; }
+
     iterator begin() { return elem; }
     const_iterator begin() const { return elem; }
     iterator end() { return elem + sz; }
@@ -51,6 +56,10 @@ public:
     void reserve(size_type new_space);
     void resize(size_type new_size, const T& val = T());
     void push_back(const T& val);
+    void pop_back();
+    iterator insert(iterator p, const T& val);
+    iterator erase(iterator p);
+    void clear();
 
 private:
     void construct(T* first, T* last, const T* from);
@@ -166,6 +175,54 @@ void vector<T, A>::push_back(const T& val) {
         reserve(2 * space);     // get more space
     alloc.construct(&elem[sz], val);    // add val at end
     ++sz;                       // increase the size (sz is the number of elements)
+}
+
+// remove the last element
+template<class T, class A>
+void vector<T, A>::pop_back() {
+    alloc.destroy(elem + sz - 1);
+    --sz;
+}
+
+// insert val before p, return iterator pointing to the inserted element
+template<class T, class A>
+typename vector<T, A>::iterator vector<T, A>::insert(iterator p, const T& val) {
+    if (p == end()) {
+        push_back(val);
+        return end() - 1;
+    }
+
+    int index = p - begin();
+    if (sz == space)
+        reserve(size() == 0 ? 8 : 2 * space);   // make sure we have space
+
+    // first copy last element into uninitialized space:
+    alloc.construct(elem + sz, back());
+
+    ++sz;
+    iterator pp = begin() + index;  // the place to put val
+    for (auto pos = end() - 1; pos != pp; --pos)
+        *pos = *(pos - 1);          // copy elements one position to the right
+    *pp = val;  // insert val
+    return pp;
+}
+
+// remove the element at p, return iterator following the removed element
+template<class T, class A>
+typename vector<T, A>::iterator vector<T, A>::erase(iterator p) {
+    if (p == end()) return p;
+    for (auto pos = p + 1; pos != end(); ++pos)
+        *(pos - 1) = *pos;          // copy element one position to the left
+    alloc.destroy(&*(end() - 1));   // destroy surplus copy of last element
+    --sz;
+    return p;
+}
+
+// remove all elements
+template<class T, class A>
+void vector<T, A>::clear() {
+    destroy(elem, elem + sz);
+    sz = 0;
 }
 
 // copy construct elements in [first, last) from [from, from+(last-first))

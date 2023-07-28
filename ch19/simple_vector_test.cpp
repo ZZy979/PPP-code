@@ -145,6 +145,9 @@ TEST_F(SimpleVectorV3Test, Destructor) {
 TEST_F(SimpleVectorV3Test, ElementAccess) {
     EXPECT_DOUBLE_EQ(v_[3], 3.3);
     EXPECT_DOUBLE_EQ(v_.at(3), 3.3);
+    EXPECT_DOUBLE_EQ(v_.front(), 0.0);
+    EXPECT_DOUBLE_EQ(v_.back(), 4.4);
+
     v_[3] = 333.3;
     EXPECT_DOUBLE_EQ(v_[3], 333.3);
     EXPECT_DOUBLE_EQ(v_.at(3), 333.3);
@@ -269,4 +272,102 @@ TEST_F(SimpleVectorV3Test, PushBack) {
     EXPECT_EQ(Counted_element::count(), 5);
     ve.push_back(Counted_element());
     EXPECT_EQ(Counted_element::count(), 6);
+}
+
+TEST_F(SimpleVectorV3Test, PopBack) {
+    v_.pop_back();
+    EXPECT_EQ(v_.size(), 4);
+    EXPECT_EQ(v_.capacity(), 5);
+
+    // class with resources
+    vector<Counted_element> ve(5);
+    EXPECT_EQ(Counted_element::count(), 5);
+    ve.pop_back();
+    EXPECT_EQ(Counted_element::count(), 4);
+}
+
+TEST_F(SimpleVectorV3Test, Insert) {
+    // empty vector
+    vector<double> v0;
+    auto p = v0.insert(v0.end(), 42);
+    EXPECT_EQ(p, v0.begin());
+    EXPECT_DOUBLE_EQ(*p, 42);
+    EXPECT_EQ(v0.size(), 1);
+    EXPECT_EQ(v0.capacity(), 8);
+
+    // reallocation
+    p = v_.insert(v_.begin() + 4, 42);
+    EXPECT_EQ(p, v_.begin() + 4);
+    EXPECT_DOUBLE_EQ(*p, 42);
+    EXPECT_EQ(v_.size(), 6);
+    EXPECT_EQ(v_.capacity(), 10);
+
+    // insert at end()
+    p = v_.insert(v_.end(), 5.5);
+    EXPECT_EQ(p, v_.begin() + 6);
+    EXPECT_DOUBLE_EQ(*p, 5.5);
+    EXPECT_EQ(v_.size(), 7);
+
+    // insert at begin()
+    p = v_.insert(v_.begin(), -1.1);
+    EXPECT_EQ(p, v_.begin());
+    EXPECT_DOUBLE_EQ(*p, -1.1);
+    EXPECT_EQ(v_.size(), 8);
+
+    // class with resources
+    vector<Counted_element> ve(5);
+    EXPECT_EQ(Counted_element::count(), 5);
+    ve.insert(ve.begin() + 2, Counted_element());
+    EXPECT_EQ(Counted_element::count(), 6);
+}
+
+TEST_F(SimpleVectorV3Test, Erase) {
+    // empty vector
+    vector<double> v0;
+    EXPECT_EQ(v0.erase(v0.end()), v0.end());
+
+    // erase end()
+    EXPECT_EQ(v_.erase(v_.end()), v_.end());
+    EXPECT_EQ(v_.size(), 5);
+
+    // erase last element
+    auto p = v_.erase(v_.begin() + 4);
+    EXPECT_EQ(p, v_.end());
+    EXPECT_EQ(v_.size(), 4);
+
+    // erase first element
+    p = v_.erase(v_.begin());
+    EXPECT_EQ(p, v_.begin());
+    EXPECT_DOUBLE_EQ(*p, 1.1);
+    EXPECT_EQ(v_.size(), 3);
+
+    // erase middle element
+    p = v_.erase(v_.begin() + 1);
+    EXPECT_EQ(p, v_.begin() + 1);
+    EXPECT_DOUBLE_EQ(*p, 3.3);
+    EXPECT_EQ(v_.size(), 2);
+
+    // class with resources
+    vector<Counted_element> ve(5);
+    EXPECT_EQ(Counted_element::count(), 5);
+    ve.erase(ve.begin() + 2);
+    EXPECT_EQ(Counted_element::count(), 4);
+}
+
+TEST_F(SimpleVectorV3Test, Clear) {
+    // empty vector
+    vector<double> v0;
+    v0.clear();
+    EXPECT_EQ(v0.size(), 0);
+
+    // non-empty vector
+    v_.clear();
+    EXPECT_EQ(v_.size(), 0);
+    EXPECT_EQ(v_.capacity(), 5);
+
+    // class with resources
+    vector<Counted_element> ve(5);
+    EXPECT_EQ(Counted_element::count(), 5);
+    ve.clear();
+    EXPECT_EQ(Counted_element::count(), 0);
 }
