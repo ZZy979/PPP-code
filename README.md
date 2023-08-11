@@ -473,11 +473,11 @@ $ ctest
 * [18-9](ch17/exec17-9.cpp)
 
 ## 第19章 向量、模板和异常
-* [简单向量v3](ch19/simple_vector.h)
+* [简单向量v3](ch19/simple_vector.h) （简化的`std::vector`）
 
 ### 19.3 模板
 #### 19.3.5 整数作为模板参数
-* [简单数组](ch19/simple_array.h)
+* [简单数组](ch19/simple_array.h) （简化的`std::array`）
 
 ### 简单练习
 * [drill19](ch19/drill19.cpp)
@@ -511,7 +511,7 @@ $ ctest
 * [Jack-and-Jill v3](ch20/jack_and_jill_v3.cpp)
 
 ### 20.4 链表
-* [双向链表v4](ch20/doubly_linked_list_v4.h)
+* [双向链表v4](ch20/doubly_linked_list_v4.h) （简化的`std::list`）[WIP]
 
 ### 20.5 再次一般化vector
 * [简单向量v3](ch19/simple_vector.h)
@@ -524,6 +524,25 @@ $ ctest
 
 ### 20.9 使内置数组适配STL
 * [简单数组](ch19/simple_array.h)
+
+### 简单练习
+* [drill20](ch20/drill20.cpp)
+
+### 习题
+* [20-2](ch20/jack_and_jill_v2.cpp)
+* [20-4](ch20/jack_and_jill_v4.cpp)
+* [20-5](ch19/drill19.cpp)
+* [20-6](ch20/simple_text_editor.cpp)
+* [20-7](ch20/high.h)
+* [20-8~20-10](ch20/simple_text_editor.cpp)
+* [20-12](ch20/exec20-12.cpp)
+* [20-13](ch20/doubly_linked_list_v4.h)
+* [20-14](ch20/singly_linked_list.h) （简化的`std::forward_list`）[WIP]
+* [20-15](ch20/pvector.h)
+* [20-16](ch20/ovector.h)
+* [20-17](ch20/ownership_vector.h)
+* [20-18~20-19](ch20/range_checked_iterator.h)
+* [20-20](ch20/exec20-20.cpp)
 
 # 术语
 [术语](terms.md)

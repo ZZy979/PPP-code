@@ -1,22 +1,20 @@
 #pragma once
 
-// doubly-linked list node
+// singly-linked list node
 template<class Elem>
 struct Link {
-    Link* prev;     // previous link
-    Link* succ;     // successor (next) link
-    Elem val;       // the value
+    Link* succ;
+    Elem val;
 };
 
-// doubly-linked list
+// singly-linked list
 template<class Elem>
-class list {
-public:
-    class iterator;     // member type: iterator
+class slist {
+    class iterator;
 
-    list() :first(nullptr), sz(0) {}
+    slist() :first(nullptr), sz(0) {}
 
-    ~list() {
+    ~slist() {
         while (first) {
             auto next = first->succ;
             delete first;
@@ -30,16 +28,13 @@ public:
     // iterator to one beyond last element
     iterator end() { return iterator(nullptr); }
 
-    iterator insert(iterator p, const Elem& v); // insert v into list before p
-    iterator erase(iterator p);                 // remove p from the list
+    iterator insert_after(iterator p, const Elem& v); // insert v into list after p
+    iterator erase_after(iterator p);                 // remove the element after p from the list
 
-    void push_back(const Elem& v);      // insert v at end
     void push_front(const Elem& v);     // insert v at front
     void pop_front();   // remove the first element
-    void pop_back();    // remove the last element
 
     Elem& front();  // the first element
-    Elem& back();   // the last element
 
     int size() const { return sz; };
 
@@ -49,11 +44,10 @@ private:
 };
 
 template<class Elem>
-class list<Elem>::iterator {
+class slist<Elem>::iterator {
 public:
     explicit iterator(Link<Elem>* p) :curr(p) {}
     iterator& operator++() { curr = curr->succ; return *this; }  // forward
-    iterator& operator--() { curr = curr->prev; return *this; }  // backward
     Elem& operator*() { return curr->val; }  // get value (dereference)
     bool operator==(const iterator& b) const { return curr == b.curr; }
     bool operator!=(const iterator& b) const { return curr != b.curr; }
@@ -63,7 +57,7 @@ private:
 };
 
 template<class Elem>
-void list<Elem>::push_front(const Elem& v) {
+void slist<Elem>::push_front(const Elem& v) {
     if (!first)
         first = new Link<Elem>{nullptr, nullptr, v};
     else

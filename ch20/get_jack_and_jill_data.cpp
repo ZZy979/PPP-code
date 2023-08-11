@@ -4,7 +4,7 @@
 
 double* get_from_jack(int* count) {
     if (!(std::cin >> *count) || *count <= 0)
-        return nullptr;
+        return new double[0];
 
     auto data = new double[*count];
     for (int i = 0; i < *count; ++i)
@@ -15,7 +15,7 @@ double* get_from_jack(int* count) {
 std::vector<double>* get_from_jill() {
     int count;
     if (!(std::cin >> count) || count <= 0)
-        return nullptr;
+        return new std::vector<double>;
 
     auto data = new std::vector<double>(count);
     for (int i = 0; i < count; ++i)
