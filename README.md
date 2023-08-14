@@ -543,6 +543,8 @@ $ ctest
 * [20-17](ch20/ownership_vector.h)
 * [20-18~20-19](ch20/range_checked_iterator.h)
 * [20-20](ch20/exec20-20.cpp)
+  * 编译命令：`g++ -std=c++14 -O2 -o exec20-20 exec20-20.cpp`
+  * [测试结果](ch20/exec20-20_result.csv)（看起来似乎不存在`list`比`vector`快的可能性）
 
 # 术语
 [术语](terms.md)
