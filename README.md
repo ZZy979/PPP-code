@@ -546,6 +546,17 @@ $ ctest
   * 编译命令：`g++ -std=c++14 -O2 -o exec20-20 exec20-20.cpp`
   * [测试结果](ch20/exec20-20_result.csv)（看起来似乎不存在`list`比`vector`快的可能性）
 
+## 第21章 算法和映射
+### 21.4 函数对象
+* [Larger_than函数对象](ch21/larger_than.h)
+
+### 21.5 数值算法
+#### 21.5.2 一般化accumulate()
+* [计算物品总价](ch21/calculate_total_cost.cpp)
+
+#### 21.5.3 inner_product()
+* [计算股票市场指数](ch21/calculate_stock_market_index.cpp)
+
 # 术语
 [术语](terms.md)
 
