@@ -557,6 +557,10 @@ $ ctest
 #### 21.5.3 inner_product()
 * [计算股票市场指数](ch21/calculate_stock_market_index.cpp)
 
+### 21.6 关联容器
+#### 21.6.1 map
+* [统计单词出现次数](ch21/word_frequency.cpp)
+
 # 术语
 [术语](terms.md)
 
