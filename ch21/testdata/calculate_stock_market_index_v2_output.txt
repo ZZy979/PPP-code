@@ -1,0 +1,4 @@
+AA	34.69	Alcoa Inc.
+MMM	81.86	3M Co.
+MO	54.45	Altria Group Inc.
+DJI value 777.369

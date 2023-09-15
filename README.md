@@ -561,6 +561,9 @@ $ ctest
 #### 21.6.1 map
 * [统计单词出现次数](ch21/word_frequency.cpp)
 
+#### 21.6.3 另一个map示例
+* [计算股票市场指数v2](ch21/calculate_stock_market_index_v2.cpp)
+
 # 术语
 [术语](terms.md)
 
