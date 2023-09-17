@@ -564,6 +564,13 @@ $ ctest
 #### 21.6.3 另一个map示例
 * [计算股票市场指数v2](ch21/calculate_stock_market_index_v2.cpp)
 
+### 21.7 拷贝操作
+#### 21.7.2 流迭代器
+* [简单字典v2](ch21/simple_dictionary_v2.cpp)
+
+### 21.8 排序和搜索
+* [排序字符串（不区分大小写）](ch21/sort_strings_ignore_case.cpp)
+
 # 术语
 [术语](terms.md)
 
