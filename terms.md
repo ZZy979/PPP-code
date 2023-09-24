@@ -419,3 +419,33 @@
 * `using`：（1）定义类型别名：`using 别名 = 类型;` （2）`using`声明：`using 命名空间名::成员名;` （3）`using`指令：`using namespace 命名空间名;`
 * 类型别名(type alias)：使用`typedef`或`using`（C++11之后）为类型创建别名。
 * `value_type`：STL容器元素类型。
+
+# 第21章
+* `accumulate()`：STL数值算法，累加序列中的值。
+* 算法(algorithm)：用于解决某个问题的过程或方法，能生成结果的有限的计算步骤序列。标准库提供了大约60种标准算法，例如`sort()`、`find()`、`copy()`等。
+* 应用运算符(application) `()`：也叫函数调用运算符，使对象可以像函数一样被调用。
+* 关联容器(associative container)：存储键值对(key, value)的容器，可以基于key快速查找对应的value。STL关联容器包括`map`、`set`等。
+* 平衡树(balanced tree)：如果一棵二叉树的左右子树的节点数大致相等，则这棵树是平衡的。
+* `binary_search()`：STL二分搜索算法，判断给定值在有序序列中是否存在。
+* `copy()`：STL算法，将一个序列的元素拷贝到另一个序列。
+* `copy_if()`：STL算法，将一个序列的元素拷贝到另一个序列，但只拷贝满足谓词的元素。
+* `equal_range()`：STL二分搜索算法，返回有序序列中等于给定值的范围的起止迭代器。
+* `find()`：STL算法，返回给定值在序列中首次出现的位置。
+* `find_if()`：STL算法，返回序列中使得谓词为真的第一个元素的位置。
+* 函数对象(function object)：重载了函数调用运算符的对象。例如函数指针、Lambda表达式、`std::function`对象等。
+* 泛型(generic)：STL算法是泛型的，可以被用于不同的数据类型，包括任何STL风格的序列、任何元素类型。
+* 散列函数(hash function)：用于将给定的key转换为散列值（无符号整数）的函数。
+* `inner_product()`：STL数值算法，计算两个序列的内积。
+* lambda：指Lambda表达式，C++11引入的语法，相当于未命名的函数，可以作为参数传递。
+* `lower_bound()`：STL二分搜索算法，返回有序序列中第一个不小于给定值的元素的迭代器。
+* `map`：STL关联容器，使用平衡二叉搜索树实现的映射（键值对集合），按key的顺序存储元素，可以在O(log n)时间内基于key查找对应的value。
+* 谓词(predicate)：接受若干个参数，返回布尔值的函数。例如`bool odd(int x) { return x % 2; }`。
+* 搜索(searching)：在一个序列中查找满足条件的元素的算法，包括线性搜索（例如`find()`）和二分搜索（例如`binary_search()`）。
+* 序列(sequence)：STL建模数据集合的核心概念。序列有一个开始和一个结尾，由一对迭代器指定。
+* `set`：STL关联容器，使用平衡二叉搜索树实现的集合（只有key没有value的`map`），按key的顺序存储元素，可以在O(log n)时间内查找指定的key。
+* `sort()`：STL排序算法。
+* 排序(sorting)：重新排列序列中的元素，使得前面的元素小于后面的元素。
+* 流迭代器(stream iterator)：操作对象是I/O流的迭代器，将`<<`和`>>`等I/O操作封装为`*`和`++`等迭代器操作。标准库提供的流迭代器包括`istream_iterator`和`ostream_iterator`。
+* `unique_copy()`：STL算法，将一个序列的元素拷贝到另一个序列，不拷贝相邻的重复元素。
+* `unordered_map`：STL关联容器，使用散列表实现的映射，key无序，可以在平均O(1)、最差O(n)时间内基于key查找对应的value。
+* `upper_bound()`：STL二分搜索算法，返回有序序列中第一个大于给定值的元素的迭代器。

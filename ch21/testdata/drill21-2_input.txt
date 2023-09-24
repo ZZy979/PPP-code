@@ -1,0 +1,10 @@
+kangaroo    1500
+laptop      1000
+music       8
+notebook    1
+ocean       362
+pizza       12
+quartz      200
+rainbow     7
+sun         695700
+tree        150

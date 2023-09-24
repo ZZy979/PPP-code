@@ -1,0 +1,23 @@
+set<Fruit>:
+apple             51      6.23
+banana            22       7.3
+cherry            24      9.98
+grape             64     10.77
+kiwi              97      5.98
+lemon             87      7.25
+orange            52      9.98
+pineapple         42      5.16
+strawberry        68      39.5
+watermelon        88      3.78
+
+set<Fruit*>:
+apple             51      6.23
+banana            22       7.3
+cherry            24      9.98
+grape             64     10.77
+kiwi              97      5.98
+lemon             87      7.25
+orange            52      9.98
+pineapple         42      5.16
+strawberry        68      39.5
+watermelon        88      3.78

@@ -1,0 +1,12 @@
+{ "Nancy" "South Carolina" "1013" ("bread" 5.8 1) ("kiwi" 5.98 2) ("pineapple" 5.16 4) ("peach" 9.86 3) ("cake" 12.9 1) ("candy" 16.5 1) ("apple" 6.23 3) }
+{ "Dale" "Mississippi" "1003" ("grape" 10.77 1) }
+{ "Leo" "Ohio" "1011" ("bread" 5.8 3) ("candy" 16.5 3) ("apple" 6.23 3) ("strawberry" 39.5 1) ("grape" 10.77 3) ("peach" 9.86 2) ("watermelon" 3.78 1) ("banana" 7.3 3) ("cake" 12.9 5) }
+{ "Jack" "Missouri" "1009" ("strawberry" 39.5 5) ("grape" 10.77 1) ("banana" 7.3 2) ("chocolate" 45.9 1) ("lemon" 7.25 2) }
+{ "Alice" "Washington" "1000" ("cake" 12.9 2) ("banana" 7.3 1) ("pineapple" 5.16 5) ("candy" 16.5 2) ("orange" 9.98 2) }
+{ "Olivia" "Arizona" "1014" ("pineapple" 5.16 1) ("bread" 5.8 1) ("peach" 9.86 5) }
+{ "Helen" "Hawaii" "1007" ("candy" 16.5 2) ("orange" 9.98 4) ("kiwi" 5.98 1) ("apple" 6.23 3) }
+{ "Kevin" "Pennsylvania" "1010" ("grape" 10.77 4) ("apple" 6.23 3) ("peach" 9.86 1) ("cherry" 9.98 2) ("pineapple" 5.16 3) ("bread" 5.8 2) }
+{ "Eric" "North Carolina" "1004" ("peach" 9.86 2) ("banana" 7.3 6) ("grape" 10.77 3) ("lemon" 7.25 2) ("strawberry" 39.5 1) }
+{ "Michael" "Vermont" "1012" ("banana" 7.3 1) }
+{ "Issac" "Florida" "1008" ("lemon" 7.25 1) ("kiwi" 5.98 15) ("apple" 6.23 1) ("banana" 7.3 4) }
+{ "Frank" "California" "1004" ("cake" 12.9 4) }

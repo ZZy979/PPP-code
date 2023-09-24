@@ -1,0 +1,169 @@
+vector test
+Initial items:
+apple              42       13.8
+banana            617        9.9
+orange            339       11.6
+peach             705       9.86
+kiwi              851       10.8
+bread             189        5.8
+cake              192       12.9
+biscuit           675       15.9
+chocolate         889       45.9
+candy             842       16.5
+
+Sort by name:
+apple              42       13.8
+banana            617        9.9
+biscuit           675       15.9
+bread             189        5.8
+cake              192       12.9
+candy             842       16.5
+chocolate         889       45.9
+kiwi              851       10.8
+orange            339       11.6
+peach             705       9.86
+
+Sort by iid:
+apple              42       13.8
+bread             189        5.8
+cake              192       12.9
+orange            339       11.6
+banana            617        9.9
+biscuit           675       15.9
+peach             705       9.86
+candy             842       16.5
+kiwi              851       10.8
+chocolate         889       45.9
+
+Sort by value in reverse order:
+chocolate         889       45.9
+candy             842       16.5
+biscuit           675       15.9
+apple              42       13.8
+cake              192       12.9
+orange            339       11.6
+kiwi              851       10.8
+banana            617        9.9
+peach             705       9.86
+bread             189        5.8
+
+Insert two new items:
+chocolate         889       45.9
+candy             842       16.5
+biscuit           675       15.9
+apple              42       13.8
+cake              192       12.9
+orange            339       11.6
+kiwi              851       10.8
+banana            617        9.9
+peach             705       9.86
+bread             189        5.8
+horse shoe         99      12.34
+Canon S400       9988     499.95
+
+Remove two items by name:
+chocolate         889       45.9
+candy             842       16.5
+biscuit           675       15.9
+apple              42       13.8
+orange            339       11.6
+kiwi              851       10.8
+peach             705       9.86
+bread             189        5.8
+horse shoe         99      12.34
+Canon S400       9988     499.95
+
+Remove two items by iid:
+chocolate         889       45.9
+candy             842       16.5
+biscuit           675       15.9
+apple              42       13.8
+orange            339       11.6
+kiwi              851       10.8
+bread             189        5.8
+horse shoe         99      12.34
+
+list test
+Initial items:
+apple              42       13.8
+banana            617        9.9
+orange            339       11.6
+peach             705       9.86
+kiwi              851       10.8
+bread             189        5.8
+cake              192       12.9
+biscuit           675       15.9
+chocolate         889       45.9
+candy             842       16.5
+
+Sort by name:
+apple              42       13.8
+banana            617        9.9
+biscuit           675       15.9
+bread             189        5.8
+cake              192       12.9
+candy             842       16.5
+chocolate         889       45.9
+kiwi              851       10.8
+orange            339       11.6
+peach             705       9.86
+
+Sort by iid:
+apple              42       13.8
+bread             189        5.8
+cake              192       12.9
+orange            339       11.6
+banana            617        9.9
+biscuit           675       15.9
+peach             705       9.86
+candy             842       16.5
+kiwi              851       10.8
+chocolate         889       45.9
+
+Sort by value in reverse order:
+chocolate         889       45.9
+candy             842       16.5
+biscuit           675       15.9
+apple              42       13.8
+cake              192       12.9
+orange            339       11.6
+kiwi              851       10.8
+banana            617        9.9
+peach             705       9.86
+bread             189        5.8
+
+Insert two new items:
+chocolate         889       45.9
+candy             842       16.5
+biscuit           675       15.9
+apple              42       13.8
+cake              192       12.9
+orange            339       11.6
+kiwi              851       10.8
+banana            617        9.9
+peach             705       9.86
+bread             189        5.8
+horse shoe         99      12.34
+Canon S400       9988     499.95
+
+Remove two items by name:
+chocolate         889       45.9
+candy             842       16.5
+biscuit           675       15.9
+apple              42       13.8
+orange            339       11.6
+kiwi              851       10.8
+peach             705       9.86
+bread             189        5.8
+horse shoe         99      12.34
+Canon S400       9988     499.95
+
+Remove two items by iid:
+chocolate         889       45.9
+candy             842       16.5
+biscuit           675       15.9
+apple              42       13.8
+orange            339       11.6
+kiwi              851       10.8
+bread             189        5.8
+horse shoe         99      12.34

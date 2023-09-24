@@ -1,0 +1,10 @@
+apple       42      13.8
+banana      617     9.9
+orange      339     11.6
+peach       705     9.86
+kiwi        851     10.8
+bread       189     5.8
+cake        192     12.9
+biscuit     675     15.9
+chocolate   889     45.9
+candy       842     16.5

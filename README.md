@@ -571,6 +571,26 @@ $ ctest
 ### 21.8 排序和搜索
 * [排序字符串（不区分大小写）](ch21/sort_strings_ignore_case.cpp)
 
+### 简单练习
+* [21-1](ch21/drill21-1.cpp)
+* [21-2](ch21/drill21-2.cpp)
+* [21-3](ch21/drill21-3.cpp)
+
+### 习题
+* [21-3~21-4](ch21/count.h)
+* [21-6](ch21/exec21-6.cpp)
+* [21-7](ch21/binary_search.h)
+* [21-8](ch21/exec21-8.cpp)
+* 21-9~21-10
+  * [Order类](ch21/order.h)
+  * [主程序](ch21/exec21-9.cpp)
+* 21-11~21-12
+  * [Order_list_window](ch21/order_list_window.h)
+  * [Order_list_table](ch21/order_list_table.h)
+  * [Order_edit_window](ch21/order_edit_window.h)
+  * [Purchase_list_table](ch21/purchase_list_table.h)
+  * [主程序](ch21/exec21-11.cpp)
+
 # 术语
 [术语](terms.md)
 
