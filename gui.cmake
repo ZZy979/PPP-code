@@ -16,6 +16,11 @@ else()
   set(GUI_TYPE)
 endif()
 
+# 绕过FLTK的bug：https://github.com/ZZy979/PPP-code/issues/14
+if(MINGW)
+  target_compile_options(fluid PRIVATE -Wno-narrowing)
+endif()
+
 # 添加一个GUI可执行程序并链接到FLTK库，用法：
 # add_fltk_executable(<name> <source>...)
 function(add_fltk_executable name)
