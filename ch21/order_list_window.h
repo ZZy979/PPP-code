@@ -12,8 +12,8 @@
 // A window to display and edit a list of orders, and save and load to/from a file.
 class Order_list_window : public Fl_Window {
 public:
-    Order_list_window(int t, int h, const char* title = nullptr);
-    ~Order_list_window();
+    Order_list_window(int w, int h, const char* title = nullptr);
+    ~Order_list_window() override;
 
     void load_file();
     void save_file();

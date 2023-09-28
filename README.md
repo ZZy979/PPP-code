@@ -590,6 +590,10 @@ $ ctest
   * [Order_edit_window](ch21/order_edit_window.h)
   * [Purchase_list_table](ch21/purchase_list_table.h)
   * [主程序](ch21/exec21-11.cpp)
+* 21-13~21-15
+  * [Word_query](ch21/word_query.h)
+  * [Word_query_window](ch21/word_query_window.h)
+  * [主程序](ch21/exec21-15.cpp)
 
 # 术语
 [术语](terms.md)

@@ -17,6 +17,9 @@ target_link_libraries(exec21-9 order)
 add_fltk_executable(exec21-11 exec21-11.cpp order_list_window.cpp order_list_table.cpp
   order_edit_window.cpp purchase_list_table.cpp)
 target_link_libraries(exec21-11 order)
+add_library(word_query word_query.cpp)
+add_fltk_executable(exec21-15 exec21-15.cpp word_query_window.cpp)
+target_link_libraries(exec21-15 word_query)
 
 set(TESTDATA_DIR ${CMAKE_CURRENT_SOURCE_DIR}/testdata)
 add_gtest(NAME larger_than_test SOURCE larger_than_test.cpp)
@@ -90,3 +93,4 @@ add_file_test(
   OUTPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/exec21-9_output.txt
   COMPARE_FILE ${TESTDATA_DIR}/exec21-9_output.txt
 )
+add_gtest(NAME word_query_test SOURCE word_query_test.cpp LIBRARY word_query)
