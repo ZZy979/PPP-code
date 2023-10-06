@@ -18,7 +18,12 @@ Purchase_list_table::Purchase_list_table(int x, int y, int w, int h, std::vector
 
 void Purchase_list_table::update_content() {
     clear();
+    set_table_size();
+    create_widgets();
+    redraw();
+}
 
+void Purchase_list_table::set_table_size() {
     cols(COLUMN_NAMES.size());
     col_header(1);
     col_resize(0);
@@ -30,7 +35,9 @@ void Purchase_list_table::update_content() {
     row_header(0);
     row_resize(0);
     row_height_all(25);
+}
 
+void Purchase_list_table::create_widgets() {
     begin();
     for (int r = 0; r < rows(); ++r) {
         Purchase& p = purchases_[r];
@@ -70,7 +77,6 @@ void Purchase_list_table::update_content() {
         }
     }
     end();
-    redraw();
 }
 
 void Purchase_list_table::draw_cell(Fl_Table::TableContext context, int R, int C, int X, int Y, int W, int H) {

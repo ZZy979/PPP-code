@@ -17,7 +17,7 @@ public:
     void update_address() { order_.address = address_input_->value(); }
     void update_phone_number() { order_.phone_number = phone_number_input_->value(); }
 
-    const Order& get_order() const { return order_; }
+    const Order& order() const { return order_; }
     void set_order(const Order& o) { order_ = o; fill_order_info(); }
 
     int index() const { return index_; }
@@ -36,5 +36,5 @@ private:
 
     // data
     Order order_;
-    int index_;
+    int index_;  // used by Order_list_table::update_order(), -1 for adding, >= 0 for editing
 };

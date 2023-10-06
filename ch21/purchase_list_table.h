@@ -18,6 +18,9 @@ protected:
     void draw_cell(TableContext context, int R, int C, int X, int Y, int W, int H) override;
 
 private:
+    void set_table_size();
+    void create_widgets();
+
     static const std::vector<std::string> COLUMN_NAMES;
     static const std::vector<int> COLUMN_WIDTH;
 
