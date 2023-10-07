@@ -3,7 +3,7 @@
 
 本书网站：https://www.stroustrup.com/programming.html
 
-笔记：https://blog.csdn.net/zzy979481894/article/details/125922900
+笔记：https://zzy979.github.io/posts/ppp-note-index/
 
 # 运行方式
 本项目使用CMake构建，通过IDE或命令行的方式编译并运行其中的代码示例。
