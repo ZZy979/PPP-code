@@ -483,8 +483,8 @@ $ ctest
 * [drill19](ch19/drill19.cpp)
 
 ### 习题
-* [19-1](ch19/vector_add.cpp) （实现`std::valarray`的`operator+`）
-* [19-2](ch19/inner_product.cpp) （实现`std::inner_product()`）
+* [19-1](ch19/vector_add.h) （实现`std::valarray`的`operator+`）
+* [19-2](ch19/inner_product.h) （实现`std::inner_product()`）
 * 19-3 （实现`std::pair`）
   * [Pair](ch19/pair.h)
   * [Symbol_table](ch19/symbol_table.h)
@@ -594,6 +594,15 @@ $ ctest
   * [Word_query](ch21/word_query.h)
   * [Word_query_window](ch21/word_query_window.h)
   * [主程序](ch21/exec21-15.cpp)
+
+## 第23章 文本处理
+### 23.2 字符串
+* [字符串转换函数](ch23/string_convert.h)
+
+### 23.4 映射
+* 查找邮件
+  * [Message_file](ch23/email_message.h)
+  * [主程序](ch23/find_email.cpp)
 
 # 术语
 [术语](terms.md)
