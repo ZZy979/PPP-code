@@ -604,6 +604,9 @@ $ ctest
   * [Message_file](ch23/email_message.h)
   * [主程序](ch23/find_email.cpp)
 
+### 23.7 使用正则表达式搜索
+* [查找邮政编码](ch23/find_postal_codes.cpp)
+
 # 术语
 [术语](terms.md)
 
