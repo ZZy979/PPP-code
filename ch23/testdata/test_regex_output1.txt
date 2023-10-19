@@ -1,0 +1,22 @@
+enter pattern: pattern: \w{2}\s*\d{5}(-\d{4})?
+now enter lines:
+line 1: address TX77845
+	matches[0]: TX77845
+	matches[1]: 
+line 2: ffff tx 77843 asasasaa
+	matches[0]: tx 77843
+	matches[1]: 
+didn't match
+didn't match
+line 5: zzz TX23456-3456sss ggg TX33456-1234
+	matches[0]: TX23456-3456
+	matches[1]: -3456
+line 6: cvzcv TX77845-1234 sdsas
+	matches[0]: TX77845-1234
+	matches[1]: -1234
+line 7: xxxTx77845xxx
+	matches[0]: Tx77845
+	matches[1]: 
+line 8: TX12345-123456
+	matches[0]: TX12345-1234
+	matches[1]: -1234

@@ -1,0 +1,39 @@
+enter pattern: pattern: abc
+now enter lines:
+line 1: abc
+	matches[0]: abc
+line 2: aabc
+	matches[0]: abc
+didn't match
+line 4: abcc
+	matches[0]: abc
+didn't match
+line 6: abccc
+	matches[0]: abc
+line 7: abcabc
+	matches[0]: abc
+line 8: abcabcabc
+	matches[0]: abc
+line 9: abcdef
+	matches[0]: abc
+line 10: abcd
+	matches[0]: abc
+didn't match
+line 12: bcabc
+	matches[0]: abc
+line 13: cabca
+	matches[0]: abc
+line 14: 123abc
+	matches[0]: abc
+line 15: abc123
+	matches[0]: abc
+line 16: abc&*%
+	matches[0]: abc
+line 17: abcabc!@#
+	matches[0]: abc
+didn't match
+didn't match
+line 20: ABCabc
+	matches[0]: abc
+line 21: "abc"
+	matches[0]: abc

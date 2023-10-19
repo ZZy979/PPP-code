@@ -1,0 +1,32 @@
+enter pattern: pattern: \([^)]*\)
+now enter lines:
+line 1: (abc)
+	matches[0]: (abc)
+didn't match
+didn't match
+line 4: (123)
+	matches[0]: (123)
+didn't match
+didn't match
+line 7: ()
+	matches[0]: ()
+line 8: (abc123)
+	matches[0]: (abc123)
+line 9: (a(b)c)
+	matches[0]: (a(b)
+line 10: (1+2=3)
+	matches[0]: (1+2=3)
+line 11: (a(b(c)d)e)
+	matches[0]: (a(b(c)
+line 12: (Hello, world!)
+	matches[0]: (Hello, world!)
+line 13: (1, 2, 3)
+	matches[0]: (1, 2, 3)
+line 14: (a+b)*
+	matches[0]: (a+b)
+line 15: (a|b)
+	matches[0]: (a|b)
+line 16: (a*b+c?)
+	matches[0]: (a*b+c?)
+line 17: (a(b(c)d)e)f
+	matches[0]: (a(b(c)

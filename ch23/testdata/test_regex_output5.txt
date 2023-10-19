@@ -1,0 +1,26 @@
+enter pattern: pattern: \w+ \w+( Jr\.)?
+now enter lines:
+line 1: John Doe
+	matches[0]: John Doe
+	matches[1]: 
+didn't match
+line 3: Jane Smith
+	matches[0]: Jane Smith
+	matches[1]: 
+didn't match
+line 5: Robert Johnson Jr.
+	matches[0]: Robert Johnson Jr.
+	matches[1]:  Jr.
+line 6: Robert Johnson Jr
+	matches[0]: Robert Johnson
+	matches[1]: 
+line 7: ROBERT JOHNSON JR.
+	matches[0]: ROBERT JOHNSON
+	matches[1]: 
+line 8: foo bar baz
+	matches[0]: foo bar
+	matches[1]: 
+line 9: foo Jr. bar baz
+	matches[0]: foo Jr
+	matches[1]: 
+didn't match

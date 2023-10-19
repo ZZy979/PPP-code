@@ -1,0 +1,15 @@
+x(.*)x
+xox
+XoX
+xo
+oxx
+xabcx
+Xabcx
+xyzx
+x x
+x123x
+123
+x!@#x
+xx
+xxx
+x.x

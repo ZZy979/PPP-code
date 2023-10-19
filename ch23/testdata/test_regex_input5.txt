@@ -1,0 +1,11 @@
+\w+ \w+( Jr\.)?
+John Doe
+John
+Jane Smith
+Jane-Smith
+Robert Johnson Jr.
+Robert Johnson Jr
+ROBERT JOHNSON JR.
+foo bar baz
+foo Jr. bar baz
+Jr. Jr. Jr.

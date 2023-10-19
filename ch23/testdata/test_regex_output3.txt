@@ -1,0 +1,36 @@
+enter pattern: pattern: x(.*)x
+now enter lines:
+line 1: xox
+	matches[0]: xox
+	matches[1]: o
+didn't match
+didn't match
+line 4: oxx
+	matches[0]: xx
+	matches[1]: 
+line 5: xabcx
+	matches[0]: xabcx
+	matches[1]: abc
+didn't match
+line 7: xyzx
+	matches[0]: xyzx
+	matches[1]: yz
+line 8: x x
+	matches[0]: x x
+	matches[1]:  
+line 9: x123x
+	matches[0]: x123x
+	matches[1]: 123
+didn't match
+line 11: x!@#x
+	matches[0]: x!@#x
+	matches[1]: !@#
+line 12: xx
+	matches[0]: xx
+	matches[1]: 
+line 13: xxx
+	matches[0]: xxx
+	matches[1]: x
+line 14: x.x
+	matches[0]: x.x
+	matches[1]: .
