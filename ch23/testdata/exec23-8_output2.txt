@@ -1,0 +1,17 @@
+1: abc
+2: abc
+3: aabc
+5: abcc
+7: abccc
+8: abcabc
+9: abcabcabc
+10: abcdef
+11: abcd
+13: bcabc
+14: cabca
+15: 123abc
+16: abc123
+17: abc&*%
+18: abcabc!@#
+21: ABCabc
+22: "abc"

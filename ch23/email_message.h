@@ -33,3 +33,13 @@ struct Mail_file {
 
 bool find_from_addr(const Message& m, std::string& s);
 std::string find_subject(const Message& m);
+
+std::string get_sender(const Message& m);
+std::string get_recipient(const Message& m);
+std::string get_subject(const Message& m);
+
+bool has_sender_addr(const Message& m, const std::string& addr);
+bool has_sender_name(const Message& m, const std::string& name);
+bool has_recipient_addr(const Message& m, const std::string& addr);
+bool has_recipient_name(const Message& m, const std::string& name);
+bool contains_subject(const Message& m, const std::string& subject);

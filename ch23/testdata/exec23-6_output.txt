@@ -1,0 +1,4 @@
+1: On June 5, 2007, the company announced its earnings for 6/5/2007.
+3: The stock price increased by 10% on the news, reaching a high of $50.07 on jun 5, 2007,
+4: before settling back down to $48.92 by the end of trading on 5 June 2007.
+6: Overall, it was a great day for the company and its shareholders, as they celebrated the success of 2007-06-05.

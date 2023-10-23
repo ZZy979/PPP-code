@@ -614,6 +614,19 @@ $ ctest
 ### 23.9 使用正则表达式匹配
 * [验证表格](ch23/verify_table.cpp)
 
+### 简单练习
+* [查找邮政编码](ch23/find_postal_codes.cpp)
+
+## 习题
+* [23-1](ch23/testdata/test.eml)
+* [23-2~23-4](ch23/find_email_v2.cpp)
+* [23-6](ch23/exec23-6.cpp)
+* [23-8](ch23/exec23-8.cpp)
+* [23-10](ch23/exec23-10.cpp)
+* [23-12](ch23/exec23-12.cpp)
+* [23-13](ch23/exec23-13.cpp)
+* [23-15~16](ch23/exec23-15.txt)
+
 # 术语
 [术语](terms.md)
 

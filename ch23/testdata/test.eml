@@ -1,0 +1,246 @@
+From: Alice <alice@example.com>
+To: Bob <bob@example.com>, Cindy <cindy@example.com>
+Subject: Hello
+Date: Sun, 17 Sep 2023 17:36:33 +0800
+
+Hi everyone.
+----
+From: Bob <bob@example.com>
+To: Alice <alice@example.com>
+Subject: Re: Hello
+Date: Mon, 18 Sep 2023 09:23:14 +0800
+
+Hi Alice,
+How are you?
+----
+From: Cindy <cindy@example.com>
+To: Alice <alice@example.com>
+Subject: Meeting Reminder
+Date: Tue, 19 Sep 2023 14:05:42 +0800
+
+Hi Alice,
+Just a reminder that we have a meeting tomorrow at 10 AM. Don't forget to bring the report.
+----
+From: Alice <alice@example.com>
+To: Bob <bob@example.com>, Cindy <cindy@example.com>
+Subject: Re: Meeting Reminder
+Date: Tue, 19 Sep 2023 16:42:11 +0800
+
+Thanks, Cindy. I'll be there on time.
+----
+From: Bob <bob@example.com>
+To: Alice <alice@example.com>
+Subject: Re: Meeting Reminder
+Date: Tue, 19 Sep 2023 16:45:27 +0800
+
+See you tomorrow, Alice.
+----
+From: Alice <alice@example.com>
+To: Bob <bob@example.com>, Cindy <cindy@example.com>
+Subject: Meeting Follow-up
+Date: Wed, 20 Sep 2023 11:18:09 +0800
+
+Hi everyone,
+Thanks for attending the meeting yesterday. Here's the summary of what we discussed.
+----
+From: Cindy <cindy@example.com>
+To: Alice <alice@example.com>
+Subject: Re: Meeting Follow-up
+Date: Wed, 20 Sep 2023 13:05:27 +0800
+
+Thanks for sending the summary, Alice.
+----
+From: Bob <bob@example.com>
+To: Alice <alice@example.com>
+Subject: Re: Meeting Follow-up
+Date: Wed, 20 Sep 2023 13:07:42 +0800
+
+Agreed. Thanks, Alice.
+----
+From: Alice <alice@example.com>
+To: Bob <bob@example.com>, Cindy <cindy@example.com>
+Subject: Project Update
+Date: Thu, 21 Sep 2023 09:36:52 +0800
+
+Hi all,
+Just wanted to give you an update on the project. We're on track to meet the deadline.
+----
+From: Cindy <cindy@example.com>
+To: Alice <alice@example.com>
+Subject: Re: Project Update
+Date: Thu, 21 Sep 2023 10:42:19 +0800
+
+Thanks for the update, Alice.
+----
+From: Bob <bob@example.com>
+To: Alice <alice@example.com>
+Subject: Re: Project Update
+Date: Thu, 21 Sep 2023 10:44:36 +0800
+
+Good to hear. Keep up the good work, Alice.
+----
+From: Alice <alice@example.com>
+To: Bob <bob@example.com>, Cindy <cindy@example.com>
+Subject: Lunch Invitation
+Date: Fri, 22 Sep 2023 12:15:23 +0800
+
+Hi Bob and Cindy,
+I'm inviting you to join me for lunch today at noon. Let me know if you're available.
+----
+From: Bob <bob@example.com>
+To: Alice <alice@example.com>, Cindy <cindy@example.com>
+Subject: Re: Lunch Invitation
+Date: Fri, 22 Sep 2023 12:20:57 +0800
+
+I'm in. See you at noon, Alice.
+----
+From: Cindy <cindy@example.com>
+To: Alice <alice@example.com>, Bob <bob@example.com>
+Subject: Re: Lunch Invitation
+Date: Fri, 22 Sep 2023 12:22:14 +0800
+
+Sounds good to me.
+----
+From: Alice <alice@example.com>
+To: Bob <bob@example.com>, Cindy <cindy@example.com>
+Subject: Weekend Plans
+Date: Sat, 23 Sep 2023 09:13:08 +0800
+
+Hi,
+What are your plans for the weekend?
+----
+From: Bob <bob@example.com>
+To: Alice <alice@example.com>, Cindy <cindy@example.com>
+Subject: Re: Weekend Plans
+Date: Sat, 23 Sep 2023 10:05:36 +0800
+
+I'm planning to go hiking. How about you guys?
+----
+From: Cindy <cindy@example.com>
+To: Alice <alice@example.com>, Bob <bob@example.com>
+Subject: Re: Weekend Plans
+Date: Sat, 23 Sep 2023 10:08:42 +0800
+
+I'm going to see a film with my family.
+----
+From: Alice <alice@example.com>
+To: Dale <dale@example.com>, Eric <eric@example.com>, Frank <frank@example.com>
+Subject: Invitation
+Date: Sun, 22 Oct 2023 18:05:58 +0800
+
+Hi all,
+I would like to invite you to my party next Saturday. I hope you can make it.
+Best regards,
+Alice
+----
+From: Bob <bob@example.com>
+To: Alice <alice@example.com>
+Subject: Meeting
+Date: Sat, 21 Oct 2023 10:30:00 -0400
+
+Hi Alice,
+I would like to schedule a meeting with you to discuss the project. Please let me know your availability.
+Best regards,
+Bob
+----
+From: Carol <carol@example.com>
+To: Alice <alice@example.com>
+Subject: Dinner
+Date: Fri, 20 Oct 2023 19:00:00 -0500
+
+Hi Alice,
+Do you want to have dinner together tomorrow night? Let me know if you are available.
+Best regards,
+Carol
+----
+From: Dale <dale@example.com>
+To: Alice <alice@example.com>, Eric <eric@example.com>
+Subject: Soccer game
+Date: Thu, 19 Oct 2023 15:00:00 +0100
+
+Hi Alice and Eric,
+Do you want to join me for a soccer game this weekend? Let me know if you are interested.
+Best regards,
+Dale
+----
+From: Eric <eric@example.com>
+To: Alice <alice@example.com>, Dale <dale@example.com>
+Subject: Camping trip
+Date: Wed, 18 Oct 2023 08:00:00 -0700
+
+Hi Alice and Dale,
+I am planning a camping trip next month. Would you like to join me? Let me know if you are interested.
+Best regards,
+Eric
+----
+From: Frank <frank@example.com>
+To: Alice <alice@example.com>
+Subject: Book club
+Date: Tue, 17 Oct 2023 20:00:00 +0200
+
+Hi Alice,
+I am organizing a book club meeting next week. Would you like to join us? Let me know your thoughts.
+Best regards,
+Frank
+----
+From: Grace <grace@example.com>
+To: Alice <alice@example.com>
+Subject: Yoga class
+Date: Mon, 16 Oct 2023 17:30:00 -0600
+
+Hi Alice,
+I am going to a yoga class this evening. Would you like to join me? Let me know if you are interested.
+Best regards,
+Grace
+----
+From: Henry <henry@example.com>
+To: Alice <alice@example.com>
+Subject: Movie night
+Date: Sun, 15 Oct 2023 21:00:00 +0800
+
+Hi Alice,
+I am planning a movie night at my place next weekend. Would you like to come? Let me know if you are interested.
+Best regards,
+Henry
+----
+From: Jack <jack@example.com>
+To: Alice <alice@example.com>
+Subject: Birthday party
+Date: Sat, 14 Oct 2023 13:00:00 -0400
+
+Hi Alice,
+I am having a birthday party next week. Would you like to come? Let me know if you can make it.
+Best regards,
+Jack
+----
+From: Kate <kate@example.com>
+To: Alice <alice@example.com>
+Subject: Coffee
+Date: Fri, 13 Oct 2023 09:00:00 +0100
+
+Hi Alice,
+Do you want to have coffee together this afternoon? Let me know if you are available.
+Best regards,
+Kate
+----
+From: Alice <alice@example.com>
+From: Alice2 <alice2@example.com>
+To: Bob <bob@example.com>
+Subject: Meeting
+Date: Thu, 21 Sep 2023 09:30:00 +0800
+
+Hi Bob, can we meet at the office at 2pm to discuss the project?
+----
+From: Cindy <cindy@example.com>
+To: Alice <alice@example.com>
+Subject: Meeting
+Date: Mon, 18 Sep 2023 09:10:22 +0800
+
+Hi Alice,
+Just a reminder that we have a meeting tomorrow at 10am. Don't forget to bring your notes.
+Best regards,
+Cindy
+----
+----
+Invalid message
+----
