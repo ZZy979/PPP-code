@@ -634,6 +634,9 @@ $ ctest
 #### 24.2.1 数值限制
 * [数值限制](ch24/numeric_limits.cpp)
 
+### 24.5 Matrix库
+* [矩阵示例](ch24/matrix_example.cpp)
+
 # 术语
 [术语](terms.md)
 

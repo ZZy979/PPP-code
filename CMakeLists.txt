@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.24)
 project(PPP_code)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -13,6 +13,8 @@ if(MSVC)
 endif()
 
 add_subdirectory(GUI)  # 作者提供的GUI库
+add_subdirectory(Matrix)  # 作者提供的Matrix库
+
 file(GLOB CHAPTERS RELATIVE ${CMAKE_SOURCE_DIR} ch*)
 foreach(c IN ITEMS ${CHAPTERS})
   add_subdirectory(${c})
