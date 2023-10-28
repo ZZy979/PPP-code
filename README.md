@@ -617,7 +617,7 @@ $ ctest
 ### 简单练习
 * [查找邮政编码](ch23/find_postal_codes.cpp)
 
-## 习题
+### 习题
 * [23-1](ch23/testdata/test.eml)
 * [23-2~23-4](ch23/find_email_v2.cpp)
 * [23-6](ch23/exec23-6.cpp)
@@ -626,6 +626,13 @@ $ ctest
 * [23-12](ch23/exec23-12.cpp)
 * [23-13](ch23/exec23-13.cpp)
 * [23-15~16](ch23/exec23-15.txt)
+
+## 第24章 数值计算
+### 24.2 大小、精度和溢出
+* [溢出和截断](ch24/overflow_and_truncation.cpp)
+
+#### 24.2.1 数值限制
+* [数值限制](ch24/numeric_limits.cpp)
 
 # 术语
 [术语](terms.md)
