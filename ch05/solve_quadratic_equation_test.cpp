@@ -2,7 +2,7 @@
 #include <cmath>
 #include <stdexcept>
 
-#include "solve_equation.h"
+#include "solve_quadratic_equation.h"
 
 TEST(SolveQuadraticEquation, TwoDifferentRoots) {
     auto p = solve_quadratic_equation(2, 6, -3);

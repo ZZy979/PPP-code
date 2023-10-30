@@ -134,7 +134,7 @@ $ ctest
 
 ### 习题
 * [5-2~5-6](ch05/temperature_converters.cpp)
-* [5-7](ch05/solve_equation.cpp)
+* [5-7](ch05/solve_quadratic_equation.cpp)
 * [5-8](ch05/sum_n_integers.cpp)
 * [5-11](ch05/fibonacci_series.cpp)
 * [5-12~5-13](ch05/bulls_and_cows.cpp)
@@ -636,6 +636,16 @@ $ ctest
 
 ### 24.5 Matrix库
 * [矩阵示例](ch24/matrix_example.cpp)
+
+#### 24.5.1 维度和访问
+* [二维矩阵](ch24/two_dim_matrix.cpp)
+
+### 24.6 示例：解线性方程组
+* [高斯消元法](ch24/gaussian_elimination.cpp)
+* [主程序](ch24/solve_linear_equations.cpp)
+
+#### 24.6.3 测试
+* [解随机线性方程组](ch24/solve_random_system.cpp)
 
 # 术语
 [术语](terms.md)

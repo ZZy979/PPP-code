@@ -1,4 +1,4 @@
-#include "solve_equation.h"
+#include "solve_quadratic_equation.h"
 
 #include <cmath>
 #include <stdexcept>
