@@ -8,6 +8,7 @@ add_executable(solve_linear_equations solve_linear_equations.cpp)
 target_link_libraries(solve_linear_equations gaussian_elimination)
 add_executable(solve_random_system solve_random_system.cpp)
 target_link_libraries(solve_random_system gaussian_elimination)
+add_executable(generate_normal_dist_histogram generate_normal_dist_histogram.cpp)
 
 set(TESTDATA_DIR ${CMAKE_CURRENT_SOURCE_DIR}/testdata)
 add_output_test(

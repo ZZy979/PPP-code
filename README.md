@@ -647,6 +647,9 @@ $ ctest
 #### 24.6.3 测试
 * [解随机线性方程组](ch24/solve_random_system.cpp)
 
+### 24.7 随机数
+* [生成正态分布直方图](ch24/generate_normal_dist_histogram.cpp)
+
 # 术语
 [术语](terms.md)
 

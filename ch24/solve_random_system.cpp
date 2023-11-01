@@ -1,5 +1,5 @@
-#include <cstdlib>
 #include <iostream>
+#include <random>
 
 #include "MatrixIO.h"
 #include "gaussian_elimination.h"
@@ -22,8 +22,12 @@ int main() {
 
 Vector random_vector(Index n) {
     Vector v(n);
+    random_device rd;
+    default_random_engine gen(rd());            // generates integers
+    uniform_real_distribution<> ureal(0, n);    // maps ints into doubles in [0:n)
+
     for (Index i = 0; i < n; ++i)
-        v(i) = 1.0 * n * rand() / RAND_MAX;
+        v(i) = ureal(gen);
     return v;
 }
 
