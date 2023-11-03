@@ -625,7 +625,7 @@ $ ctest
 * [23-10](ch23/exec23-10.cpp)
 * [23-12](ch23/exec23-12.cpp)
 * [23-13](ch23/exec23-13.cpp)
-* [23-15~16](ch23/exec23-15.txt)
+* [23-15~23-16](ch23/exec23-15.txt)
 
 ## 第24章 数值计算
 ### 24.2 大小、精度和溢出
@@ -649,6 +649,22 @@ $ ctest
 
 ### 24.7 随机数
 * [生成正态分布直方图](ch24/generate_normal_dist_histogram.cpp)
+
+### 简单练习
+* [24-1~24-3](ch24/drill24-1.cpp)
+* [24-4](ch24/drill24-4.cpp)
+* [24-5, 24-8](ch24/drill24-5.cpp)
+* [24-6](ch24/drill24-6.cpp)
+* [24-7](ch24/drill24-7.cpp)
+
+### 习题
+* [24-1~24-2](ch24/drill24-1.cpp)
+* [24-4](ch24/solve_linear_equations.cpp)
+* [24-5](ch24/testdata/solve_linear_equations_input6.txt)
+* [24-8](ch24/exec24-8.cpp)
+* [24-10](ch24/exec24-10.cpp)
+* [24-11](ch24/exec24-11.cpp)
+* [24-12](ch24/matrix_operation.h)
 
 # 术语
 [术语](terms.md)
