@@ -341,14 +341,7 @@ public:
         // swap_rows() uses a row's worth of memory for better run-time performance
         // if you want pairwise swap, just write it yourself
     {
-        if (i == j) return;
-    /*
-        Matrix<T,1> temp = (*this)[i];
-        (*this)[i] = (*this)[j];
-        (*this)[j] = temp;
-    */
-        Index max = (*this)[i].size();
-        for (Index ii=0; ii<max; ++ii) std::swap((*this)(i,ii),(*this)(j,ii));
+        std::swap((*this)(i),(*this)(j));
     }
 };
 
@@ -548,7 +541,7 @@ public:
     }
 
     template<int n1, int n2, int n3> 
-    Matrix(const T (&a)[n1][n2][n3]) : Matrix_base<T>(n1*n2), d1(n1), d2(n2), d3(n3)
+    Matrix(const T (&a)[n1][n2][n3]) : Matrix_base<T>(n1*n2*n3), d1(n1), d2(n2), d3(n3)
         // deduce "n1", "n2", "n3" (and "T"), Matrix_base allocates T[n1*n2*n3]
     {
         // std::cerr << "matrix ctor\n";
@@ -578,7 +571,7 @@ public:
         // copy assignment: let the base do the copy
     {
         // std::cerr << "copy assignment (" << this->size() << ',' << a.size()<< ")\n";
-        if (d1!=a.d1 || d2!=a.d2 || d3!=a.d3) error("length error in 2D =");
+        if (d1!=a.d1 || d2!=a.d2 || d3!=a.d3) error("length error in 3D =");
         this->base_assign(a);
         return *this;
     }
