@@ -11,6 +11,12 @@ target_link_libraries(solve_random_system gaussian_elimination)
 add_executable(generate_normal_dist_histogram generate_normal_dist_histogram.cpp)
 add_executable(drill24-1 drill24-1.cpp)
 add_executable(drill24-4 drill24-4.cpp)
+# Enable floating-point exception: https://github.com/ZZy979/PPP-code/issues/18
+if(MSVC)
+  target_compile_options(drill24-4 PRIVATE /fp:strict)
+elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  target_compile_options(drill24-4 PRIVATE -ffp-model=strict)
+endif()
 add_executable(drill24-5 drill24-5.cpp)
 add_executable(drill24-6 drill24-6.cpp)
 add_executable(drill24-7 drill24-7.cpp)
@@ -38,12 +44,15 @@ foreach(i RANGE 1 6)
     INPUT_FILE ${TESTDATA_DIR}/solve_linear_equations_input${i}.txt
   )
 endforeach()
-add_output_test(
-  NAME drill24-4_test
-  COMMAND drill24-4
-  OUTPUT_FILE ${TESTDATA_DIR}/drill24-4_output.txt
-  INPUT_FILE ${TESTDATA_DIR}/drill24-4_input.txt
-)
+# Disable this test for Clang: https://github.com/ZZy979/PPP-code/pull/19
+if(NOT CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_output_test(
+    NAME drill24-4_test
+    COMMAND drill24-4
+    OUTPUT_FILE ${TESTDATA_DIR}/drill24-4_output.txt
+    INPUT_FILE ${TESTDATA_DIR}/drill24-4_input.txt
+  )
+endif()
 foreach(i RANGE 1 2)
   add_output_test(
     NAME drill24-5_test${i}
