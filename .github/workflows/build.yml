@@ -21,6 +21,8 @@ jobs:
         run: cmake -G "Unix Makefiles" -B cmake-build -D CMAKE_BUILD_TYPE=Release
       - name: Build
         run: cmake --build cmake-build -j 4
+      - name: Debug drill24-4
+        run: cmake-build/ch24/drill24-4 < ch24/testdata/drill24-4_input.txt
       - name: Test
         working-directory: ${{ github.workspace }}/cmake-build
         run: ctest
@@ -41,6 +43,8 @@ jobs:
           -D OPTION_USE_SYSTEM_LIBJPEG=OFF -D OPTION_USE_SYSTEM_LIBPNG=OFF -D OPTION_USE_SYSTEM_ZLIB=OFF
       - name: Build
         run: cmake --build cmake-build -j 4
+      - name: Debug drill24-4
+        run: cmake-build\ch24\drill24-4.exe < ch24\testdata\drill24-4_input.txt
       - name: Test
         working-directory: ${{ github.workspace }}/cmake-build
         run: ctest
@@ -58,6 +62,8 @@ jobs:
         run: cmake -G "Visual Studio 17 2022" -A x64 -B cmake-build
       - name: Build
         run: cmake --build cmake-build -j 4 --config Release
+      - name: Debug drill24-4
+        run: cmake-build\ch24\Release\drill24-4.exe < ch24\testdata\drill24-4_input.txt
       - name: Test
         working-directory: ${{ github.workspace }}/cmake-build
         run: ctest -C Release
