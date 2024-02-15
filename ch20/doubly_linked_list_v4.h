@@ -4,20 +4,16 @@
 #include <iterator>
 #include <type_traits>
 
-// doubly-linked list node
-template<class T>
-struct Link {
-    Link* prev;     // previous link
-    Link* succ;     // successor (next) link
-    T val;          // the value
+struct Node_base {
+    Node_base* prev;    // previous link
+    Node_base* succ;    // successor (next) link
 
-    void insert(Link* n);
+    void insert(Node_base* n);
     void erase();
 };
 
 // insert n before this node
-template<class T>
-void Link<T>::insert(Link* n) {
+void Node_base::insert(Node_base* n) {
     n->succ = this;
     n->prev = prev;
     if (prev) prev->succ = n;
@@ -25,11 +21,18 @@ void Link<T>::insert(Link* n) {
 }
 
 // remove this node from list
-template<class T>
-void Link<T>::erase() {
+void Node_base::erase() {
     if (succ) succ->prev = prev;
     if (prev) prev->succ = succ;
 }
+
+// doubly-linked list node
+template<class T>
+struct Link : public Node_base {
+    T val;          // the value
+
+    explicit Link(const T& v = T()) :Node_base{}, val(v) {}
+};
 
 // doubly-linked list iterator
 template<class T>
@@ -40,18 +43,18 @@ struct List_iterator {
     using pointer = T*;
     using reference = T&;
 
-    explicit List_iterator(Link<T>* p) :node(p) {}
+    explicit List_iterator(Node_base* p) :node(p) {}
 
     List_iterator& operator++() { node = node->succ; return *this; }  // forward
     List_iterator& operator--() { node = node->prev; return *this; }  // backward
 
-    T& operator*() { return node->val; }  // get value (dereference)
-    T* operator->() { return &node->val; }
+    T& operator*() { return static_cast<Link<T>*>(node)->val; }  // get value (dereference)
+    T* operator->() { return &static_cast<Link<T>*>(node)->val; }
 
     bool operator==(const List_iterator& b) const { return node == b.node; }
     bool operator!=(const List_iterator& b) const { return node != b.node; }
 
-    Link<T>* node;     // current link
+    Node_base* node;    // current link
 };
 
 // doubly-linked list
@@ -106,10 +109,10 @@ public:
     void pop_back() { erase(iterator(head.prev)); }
 
     // the first element
-    T& front() { return head.succ->val; }
+    T& front() { return *begin(); }
 
     // the last element
-    T& back() { return head.prev->val; }
+    T& back() { return *std::prev(end()); }
 
     int size() const { return sz; }
 
@@ -117,16 +120,14 @@ private:
     void _init();
     void _clear();
 
-    // TODO 头节点val不初始化
-    Link<T> head;   // virtual head node
+    Node_base head; // virtual head node
     int sz;         // number of elements
 };
 
 // insert v into list before p
 template<class T>
 typename list<T>::iterator list<T>::insert(iterator p, const T& v) {
-    Link<T>* tmp = new Link<T>;
-    tmp->val = v;
+    auto tmp = new Link<T>(v);
     p.node->insert(tmp);
     ++sz;
     return iterator(tmp);
@@ -136,9 +137,9 @@ typename list<T>::iterator list<T>::insert(iterator p, const T& v) {
 template<class T>
 typename list<T>::iterator list<T>::erase(iterator p) {
     if (p == end()) return p;
-    Link<T>* next = p.node->succ;
+    auto next = p.node->succ;
     p.node->erase();
-    delete p.node;
+    delete static_cast<Link<T>*>(p.node);
     --sz;
     return iterator(next);
 }
@@ -151,10 +152,10 @@ void list<T>::_init() {
 
 template<class T>
 void list<T>::_clear() {
-    Link<T>* p = head.succ;
+    auto p = head.succ;
     while (p != &head) {
-        Link<T>* next = p->succ;
-        delete p;
+        auto next = p->succ;
+        delete static_cast<Link<T>*>(p);
         p = next;
     }
 }

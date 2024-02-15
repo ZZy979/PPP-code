@@ -9,6 +9,11 @@ protected:
     list<double> l_ = {0.0, 1.1, 2.2, 3.3, 4.4};
 };
 
+// for testing list of class without default
+struct No_default {
+    No_default(int) {}
+};
+
 TEST_F(DoublyLinkedListV4Test, DefaultConstructor) {
     list<double> l;
     EXPECT_EQ(l.size(), 0);
@@ -25,11 +30,13 @@ TEST_F(DoublyLinkedListV4Test, Constructor) {
     for (int i : li)
         EXPECT_EQ(i, 8);
 
-    // TODO class without default
+    // class without default
+    list<No_default> ln(10, No_default(8));
+    EXPECT_EQ(ln.size(), 10);
 
     // class with resources
     list<Counted_element> le(10);
-    EXPECT_EQ(Counted_element::count(), 11);
+    EXPECT_EQ(Counted_element::count(), 10);
 }
 
 TEST_F(DoublyLinkedListV4Test, InitializerListConstructor) {
@@ -39,14 +46,14 @@ TEST_F(DoublyLinkedListV4Test, InitializerListConstructor) {
     EXPECT_TRUE(std::equal(ld.begin(), ld.end(), expected));
 
     // class with resources
-    list<Counted_element> ve = {Counted_element(), Counted_element(), Counted_element()};
-    EXPECT_EQ(Counted_element::count(), 4);
+    list<Counted_element> le = {Counted_element(), Counted_element(), Counted_element()};
+    EXPECT_EQ(Counted_element::count(), 3);
 }
 
 TEST_F(DoublyLinkedListV4Test, Destructor) {
     // class with resources
     auto ple = new list<Counted_element>(8);
-    EXPECT_EQ(Counted_element::count(), 9);
+    EXPECT_EQ(Counted_element::count(), 8);
     delete ple;
     EXPECT_EQ(Counted_element::count(), 0);
 }
@@ -94,9 +101,9 @@ TEST_F(DoublyLinkedListV4Test, Insert) {
 
     // class with resources
     list<Counted_element> le(5);
-    EXPECT_EQ(Counted_element::count(), 6);
+    EXPECT_EQ(Counted_element::count(), 5);
     le.insert(std::next(le.begin(), 2), Counted_element());
-    EXPECT_EQ(Counted_element::count(), 7);
+    EXPECT_EQ(Counted_element::count(), 6);
 }
 
 TEST_F(DoublyLinkedListV4Test, Erase) {
@@ -127,9 +134,9 @@ TEST_F(DoublyLinkedListV4Test, Erase) {
 
     // class with resources
     list<Counted_element> le(5);
-    EXPECT_EQ(Counted_element::count(), 6);
-    le.erase(std::next(le.begin(), 2));
     EXPECT_EQ(Counted_element::count(), 5);
+    le.erase(std::next(le.begin(), 2));
+    EXPECT_EQ(Counted_element::count(), 4);
 }
 
 TEST_F(DoublyLinkedListV4Test, Clear) {
@@ -143,10 +150,10 @@ TEST_F(DoublyLinkedListV4Test, Clear) {
     EXPECT_EQ(l_.size(), 0);
 
     // class with resources
-    list<Counted_element> ve(5);
-    EXPECT_EQ(Counted_element::count(), 6);
-    ve.clear();
-    EXPECT_EQ(Counted_element::count(), 1);
+    list<Counted_element> le(5);
+    EXPECT_EQ(Counted_element::count(), 5);
+    le.clear();
+    EXPECT_EQ(Counted_element::count(), 0);
 }
 
 TEST_F(DoublyLinkedListV4Test, PushBack) {
@@ -163,9 +170,9 @@ TEST_F(DoublyLinkedListV4Test, PushBack) {
 
     // class with resources
     list<Counted_element> le(5);
-    EXPECT_EQ(Counted_element::count(), 6);
+    EXPECT_EQ(Counted_element::count(), 5);
     le.push_back(Counted_element());
-    EXPECT_EQ(Counted_element::count(), 7);
+    EXPECT_EQ(Counted_element::count(), 6);
 }
 
 TEST_F(DoublyLinkedListV4Test, PopBack) {
@@ -174,9 +181,9 @@ TEST_F(DoublyLinkedListV4Test, PopBack) {
 
     // class with resources
     list<Counted_element> le(5);
-    EXPECT_EQ(Counted_element::count(), 6);
-    le.pop_back();
     EXPECT_EQ(Counted_element::count(), 5);
+    le.pop_back();
+    EXPECT_EQ(Counted_element::count(), 4);
 }
 
 TEST_F(DoublyLinkedListV4Test, PushFront) {
@@ -193,9 +200,9 @@ TEST_F(DoublyLinkedListV4Test, PushFront) {
 
     // class with resources
     list<Counted_element> le(5);
-    EXPECT_EQ(Counted_element::count(), 6);
+    EXPECT_EQ(Counted_element::count(), 5);
     le.push_front(Counted_element());
-    EXPECT_EQ(Counted_element::count(), 7);
+    EXPECT_EQ(Counted_element::count(), 6);
 }
 
 TEST_F(DoublyLinkedListV4Test, PopFront) {
@@ -204,7 +211,7 @@ TEST_F(DoublyLinkedListV4Test, PopFront) {
 
     // class with resources
     list<Counted_element> le(5);
-    EXPECT_EQ(Counted_element::count(), 6);
-    le.pop_front();
     EXPECT_EQ(Counted_element::count(), 5);
+    le.pop_front();
+    EXPECT_EQ(Counted_element::count(), 4);
 }
