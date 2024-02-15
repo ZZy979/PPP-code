@@ -1,72 +1,160 @@
 #pragma once
 
+#include <initializer_list>
+#include <iterator>
+#include <type_traits>
+
 // doubly-linked list node
-template<class Elem>
+template<class T>
 struct Link {
     Link* prev;     // previous link
     Link* succ;     // successor (next) link
-    Elem val;       // the value
+    T val;          // the value
+
+    void insert(Link* n);
+    void erase();
+};
+
+// insert n before this node
+template<class T>
+void Link<T>::insert(Link* n) {
+    n->succ = this;
+    n->prev = prev;
+    if (prev) prev->succ = n;
+    prev = n;
+}
+
+// remove this node from list
+template<class T>
+void Link<T>::erase() {
+    if (succ) succ->prev = prev;
+    if (prev) prev->succ = succ;
+}
+
+// doubly-linked list iterator
+template<class T>
+struct List_iterator {
+    using iterator_category = std::bidirectional_iterator_tag;
+    using value_type = T;
+    using difference_type = ptrdiff_t;
+    using pointer = T*;
+    using reference = T&;
+
+    explicit List_iterator(Link<T>* p) :node(p) {}
+
+    List_iterator& operator++() { node = node->succ; return *this; }  // forward
+    List_iterator& operator--() { node = node->prev; return *this; }  // backward
+
+    T& operator*() { return node->val; }  // get value (dereference)
+    T* operator->() { return &node->val; }
+
+    bool operator==(const List_iterator& b) const { return node == b.node; }
+    bool operator!=(const List_iterator& b) const { return node != b.node; }
+
+    Link<T>* node;     // current link
 };
 
 // doubly-linked list
-template<class Elem>
+template<class T>
 class list {
 public:
-    class iterator;     // member type: iterator
+    using size_type = size_t;
+    using value_type = T;
+    using iterator = List_iterator<T>;
+    // TODO const_iterator
 
-    list() :first(nullptr), sz(0) {}
+    list() { _init(); }
 
-    ~list() {
-        while (first) {
-            auto next = first->succ;
-            delete first;
-            first = next;
-        }
+    explicit list(size_type n, const T& val = T()) {
+        _init();
+        for (int i = 0; i < n; ++i) push_back(val);
     }
 
+    template<class InputIt, typename std::enable_if<std::is_convertible<
+            typename std::iterator_traits<InputIt>::iterator_category, std::input_iterator_tag>::value, int>::type = 0>
+    list(InputIt first, InputIt last) {
+        _init();
+        for (; first != last; ++first) push_back(*first);
+    }
+
+    list(std::initializer_list<T> lst) :list(lst.begin(), lst.end()) {}
+
+    ~list() { _clear(); }
+
+    // TODO 拷贝构造、拷贝赋值、移动构造、移动赋值
+
     // iterator to first element
-    iterator begin() { return iterator(first); }
+    iterator begin() { return iterator(head.succ); }
 
     // iterator to one beyond last element
-    iterator end() { return iterator(nullptr); }
+    iterator end() { return iterator(&head); }
 
-    iterator insert(iterator p, const Elem& v); // insert v into list before p
-    iterator erase(iterator p);                 // remove p from the list
+    iterator insert(iterator p, const T& v);
+    iterator erase(iterator p);
+    void clear() { _clear(); _init(); }
 
-    void push_back(const Elem& v);      // insert v at end
-    void push_front(const Elem& v);     // insert v at front
-    void pop_front();   // remove the first element
-    void pop_back();    // remove the last element
+    // insert v at end
+    void push_back(const T& v) { insert(end(), v); }
 
-    Elem& front();  // the first element
-    Elem& back();   // the last element
+    // insert v at front
+    void push_front(const T& v) { insert(begin(), v); }
 
-    int size() const { return sz; };
+    // remove the first element
+    void pop_front() { erase(begin()); }
 
-private:
-    Link<Elem>* first;
-    int sz;
-};
+    // remove the last element
+    void pop_back() { erase(iterator(head.prev)); }
 
-template<class Elem>
-class list<Elem>::iterator {
-public:
-    explicit iterator(Link<Elem>* p) :curr(p) {}
-    iterator& operator++() { curr = curr->succ; return *this; }  // forward
-    iterator& operator--() { curr = curr->prev; return *this; }  // backward
-    Elem& operator*() { return curr->val; }  // get value (dereference)
-    bool operator==(const iterator& b) const { return curr == b.curr; }
-    bool operator!=(const iterator& b) const { return curr != b.curr; }
+    // the first element
+    T& front() { return head.succ->val; }
+
+    // the last element
+    T& back() { return head.prev->val; }
+
+    int size() const { return sz; }
 
 private:
-    Link<Elem>* curr;  // current link
+    void _init();
+    void _clear();
+
+    // TODO 头节点val不初始化
+    Link<T> head;   // virtual head node
+    int sz;         // number of elements
 };
 
-template<class Elem>
-void list<Elem>::push_front(const Elem& v) {
-    if (!first)
-        first = new Link<Elem>{nullptr, nullptr, v};
-    else
-        first = first->prev = new Link<Elem>{nullptr, first, v};
+// insert v into list before p
+template<class T>
+typename list<T>::iterator list<T>::insert(iterator p, const T& v) {
+    Link<T>* tmp = new Link<T>;
+    tmp->val = v;
+    p.node->insert(tmp);
     ++sz;
+    return iterator(tmp);
+}
+
+// remove p from the list
+template<class T>
+typename list<T>::iterator list<T>::erase(iterator p) {
+    if (p == end()) return p;
+    Link<T>* next = p.node->succ;
+    p.node->erase();
+    delete p.node;
+    --sz;
+    return iterator(next);
+}
+
+template<class T>
+void list<T>::_init() {
+    head.prev = head.succ = &head;
+    sz = 0;
+}
+
+template<class T>
+void list<T>::_clear() {
+    Link<T>* p = head.succ;
+    while (p != &head) {
+        Link<T>* next = p->succ;
+        delete p;
+        p = next;
+    }
 }

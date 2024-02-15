@@ -31,7 +31,7 @@ add_output_test(
   OUTPUT_FILE ${TESTDATA_DIR}/jack_and_jill_output_empty.txt
 )
 add_gtest(NAME copy_test SOURCE copy_test.cpp LIBRARY copy)
-add_gtest(NAME doubly_linked_list_v4_test SOURCE doubly_linked_list_v4_test.cpp LIBRARY doubly_linked_list_v4)
+add_gtest(NAME doubly_linked_list_v4_test SOURCE doubly_linked_list_v4_test.cpp LIBRARY doubly_linked_list_v4 counted_element)
 add_gtest(NAME simple_text_editor_test SOURCE simple_text_editor_test.cpp LIBRARY simple_text_editor)
 add_output_test(
   NAME drill20_test
