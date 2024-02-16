@@ -511,7 +511,7 @@ $ ctest
 * [Jack-and-Jill v3](ch20/jack_and_jill_v3.cpp)
 
 ### 20.4 链表
-* [双向链表v4](ch20/doubly_linked_list_v4.h) （简化的`std::list`）[WIP]
+* [双向链表v4](ch20/doubly_linked_list_v4.h) （简化的`std::list`）
 
 ### 20.5 再次一般化vector
 * [简单向量v3](ch19/simple_vector.h)

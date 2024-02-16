@@ -50,6 +50,77 @@ TEST_F(DoublyLinkedListV4Test, InitializerListConstructor) {
     EXPECT_EQ(Counted_element::count(), 3);
 }
 
+TEST_F(DoublyLinkedListV4Test, CopyConstructor) {
+    list<double> l2 = l_;
+    EXPECT_EQ(l2.size(), l_.size());
+    EXPECT_TRUE(std::equal(l2.begin(), l2.end(), l_.begin()));
+    *std::next(l_.begin()) = 99;
+    l2.front() = 88;
+    EXPECT_DOUBLE_EQ(l_.front(), 0);
+    EXPECT_DOUBLE_EQ(*std::next(l2.begin()), 1.1);
+
+    // class with resources
+    list<Counted_element> le(5);
+    EXPECT_EQ(Counted_element::count(), 5);
+    list<Counted_element> le2 = le;
+    EXPECT_EQ(Counted_element::count(), 10);
+}
+
+TEST_F(DoublyLinkedListV4Test, CopyAssignment) {
+    // self-assignment
+    l_ = l_;
+    double expected[] = {0.0, 1.1, 2.2, 3.3, 4.4};
+    EXPECT_EQ(l_.size(), 5);
+    EXPECT_TRUE(std::equal(l_.begin(), l_.end(), expected));
+
+    list<double> l2 = {1, 2, 3};
+    l2 = l_;
+    EXPECT_EQ(l2.size(), l_.size());
+    for (int i = 0; i < l2.size(); ++i)
+        EXPECT_TRUE(std::equal(l2.begin(), l2.end(), l_.begin()));
+    *std::next(l_.begin()) = 99;
+    l2.front() = 88;
+    EXPECT_DOUBLE_EQ(l_.front(), 0);
+    EXPECT_DOUBLE_EQ(*std::next(l2.begin()), 1.1);
+
+    // class with resources
+    list<Counted_element> le(5), le2(8);
+    EXPECT_EQ(Counted_element::count(), 13);
+    le2 = le;
+    EXPECT_EQ(Counted_element::count(), 10);
+}
+
+TEST_F(DoublyLinkedListV4Test, MoveConstructor) {
+    int size = l_.size();
+    list<double> l2 = std::move(l_);
+    double expected[] = {0.0, 1.1, 2.2, 3.3, 4.4};
+    EXPECT_EQ(l2.size(), size);
+    EXPECT_TRUE(std::equal(l2.begin(), l2.end(), expected));
+    EXPECT_EQ(l_.size(), 0);
+
+    // class with resources
+    list<Counted_element> le(5);
+    EXPECT_EQ(Counted_element::count(), 5);
+    list<Counted_element> le2 = std::move(le);
+    EXPECT_EQ(Counted_element::count(), 5);
+}
+
+TEST_F(DoublyLinkedListV4Test, MoveAssignment) {
+    list<double> l2 = {1, 2, 3};
+    int size = l_.size();
+    l2 = std::move(l_);
+    double expected[] = {0.0, 1.1, 2.2, 3.3, 4.4};
+    EXPECT_EQ(l2.size(), size);
+    EXPECT_TRUE(std::equal(l2.begin(), l2.end(), expected));
+    EXPECT_EQ(l_.size(), 0);
+
+    // class with resources
+    list<Counted_element> le(5), le2(8);
+    EXPECT_EQ(Counted_element::count(), 13);
+    le2 = std::move(le);
+    EXPECT_EQ(Counted_element::count(), 5);
+}
+
 TEST_F(DoublyLinkedListV4Test, Destructor) {
     // class with resources
     auto ple = new list<Counted_element>(8);
