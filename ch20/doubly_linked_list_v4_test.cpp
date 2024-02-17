@@ -76,8 +76,7 @@ TEST_F(DoublyLinkedListV4Test, CopyAssignment) {
     list<double> l2 = {1, 2, 3};
     l2 = l_;
     EXPECT_EQ(l2.size(), l_.size());
-    for (int i = 0; i < l2.size(); ++i)
-        EXPECT_TRUE(std::equal(l2.begin(), l2.end(), l_.begin()));
+    EXPECT_TRUE(std::equal(l2.begin(), l2.end(), l_.begin()));
     *std::next(l_.begin()) = 99;
     l2.front() = 88;
     EXPECT_DOUBLE_EQ(l_.front(), 0);

@@ -163,7 +163,6 @@ public:
 
     void assign(size_type n, const T& val);
 
-    // replace the contents with [first, last)
     template<class InputIt, class = std::enable_if_t<is_input_iterator<InputIt>::value>>
     void assign(InputIt first, InputIt last);
 
@@ -254,25 +253,26 @@ typename list<T>::iterator list<T>::erase(iterator first, iterator last) {
 // replace the contents with n copies of val
 template<class T>
 void list<T>::assign(size_type n, const T& val) {
-    iterator it = begin();
-    for (; it != end() && n > 0; ++it, --n)
-        *it = val;
+    iterator curr = begin(), end_ = end();
+    for (; curr != end_ && n > 0; ++curr, --n)
+        *curr = val;
     if (n > 0)
-        insert(end(), n, val);
+        insert(end_, n, val);
     else
-        erase(it, end());
+        erase(curr, end_);
 }
 
+// replace the contents with [first, last)
 template<class T>
 template<class InputIt, class>
-void list<T>::assign(InputIt first2, InputIt last2) {
-    iterator first1 = begin(), last1 = end();
-    for (; first1 != last1 && first2 != last2; ++first1, ++first2)
-        *first1 = *first2;
-    if (first2 == last2)
-        erase(first1, last1);
+void list<T>::assign(InputIt first, InputIt last) {
+    iterator curr = begin(), end_ = end();
+    for (; curr != end_ && first != last; ++curr, ++first)
+        *curr = *first;
+    if (first == last)
+        erase(curr, end_);
     else
-        insert(last1, first2, last2);
+        insert(end_, first, last);
 }
 
 // transfer elements in [first, last) from l to this list, insert before p

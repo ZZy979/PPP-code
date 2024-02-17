@@ -49,7 +49,7 @@ add_output_test(
   COMMAND exec20-12
   OUTPUT_FILE ${TESTDATA_DIR}/exec20-12_output_empty.txt
 )
-add_gtest(NAME singly_linked_list_test SOURCE singly_linked_list_test.cpp LIBRARY singly_linked_list)
+add_gtest(NAME singly_linked_list_test SOURCE singly_linked_list_test.cpp LIBRARY singly_linked_list counted_element)
 add_gtest(NAME pvector_test SOURCE pvector_test.cpp LIBRARY pvector counted_element)
 add_gtest(NAME ovector_test SOURCE ovector_test.cpp LIBRARY ovector counted_element)
 add_gtest(NAME ownership_vector_test SOURCE ownership_vector_test.cpp LIBRARY ownership_vector counted_element)

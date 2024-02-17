@@ -537,7 +537,7 @@ $ ctest
 * [20-8~20-10](ch20/simple_text_editor.cpp)
 * [20-12](ch20/exec20-12.cpp)
 * [20-13](ch20/doubly_linked_list_v4.h)
-* [20-14](ch20/singly_linked_list.h) （简化的`std::forward_list`）[WIP]
+* [20-14](ch20/singly_linked_list.h) （简化的`std::forward_list`）
 * [20-15](ch20/pvector.h)
 * [20-16](ch20/ovector.h)
 * [20-17](ch20/ownership_vector.h)
