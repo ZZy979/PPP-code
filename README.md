@@ -544,7 +544,9 @@ $ ctest
 * [20-18~20-19](ch20/range_checked_iterator.h)
 * [20-20](ch20/exec20-20.cpp)
   * 编译命令：`g++ -std=c++14 -O2 -o exec20-20 exec20-20.cpp`
-  * [测试结果](ch20/exec20-20_result.csv)（看起来似乎不存在`list`比`vector`快的可能性）
+  * [测试结果](ch20/exec20-20_result.csv)
+  * [总时间](ch20/exec20-20_total_time.png)
+  * [插入时间](ch20/exec20-20_insert_time.png)
 
 ## 第21章 算法和映射
 ### 21.4 函数对象
